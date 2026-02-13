@@ -80,19 +80,19 @@ function AboutUs() {
 
         <section className='bg-[#50a72c] py-24 text-center text-white flex items-center justify-between gap-20'>
             <div className="ml-24">
-                <img src="" alt="" />
+                {/* <img src="" alt="" /> */}
                 <h2 className='text-lg'>Tribal families supported <br />through employment</h2>
             </div>
             <div className="">
-                <img src="" alt="" />
+                {/* <img src="" alt="" /> */}
                 <h2>Over 5 years of <br />operations in Bastar</h2>
             </div>
             <div className="">
-                <img src="" alt="" />
+                {/* <img src="" alt="" /> */}
                 <h2 className='text-lg'>Sustainable <br />Forest Sourcing</h2>
             </div>
             <div className="mr-24">
-                <img src="" alt="" />
+                {/* <img src="" alt="" /> */}
                 <h2 className='text-lg'>FSSAI certified for food <br />safety and quality</h2>
             </div>
         </section>
