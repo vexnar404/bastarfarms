@@ -2,6 +2,7 @@ import {FaFacebook, FaInstagram, FaLinkedin, FaPhoneAlt} from 'react-icons/fa';
 import {IoIosMail} from 'react-icons/io';
 import {Link, NavLink} from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import logo from '../assets/logo.png'
 
 function Header() {
   return (
@@ -43,7 +44,7 @@ function Header() {
         <header className='w-full '>
             <div className="flex items-center w-full h-20">
                 <Link to='/' className='min-w-60 h-full bg-[#3d6a2a]' >
-                    <img src='./src/assets/logo.png' alt="bastar farm logo" className='h-16 mx-auto object-cover' />
+                    <img src={logo} alt="bastar farm logo" className='h-16 mx-auto object-cover' />
                 </Link>
 
                 <nav className='hidden md:flex items-center justify-center gap-16 ml-8 h-full'>
