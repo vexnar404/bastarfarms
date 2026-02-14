@@ -5,7 +5,6 @@ import founder from '../assets/founder.jpeg'
 import sign from '../assets/sign.png'
 import core from '../assets/core.png'
 import clients from '../assets/clients.png'
-import certif from '../assets/certif.png'
 import foot from '../assets/foot.png'
 import fssai from '../assets/fssai.png'
 
@@ -42,7 +41,7 @@ function AboutUs() {
 
   return (
     <div>
-         <section className='relative bg-contain bg-center py-20 md:py-24' style={{ backgroundImage: `url(${headerbg})` }}>
+         <section className='relative w-full bg-cover bg-center py-20 md:py-24' style={{ backgroundImage: `url(${headerbg})` }}>
             <div className='text-white text-center font-semibold'>
                 <h1 className='text-7xl'>About Bastar Farms</h1>
                 <p className='text-3xl'>Vision and Mission</p>
