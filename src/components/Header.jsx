@@ -50,31 +50,31 @@ function Header() {
                 <nav className='hidden md:flex items-center justify-center gap-16 ml-8 h-full'>
                     <NavLink
                     to="/"
-                    className='text-gray-700 py-6 hover:text-[#2a491d] border-b-[1.5px] border-transparent hover:border-[#2a491d] transition-all duration-200'
+                    className='text-gray-700 py-2 hover:text-[#2a491d] border-b-[1.5px] border-transparent hover:border-[#2a491d] transition-all duration-200'
                     >
                         Home
                     </NavLink>
                     <NavLink
                         to="/about-us"
-                        className='text-gray-700 py-6 hover:text-[#2a491d] border-b-[1.5px] border-transparent hover:border-[#2a491d] transition-all duration-200'
+                        className='text-gray-700 py-2 hover:text-[#2a491d] border-b-[1.5px] border-transparent hover:border-[#2a491d] transition-all duration-200'
                     >
                         About us
                     </NavLink>
                     <NavLink
                         to="/products"
-                        className='text-gray-700 py-6 hover:text-[#2a491d] border-b-[1.5px] border-transparent hover:border-[#2a491d] transition-all duration-200'
+                        className='text-gray-700 py-2 hover:text-[#2a491d] border-b-[1.5px] border-transparent hover:border-[#2a491d] transition-all duration-200'
                     >
                         Products
                     </NavLink>
                     <NavLink
                         to="/clients"
-                        className='text-gray-700 py-6 hover:text-[#2a491d] border-b-[1.5px] border-transparent hover:border-[#2a491d] transition-all duration-200'
+                        className='text-gray-700 py-2 hover:text-[#2a491d] border-b-[1.5px] border-transparent hover:border-[#2a491d] transition-all duration-200'
                     >
                         Our Esteemed Clients
                     </NavLink>
                     <NavLink
                         to="/gallery"
-                        className='text-gray-700 py-6 hover:text-[#2a491d] border-b-[1.5px] border-transparent hover:border-[#2a491d] transition-all duration-200'
+                        className='text-gray-700 py-2 hover:text-[#2a491d] border-b-[1.5px] border-transparent hover:border-[#2a491d] transition-all duration-200'
                     >
                         Gallery
                     </NavLink>
@@ -85,7 +85,6 @@ function Header() {
                         to="/contact"
                         className="relative overflow-hidden px-8 py-3 rounded-full bg-[#50a72c] text-white bg-gradient-to-br from-[#50a72c] to-[#3d8020] bg-[length:200%_100%] bg-left hover:bg-right transition-all duration-300 ease-in-out"
                     >
-
                         Contact Us
                     </Link>
                 </div>
