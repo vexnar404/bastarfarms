@@ -29,6 +29,11 @@ import c17 from '../assets/Clients Logo/17.png'
 import c18 from '../assets/Clients Logo/18.png'
 import c19 from '../assets/Clients Logo/19.png'
 
+import i1 from '../assets/i1.svg'
+import i2 from '../assets/i2.svg'
+import i3 from '../assets/i3.svg'
+import i4 from '../assets/i4.svg'
+
 import { motion } from 'framer-motion'
 
 function AboutUs() {
@@ -36,7 +41,7 @@ function AboutUs() {
 
   return (
     <div>
-         <section className='relative bg-cover bg-center py-20 md:py-40' style={{ backgroundImage: `url(${headerbg})` }}>
+         <section className='relative bg-cover bg-center py-20 md:py-24' style={{ backgroundImage: `url(${headerbg})` }}>
             <div className='text-white text-center font-semibold'>
                 <h1 className='text-7xl'>About Bastar Farms</h1>
                 <p className='text-3xl'>Vision and Mission</p>
@@ -78,22 +83,22 @@ function AboutUs() {
             </div>
         </section>
 
-        <section className='bg-[#50a72c] py-24 text-center text-white flex items-center justify-between gap-20'>
-            <div className="ml-24">
-                {/* <img src="" alt="" /> */}
-                <h2 className='text-lg'>Tribal families supported <br />through employment</h2>
+        <section className='bg-[#50a72c] py-24 text-center text-white flex items-center justify-between gap-16'>
+            <div className="ml-24 flex flex-row items-center gap-2">
+                <img src={i1} alt="" className='h-16 w-16' />
+                <h2 className='text-lg text-left'>Tribal families supported <br />through employment</h2>
             </div>
-            <div className="">
-                {/* <img src="" alt="" /> */}
-                <h2>Over 5 years of <br />operations in Bastar</h2>
+            <div className="flex flex-row items-center gap-2">
+                <img src={i2} alt="" className='h-16 w-16' />
+                <h2 className='text-lg text-left'>Over 5 years of <br />operations in Bastar</h2>
             </div>
-            <div className="">
-                {/* <img src="" alt="" /> */}
-                <h2 className='text-lg'>Sustainable <br />Forest Sourcing</h2>
+            <div className="flex flex-row items-center gap-2">
+                <img src={i3} alt="" className='h-16 w-16'  />
+                <h2 className='text-lg text-left'>Sustainable <br />Forest Sourcing</h2>
             </div>
-            <div className="mr-24">
-                {/* <img src="" alt="" /> */}
-                <h2 className='text-lg'>FSSAI certified for food <br />safety and quality</h2>
+            <div className="flex flex-row items-center gap-2 mr-24">
+                <img src={i4} alt="" className='h-16 w-16'/>
+                <h2 className='text-lg text-left'>FSSAI certified for food <br />safety and quality</h2>
             </div>
         </section>
 

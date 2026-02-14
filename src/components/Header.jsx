@@ -43,7 +43,7 @@ function Header() {
 
         <header className='w-full '>
             <div className="flex items-center w-full h-20">
-                <Link to='/' className='min-w-60 h-full bg-[#3d6a2a]' >
+                <Link to='/' className='min-w-60 h-full bg-[#2a491d]' >
                     <img src={logo} alt="bastar farm logo" className='h-16 mx-auto object-cover' />
                 </Link>
 
