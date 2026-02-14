@@ -7,6 +7,7 @@ import core from '../assets/core.png'
 import clients from '../assets/clients.png'
 import certif from '../assets/certif.png'
 import foot from '../assets/foot.png'
+import fssai from '../assets/fssai.png'
 
 import c0 from '../assets/Clients Logo/0.jpg'
 import c1 from '../assets/Clients Logo/1.png'
@@ -41,7 +42,7 @@ function AboutUs() {
 
   return (
     <div>
-         <section className='relative bg-cover bg-center py-20 md:py-24' style={{ backgroundImage: `url(${headerbg})` }}>
+         <section className='relative bg-contain bg-center py-20 md:py-24' style={{ backgroundImage: `url(${headerbg})` }}>
             <div className='text-white text-center font-semibold'>
                 <h1 className='text-7xl'>About Bastar Farms</h1>
                 <p className='text-3xl'>Vision and Mission</p>
@@ -126,7 +127,14 @@ function AboutUs() {
         </section>
 
         <section className='py-8'>
-            <img src={certif} alt="Certification" className='w-full h-auto object-cover' />
+            <h1 className='text-center text-6xl font-bold'>Certifications</h1>
+            <p className='text-center text-2xl font-semibold'>Quality & Copliance</p>
+
+            <div className='flex flex-col mt-8'>
+                <p className='text-center text-lg'>Food Safety and Standards Authority of India</p>
+                <img src={fssai} alt="FSSAI Certification" className='w-[600px] h-auto object-contain mx-auto mt-4 border-[#2a491d] border-8 rounded-xl' />
+            </div>
+
         </section>
 
         <section className='pt-8'>
