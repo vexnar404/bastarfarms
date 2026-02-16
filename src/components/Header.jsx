@@ -1,97 +1,180 @@
-import {FaFacebook, FaInstagram, FaLinkedin, FaPhoneAlt} from 'react-icons/fa';
-import {IoIosMail} from 'react-icons/io';
-import {Link, NavLink} from 'react-router-dom';
+import { FaFacebook, FaInstagram, FaLinkedin, FaPhoneAlt, FaBars, FaTimes } from 'react-icons/fa';
+import { IoIosMail } from 'react-icons/io';
+import { Link, NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import logo from '../assets/logo.png'
+import { motion, AnimatePresence } from 'framer-motion'; // Added Framer Motion
+import logo from '../assets/logo.png';
+import logo2 from '../assets/logo2.png'
 
 function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : 'unset';
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [mobileMenuOpen]);
+
+  const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
+  const closeMobileMenu = () => setMobileMenuOpen(false);
+
+  // Animation Variants
+  const menuVariants = {
+    closed: { x: '100%', transition: { type: 'spring', stiffness: 300, damping: 30 } },
+    opened: { x: 0, transition: { type: 'spring', stiffness: 300, damping: 30, staggerChildren: 0.1, delayChildren: 0.2 } }
+  };
+
+  const itemVariants = {
+    closed: { opacity: 0, x: 20 },
+    opened: { opacity: 1, x: 0 }
+  };
+
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'About us', path: '/about-us' },
+    { name: 'Products', path: '/products' },
+    { name: 'Our Esteemed Clients', path: '/clients' },
+    { name: 'Gallery', path: '/gallery' },
+  ];
+
   return (
-    <section>
-        <div className='h-10 w-full bg-[#2a491d]'>
-            <div className='ml-64 flex items-center justify-between h-full'>
-                <div className='flex items-center justify-center gap-8 h-full'>
-                    <h1 className='text-[#8a9984] text-sm px-8'>Welcome to Bastar Farms!</h1>
-                    <div className='flex items-center justify-center gap-6 px-10 h-full bg-[#233c18]'>
-                        <a href="https://www.linkedin.com/company/bastar-farms" target="_blank" rel="noopener noreferrer">
-                            <FaLinkedin className='text-white hover:text-[#ffbd3c] transition-all duration-300 cursor-pointer' size={15}/>
-                        </a>
-                        <a href="https://www.facebook.com/bastarfarms" target="_blank" rel="noopener noreferrer">
-                            <FaFacebook className='text-white hover:text-[#ffbd3c] transition-all duration-300 cursor-pointer' size={15}/>
-                        </a>
-                        <a href="https://www.instagram.com/bastarfarmsindia" target="_blank" rel="noopener noreferrer">
-                            <FaInstagram className='text-white hover:text-[#ffbd3c] transition-all duration-300 cursor-pointer' size={15}/>
-                        </a>    
-                    </div>
-                </div>
-
-                <div className="flex items-center justify-center gap-8 h-full">
-                    <div className='flex items-center justify-center gap-2 px-4 h-full'>
-                        <FaPhoneAlt className='text-[#ffbd3c]' size={15}/>
-                        <a href="tel:918482950500">
-                            <p className='text-sm text-[#8a9984] hover:text-white transition-all duration-300 cursor-pointer'>+ 91 ( 848 ) 29 - 50500</p>
-                        </a>
-                    </div>
-                    <div className="flex items-center justify-center gap-2 px-4 h-full">
-                        <IoIosMail className='text-[#ffbd3c]' size={17}/>
-                        <a href="mailto:info@kosshergroup.com">
-                            <p className='text-sm text-[#8a9984] hover:text-white transition-all duration-300 cursor-pointer'>info@kosshergroup.com</p>
-                        </a>    
-                    </div>
-                </div>
+    <section className="relative z-[100]">
+      {/* Top bar */}
+      <div className='hidden lg:block h-10 w-full bg-[#2a491d]'>
+        <div className='max-w-[1440px] mx-auto flex items-center justify-between h-full px-4 lg:px-10'>
+          <div className='flex items-center gap-8 h-full'>
+            <h1 className='text-[#8a9984] text-xs uppercase tracking-wider'>Welcome to Bastar Farms!</h1>
+            <div className='flex items-center gap-4 px-6 h-full bg-[#233c18]'>
+              <a href="#" className='text-white hover:text-[#ffbd3c] transition-colors'><FaLinkedin size={14}/></a>
+              <a href="#" className='text-white hover:text-[#ffbd3c] transition-colors'><FaFacebook size={14}/></a>
+              <a href="#" className='text-white hover:text-[#ffbd3c] transition-colors'><FaInstagram size={14}/></a>    
             </div>
+          </div>
+          <div className="flex items-center gap-6 h-full">
+            <div className='flex items-center gap-2'>
+              <FaPhoneAlt className='text-[#ffbd3c]' size={12}/>
+              <a href="tel:918482950500" className='text-xs text-[#8a9984] hover:text-white transition-colors'>+91 84829 50500</a>
+            </div>
+            <div className="flex items-center gap-2">
+              <IoIosMail className='text-[#ffbd3c]' size={15}/>
+              <a href="mailto:info@kosshergroup.com" className='text-xs text-[#8a9984] hover:text-white transition-colors'>info@kosshergroup.com</a>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <header className='w-full '>
-            <div className="flex items-center w-full h-20">
-                <Link to='/' className='min-w-60 h-full bg-[#2a491d]' >
-                    <img src={logo} alt="bastar farm logo" className='h-16 mx-auto object-cover' />
-                </Link>
+      {/* Main header */}
+      <header className='w-full bg-white shadow-md sticky top-0'>
+        <div className="flex items-center max-w-[1440px] mx-auto h-20">
+          <Link to='/' className='h-full bg-[#2a491d] px-8 flex items-center justify-center transition-colors hover:bg-[#233c18]'>
+            <img src={logo} alt="logo" className='h-12 w-auto object-contain' />
+          </Link>
 
-                <nav className='hidden md:flex items-center justify-center gap-16 ml-8 h-full'>
-                    <NavLink
-                    to="/"
-                    className='text-gray-700 py-2 hover:text-[#2a491d] border-b-[1.5px] border-transparent hover:border-[#2a491d] transition-all duration-200'
-                    >
-                        Home
-                    </NavLink>
-                    <NavLink
-                        to="/about-us"
-                        className='text-gray-700 py-2 hover:text-[#2a491d] border-b-[1.5px] border-transparent hover:border-[#2a491d] transition-all duration-200'
-                    >
-                        About us
-                    </NavLink>
-                    <NavLink
-                        to="/products"
-                        className='text-gray-700 py-2 hover:text-[#2a491d] border-b-[1.5px] border-transparent hover:border-[#2a491d] transition-all duration-200'
-                    >
-                        Products
-                    </NavLink>
-                    <NavLink
-                        to="/clients"
-                        className='text-gray-700 py-2 hover:text-[#2a491d] border-b-[1.5px] border-transparent hover:border-[#2a491d] transition-all duration-200'
-                    >
-                        Our Esteemed Clients
-                    </NavLink>
-                    <NavLink
-                        to="/gallery"
-                        className='text-gray-700 py-2 hover:text-[#2a491d] border-b-[1.5px] border-transparent hover:border-[#2a491d] transition-all duration-200'
-                    >
-                        Gallery
-                    </NavLink>
+          <nav className='hidden lg:flex items-center gap-8 ml-10 h-full'>
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.path}
+                to={link.path}
+                className={({ isActive }) =>
+                  `relative text-sm font-semibold uppercase tracking-tight py-2 transition-all duration-300 ${
+                    isActive ? 'text-[#2a491d]' : 'text-gray-600 hover:text-[#2a491d]'
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    {link.name}
+                    {isActive && <motion.div layoutId="underline" className="absolute bottom-0 left-0 w-full h-[2px] bg-[#2a491d]" />}
+                  </>
+                )}
+              </NavLink>
+            ))}
+          </nav>
+
+          <div className="hidden lg:flex ml-auto mr-10">
+            <Link to="/contact" className="px-7 py-2.5 rounded-full bg-[#50a72c] text-white text-sm font-bold hover:shadow-lg hover:-translate-y-0.5 transition-all">
+              CONTACT US
+            </Link>
+          </div>
+
+          <button onClick={toggleMobileMenu} className="lg:hidden ml-auto mr-6 p-2 text-[#2a491d]">
+            {mobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile Menu logic with AnimatePresence */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <>
+            {/* Backdrop with Blur */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={closeMobileMenu}
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[110] lg:hidden"
+            />
+
+            {/* Slide-out Panel */}
+            <motion.div
+              variants={menuVariants}
+              initial="closed"
+              animate="opened"
+              exit="closed"
+              className="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-white z-[120] shadow-2xl lg:hidden flex flex-col"
+            >
+              <div className="p-6 flex flex-col h-full">
+                <div className="flex items-center justify-between mb-10">
+                  <img src={logo2} alt="Logo" className="h-12" />
+                  <button onClick={closeMobileMenu} className="p-2 text-gray-500 hover:rotate-90 transition-transform">
+                    <FaTimes size={24} />
+                  </button>
+                </div>
+
+                <nav className="flex flex-col space-y-6">
+                  {navLinks.map((link) => (
+                    <motion.div key={link.path} variants={itemVariants}>
+                      <NavLink
+                        to={link.path}
+                        onClick={closeMobileMenu}
+                        className={({ isActive }) => 
+                          `text-xl font-bold ${isActive ? 'text-[#2a491d]' : 'text-gray-800'}`
+                        }
+                      >
+                        {link.name}
+                      </NavLink>
+                    </motion.div>
+                  ))}
+                  <motion.div variants={itemVariants} className="pt-4">
+                    <Link to="/contact" onClick={closeMobileMenu} className="block w-full text-center py-4 rounded-xl bg-[#2a491d] text-white font-bold">
+                      Contact Us
+                    </Link>
+                  </motion.div>
                 </nav>
 
-                <div className="hidden md:block ml-auto mr-8">
-                    <Link
-                        to="/contact"
-                        className="relative overflow-hidden px-8 py-3 rounded-full bg-[#50a72c] text-white bg-gradient-to-br from-[#50a72c] to-[#3d8020] bg-[length:200%_100%] bg-left hover:bg-right transition-all duration-300 ease-in-out"
-                    >
-                        Contact Us
-                    </Link>
+                <div className="mt-auto pt-10 border-t border-gray-100">
+                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Get in Touch</p>
+                  <div className="space-y-3 mb-6">
+                    <a href="tel:918482950500" className="flex items-center gap-3 text-gray-700 font-medium">
+                      <FaPhoneAlt className="text-[#50a72c]" /> +91 84829 50500
+                    </a>
+                    <a href="mailto:info@kosshergroup.com" className="flex items-center gap-3 text-gray-700 font-medium">
+                      <IoIosMail className="text-[#50a72c]" size={20} /> info@kosshergroup.com
+                    </a>
+                  </div>
+                  <div className="flex gap-5 text-gray-400">
+                    <FaLinkedin size={22} className="hover:text-[#2a491d]" />
+                    <FaFacebook size={22} className="hover:text-[#2a491d]" />
+                    <FaInstagram size={22} className="hover:text-[#2a491d]" />
+                  </div>
                 </div>
-            </div>
-        </header>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </section>
-  )
+  );
 }
 
-export default Header
+export default Header;
