@@ -42,7 +42,7 @@ function Header() {
       <div className='hidden lg:block h-10 w-full bg-[#2a491d]'>
         <div className='max-w-[1440px] mx-auto flex items-center justify-between h-full px-4 lg:px-10'>
           <div className='flex items-center gap-8 h-full'>
-            <h1 className='text-[#8a9984] text-xs uppercase tracking-wider'>Welcome to Bastar Farms!</h1>
+            <h1 className='text-[#8a9984] text-xs uppercase tracking-wider lg:ml-40'>Welcome to Bastar Farms!</h1>
             <div className='flex items-center gap-4 px-6 h-full bg-[#233c18]'>
               <a href="#" className='text-white hover:text-[#ffbd3c] transition-colors'><FaLinkedin size={14}/></a>
               <a href="#" className='text-white hover:text-[#ffbd3c] transition-colors'><FaFacebook size={14}/></a>
@@ -64,7 +64,7 @@ function Header() {
 
       {/* Main header */}
       <header className='w-full bg-white shadow-md sticky top-0'>
-        <div className="flex items-center max-w-[1440px] mx-auto h-20">
+        <div className="flex items-center max-w-[1440px] h-20">
           <Link to='/' className='h-full bg-[#2a491d] px-8 flex items-center justify-center transition-colors hover:bg-[#233c18]'>
             <img src={logo} alt="logo" className='h-12 w-auto object-contain' />
           </Link>
