@@ -1,7 +1,6 @@
 import React from 'react'
 import headerbg from '../assets/page-header-bg.jpg'
 import team from '../assets/team.jpeg'
-import founder from '../assets/founder.jpeg'
 import sign from '../assets/sign.png'
 import core from '../assets/core.png'
 import clients from '../assets/clients.png'
@@ -36,7 +35,7 @@ import i2 from '../assets/i2.svg'
 import i3 from '../assets/i3.svg'
 import i4 from '../assets/i4.svg'
 
-import core1 from '../assets/c1kartikKapoor.png'
+import founder from '../assets/founder.png'
 
 import { motion } from 'framer-motion'
 import VideoSection from '../components/Video'
@@ -71,7 +70,7 @@ function AboutUs() {
 
                 {/* Founder Image */}
                 <div className='order-4 md:order-3'>
-                    <img src={core1} alt="Founder" className='w-full md:w-auto h-[350px] md:h-[450px] object-contain border-4 md:border-8 rounded-xl border-[#2a491d] mx-auto' />
+                    <img src={founder} alt="Founder" className='w-full md:w-auto h-[350px] md:h-[400px] object-contain border-4 md:border-8 rounded-xl border-[#2a491d] mx-auto' />
                 </div>
                 {/* Founder Text */}
                 <div className='order-3 md:order-4'>
@@ -85,19 +84,22 @@ function AboutUs() {
 
             {/* Stats Section - Responsive Flex */}
             <section className='bg-[#50a72c] py-12 md:py-20 text-white px-6'>
-                <div className='max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-center text-center md:text-left'>
+                <div className='max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:flex gap-8 items-center text-center md:text-left'>
                     <div className="flex flex-col md:flex-row items-center gap-4">
                         <img src={i1} alt="" className='h-12 w-12 md:h-16 md:w-16' />
                         <h2 className='text-sm md:text-lg'>Tribal families supported <br className='hidden md:block'/>through employment</h2>
                     </div>
+                    <div className='hidden lg:block h-8 w-[1px] bg-slate-100'></div>
                     <div className="flex flex-col md:flex-row items-center gap-4">
                         <img src={i2} alt="" className='h-12 w-12 md:h-16 md:w-16' />
                         <h2 className='text-sm md:text-lg'>Over 5 years of <br className='hidden md:block'/>operations in Bastar</h2>
                     </div>
+                    <div className='hidden lg:block h-8 w-[1px] bg-slate-100'></div>
                     <div className="flex flex-col md:flex-row items-center gap-4">
                         <img src={i3} alt="" className='h-12 w-12 md:h-16 md:w-16' />
                         <h2 className='text-sm md:text-lg'>Sustainable <br className='hidden md:block'/>Forest Sourcing</h2>
                     </div>
+                    <div className='hidden lg:block h-8 w-[1px] bg-slate-100'></div>
                     <div className="flex flex-col md:flex-row items-center gap-4">
                         <img src={i4} alt="" className='h-12 w-12 md:h-16 md:w-16' />
                         <h2 className='text-sm md:text-lg'>FSSAI certified for food <br className='hidden md:block'/>safety and quality</h2>
@@ -107,6 +109,7 @@ function AboutUs() {
 
             {/* Video & Team */}
             <section className='py-12 px-4'><VideoSection /></section>
+            
             <section className='py-12 px-4'>
                 <h1 className='text-4xl md:text-6xl font-bold text-center mb-12'>Our Core Team</h1>
                 <TeamSection />

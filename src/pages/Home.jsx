@@ -1,11 +1,14 @@
 import React from 'react'
-import headerbg from '../assets/main-slider-img-1.png'
+import headerimg from '../assets/main-slider-img-1.png'
+import headerbg from '../assets/main-slider-bg-shape.png'
 import tamarind_pulp from '../assets/tamarind_pulp.png'
 import tamarind_paste from '../assets/tamarind_paste.png'
 import tamarind_bhel_puri from '../assets/tamarind_bhel_puri.png'
 import pani_puri from '../assets/pani_puri.png'
 import tamarind_date from '../assets/tamarind_date.png'
 import tamarind_chilli from '../assets/tamarind_chilli.png'
+import tamarindTreeImg from '../assets/tamarindtree.jpeg'
+import tamarindBowlImg from '../assets/tamarindt.jpeg'
 
 import icon1 from '../assets/ICONS 1/14.png'
 import icon2 from '../assets/ICONS 1/15.png'
@@ -49,21 +52,26 @@ function Home() {
     <div className='overflow-x-hidden'>
       {/* HERO SECTION */}
       <section className='relative w-full min-h-[600px] lg:h-[700px] py-10 md:py-24 flex items-center'>
+        <img 
+          src={headerbg} 
+          alt="background" 
+          className="absolute inset-0 w-full h-full object-cover -z-10 bg-[#f2f2f2]" 
+        />
         <div className="flex flex-col lg:flex-row items-center justify-between w-full px-6 md:px-16 gap-10">
           <div className="flex flex-col items-start w-full lg:w-1/2 gap-6 text-center lg:text-left">
             <h2 className='text-2xl md:text-3xl lg:mt-0 font-medium'>Select only Natural Products</h2>
-            <h1 className='text-5xl md:text-8xl text-[#2a491d] font-semibold leading-tight'>Choose the healthy food.</h1>
+            <h1 className='text-5xl md:text-8xl text-[#2a491d] font-bold leading-tight'>Choose the healthy food.</h1>
             <div className='flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-8 w-full'>
-              <button className='bg-[#2a491d] text-white text-xl md:text-2xl px-8 py-3 rounded-full hover:bg-[#1e3515] transition-all'>
+              <button className='bg-[#2a491d] text-white font-semibold text-xl md:text-2xl px-8 py-3 rounded-full hover:bg-[#1e3515] transition-all'>
                 View Products
               </button>
-              <button className='bg-[#ffbd3c] text-black text-xl md:text-2xl px-8 py-3 rounded-full hover:bg-[#e6a82a] transition-all'>
+              <button className='bg-[#ffbd3c] text-white font-semibold text-xl md:text-2xl px-8 py-3 rounded-full hover:bg-[#e6a82a] transition-all'>
                 Our Story
               </button>
             </div>
           </div>
           <div className='w-full lg:w-1/2 flex justify-center'>
-            <img src={headerbg} alt="Header" className='w-full max-w-[600px] h-auto object-contain' />
+            <img src={headerimg} alt="Header" className='w-full max-w-[600px] h-auto object-contain' />
           </div>
         </div>
       </section>
@@ -172,7 +180,37 @@ function Home() {
         </div>
         <div className="absolute top-1/2 -right-20 -translate-y-1/2 hidden lg:block">
           <div className="relative w-[550px] h-[550px] lg:w-[650px] lg:h-[650px] rotate-45 rounded-[100px] bg-[#142d19] overflow-hidden shadow-2xl border-[15px] border-[#1a3a1f]">
-             {/* ... keep your diamond content exactly as is */}
+            
+            <div className="grid grid-cols-2 grid-rows-2 w-full h-full gap-6 p-6">
+              
+              {/* Top Diamond */}
+              <div className="relative overflow-hidden rounded-[40px] bg-[#142d19]">
+                <img 
+                  src={tamarindTreeImg} 
+                  alt="Tamarind on tree"
+                  className="absolute top-1/2 left-1/2 w-[190%] h-[190%] max-w-none object-contain -translate-x-1/2 -translate-y-1/2 -rotate-45"
+                />
+              </div>
+
+              {/* Right Diamond (Accent) */}
+              <div className="bg-[#2d4d44] rounded-[40px] shadow-lg" />
+
+              {/* Left Diamond (Yellow/Gold) */}
+              <div className="flex items-center justify-center">
+                {/* We keep this one rotate-0 so it looks like a proper upright diamond inside the grid */}
+                <div className="w-40 h-40 bg-[#f4d06f] rounded-[40px] shadow-xl" />
+              </div>
+
+              {/* Bottom Diamond */}
+              <div className="relative overflow-hidden rounded-[40px] bg-[#142d19]">
+                <img 
+                  src={tamarindBowlImg} 
+                  alt="Tamarind pods"
+                  className="absolute top-1/2 left-1/2 w-[190%] h-[190%] max-w-none object-contain -translate-x-1/2 -translate-y-1/2 -rotate-45"
+                />
+              </div>
+
+            </div>
           </div>
         </div>
       </section>
@@ -193,10 +231,10 @@ function Home() {
 
         {/* GREEN BANNER - FIXED FOR MOBILE */}
         <div className="max-w-7xl mx-auto relative mt-40 md:mt-32">
-          <div className="absolute -top-24 md:-top-32 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 z-10 w-48 md:w-80">
+          <div className="absolute -top-24 md:-top-8 lg:-top-16 left-1/2 -translate-x-1/2 md:-left-6 md:translate-x-0 z-10 w-48 md:w-80">
             <div className="relative">
               <div className="absolute inset-0 bg-amber-900 rounded-full scale-110 -translate-y-4" />
-              <img src={q1} alt="Products" className="relative z-10 w-full drop-shadow-2xl" />
+              <img src={q1} alt="Products" className="relative z-10 -top-4 w-full drop-shadow-2xl" />
             </div>
           </div>
           <div className="bg-lime-500 rounded-3xl md:rounded-full py-12 px-6 md:pl-80 md:pr-16 flex flex-col lg:flex-row items-center justify-between gap-8 text-center md:text-left">
