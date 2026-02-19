@@ -1,4 +1,6 @@
-import React from 'react'
+import {useState, useEffect} from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+
 import headerimg from '../assets/main-slider-img-1.png'
 import headerbg from '../assets/main-slider-bg-shape.png'
 import tamarind_pulp from '../assets/tamarind_pulp.png'
@@ -48,6 +50,28 @@ function Home() {
     { src: img3, alt: "Workers at the packaging station" },
   ];
 
+  const slides = [
+    {
+      sub: "Select only Natural Products",
+      main: "Choose the healthy food."
+    },
+    {
+      sub: "Experience the",
+      main: "Taste of Tradition."
+    }
+  ];
+
+  const [index, setIndex] = useState(0);
+
+  // 2. Setup the 10-second timer
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % slides.length);
+    }, 8000); // 10000ms = 10 seconds
+
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
   return (
     <div className='overflow-x-hidden'>
       {/* HERO SECTION */}
@@ -57,10 +81,29 @@ function Home() {
           alt="background" 
           className="absolute inset-0 w-full h-full object-cover -z-10 bg-[#f2f2f2]" 
         />
-        <div className="flex flex-col lg:flex-row items-center justify-between w-full px-6 md:px-16 gap-10">
-          <div className="flex flex-col items-start w-full lg:w-1/2 gap-6 text-center lg:text-left">
-            <h2 className='text-2xl md:text-3xl lg:mt-0 font-medium'>Select only Natural Products</h2>
-            <h1 className='text-5xl md:text-8xl text-[#2a491d] font-bold leading-tight'>Choose the healthy food.</h1>
+        <div className="flex flex-col lg:flex-row items-center w-full px-6 md:px-16 gap-10">
+          <div className="flex flex-col items-start w-full lg:w-1/2 gap-6 text-center lg:text-left lg:ml-12">
+            
+            {/* 3. Wrap text in AnimatePresence for smooth switching */}
+            <div className="h-[180px] md:h-[300px] flex flex-col justify-center"> 
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <h2 className='text-2xl md:text-3xl lg:mt-0 font-medium'>
+                    {slides[index].sub}
+                  </h2>
+                  <h1 className='text-5xl md:text-8xl text-[#2a491d] font-bold leading-tight'>
+                    {slides[index].main}
+                  </h1>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
             <div className='flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-8 w-full'>
               <button className='bg-[#2a491d] text-white font-semibold text-xl md:text-2xl px-8 py-3 rounded-full hover:bg-[#1e3515] transition-all'>
                 View Products
@@ -70,11 +113,12 @@ function Home() {
               </button>
             </div>
           </div>
+
           <div className='w-full lg:w-1/2 flex justify-center'>
             <img src={headerimg} alt="Header" className='w-full max-w-[600px] h-auto object-contain' />
           </div>
         </div>
-      </section>
+    </section>
 
       {/* PRODUCTS SECTION */}
       <section className='w-full py-20 flex flex-col items-center gap-12 text-center px-6 md:px-16 bg-white'>
@@ -128,13 +172,14 @@ function Home() {
 
       {/* HOUSEHOLD SECTION */}
       <section className='w-full py-16 px-6 md:px-14'>
+        <h1 className='text-6xl text-[#2a491d] font-bold text-center mb-12'>Authentic Taste, Everyday Reliability</h1>
         <div className='flex flex-col lg:flex-row w-full gap-12'>
           <div className="w-full lg:w-[40%] min-h-[300px] bg-slate-100 rounded-3xl overflow-hidden shadow-inner">
              {/* Placeholder for your image/content */}
           </div>
 
           <div className="flex-1 flex flex-col gap-8">
-            <h1 className='text-3xl md:text-5xl font-bold leading-tight'>For households and professional kitchens</h1>
+            <h1 className='text-3xl md:text-5xl font-bold leading-tight'>For households and <br /> professional kitchens</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6'>
               {[
                 { icon: icon1, t: "Consistent taste, Ready to Use", p: "So your food tastes the same every time." },
@@ -147,8 +192,8 @@ function Home() {
                 <div key={i} className='flex items-center gap-4'>
                   <img src={item.icon} alt="icon" className='w-12 h-12 md:w-16 md:h-16 flex-shrink-0' />
                   <div>
-                    <h2 className='text-lg md:text-xl font-bold'>{item.t}</h2>
-                    <p className='text-sm md:text-base text-gray-600'>{item.p}</p>
+                    <h2 className='text-lg md:text-3xl font-bold'>{item.t}</h2>
+                    <p className='text-sm md:text-xl text-gray-600'>{item.p}</p>
                   </div>
                 </div>
               ))}
@@ -222,7 +267,13 @@ function Home() {
             <h2 className="text-3xl md:text-5xl font-bold text-amber-800 mb-6 leading-tight">
               How things are done <br /> at Bastar Farms
             </h2>
-            <p className="text-gray-700 text-lg">At Bastar Farms, tamarind is sourced directly from the forests around Bastar and processed at our Lohandiguda unit.</p>
+            <p className="text-gray-700 text-lg pr-20">At Bastar Farms, tamarind is sourced directly from
+              the forests around Bastar and processed at our
+              Lohandiguda unit. The same people who live here
+              work on sorting, processing, and packing every batch.
+              We focus on keeping the taste natural, the process
+              clean, and the quality consistent.
+            </p>
           </div>
           <div className="rounded-3xl overflow-hidden shadow-xl">
             <img src={img1} alt="Bastar Farms Team" className="w-full h-[300px] md:h-[400px] object-cover" />
@@ -230,7 +281,7 @@ function Home() {
         </div>
 
         {/* GREEN BANNER - FIXED FOR MOBILE */}
-        <div className="max-w-7xl mx-auto relative mt-40 md:mt-32">
+        <div className="max-w-full mx-auto relative mt-40 md:mt-32">
           <div className="absolute -top-24 md:-top-8 lg:-top-16 left-1/2 -translate-x-1/2 md:-left-6 md:translate-x-0 z-10 w-48 md:w-80">
             <div className="relative">
               <div className="absolute inset-0 bg-amber-900 rounded-full scale-110 -translate-y-4" />

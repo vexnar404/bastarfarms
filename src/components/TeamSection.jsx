@@ -99,24 +99,31 @@ const TeamCard = ({ img, name, role, description }) => {
 };
 
 const TeamSection = () => {
+  // Split the data into two sets
+  const firstRow = teamData.slice(0, 3);
+  const secondRow = teamData.slice(3, 7);
+
   return (
-    <div className="px-6 md:px-12 lg:px-20 max-w-7xl mx-auto mb-20">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-14 items-stretch">
-        {teamData.map((member, index) => {
-          // Logic to center the very last item if it's alone on the row
-          const isLast = index === teamData.length - 1;
-          return (
-            <div
-              key={index}
-              className={`${
-                isLast ? 'sm:col-span-2 lg:col-span-1 sm:max-w-[50%] lg:max-w-full mx-auto' : ''
-              }`}
-            >
-              <TeamCard {...member} />
-            </div>
-          );
-        })}
+    <div className="px-6 md:px-12 max-w-[1400px] mx-auto mb-20 space-y-12">
+      
+      {/* First Row: 3 Members */}
+      <div className="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-14">
+        {firstRow.map((member, index) => (
+          <div key={index} className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(30%-1rem)] max-w-[400px]">
+            <TeamCard {...member} />
+          </div>
+        ))}
       </div>
+
+      {/* Second Row: 4 Members */}
+      <div className="flex flex-wrap justify-center gap-8 md:gap-10 lg:gap-8">
+        {secondRow.map((member, index) => (
+          <div key={index} className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(23%-1rem)] max-w-[350px]">
+            <TeamCard {...member} />
+          </div>
+        ))}
+      </div>
+
     </div>
   );
 };
