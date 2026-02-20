@@ -3,15 +3,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaPhoneAlt, FaCheckCircle, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { BsArrowRight, BsArrowDown } from 'react-icons/bs';
 
-import tamarindpaste1 from "../assets/PRODUCT PAGE/Tamarind Paste 200gm/1.png"
-import tamarindpaste2 from "../assets/PRODUCT PAGE/Tamarind Paste 200gm/2.png"
-import tamarindpaste3 from "../assets/PRODUCT PAGE/Tamarind Paste 200gm/3.jpg"
-import bhelpuri1 from "../assets/PRODUCT PAGE/Bhel Puri/1.png"
-import bhelpuri2 from "../assets/PRODUCT PAGE/Bhel Puri/2.png"
-import bhelpuri3 from "../assets/PRODUCT PAGE/Bhel Puri/3.jpg"
-import panipuri1 from "../assets/PRODUCT PAGE/Pani Puri/1.png"
-import panipuri2 from "../assets/PRODUCT PAGE/Pani Puri/2.png"
-import panipuri3 from "../assets/PRODUCT PAGE/Pani Puri/3.jpg"
+import headerbg from '../assets/page-header-bg.jpg'
+
+import tamarindpaste1 from "../assets/PRODUCT PAGE/Tamarind Paste/1.png"
+import tamarindpaste2 from "../assets/PRODUCT PAGE/Tamarind Paste/2.png"
+import tamarindpaste3 from "../assets/PRODUCT PAGE/Tamarind Paste/3.jpg"
+import bhelpuri1 from "../assets/PRODUCT PAGE/Bhel puri/1.png"
+import bhelpuri2 from "../assets/PRODUCT PAGE/Bhel puri/2.png"
+import bhelpuri3 from "../assets/PRODUCT PAGE/Bhel puri/3.jpg"
+import panipuri1 from "../assets/PRODUCT PAGE/Pani puri/1.png"
+import panipuri2 from "../assets/PRODUCT PAGE/Pani puri/2.png"
+import panipuri3 from "../assets/PRODUCT PAGE/Pani puri/3.jpg"
 import tamarinddate1 from "../assets/PRODUCT PAGE/Tamarind date/1.jpg"
 import tamarinddate2 from "../assets/PRODUCT PAGE/Tamarind date/2.jpg"
 import tamarinddate3 from "../assets/PRODUCT PAGE/Tamarind date/3.jpg"
@@ -251,8 +253,14 @@ const ProductPage = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen py-16 px-6 md:px-12 lg:px-20 font-sans">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12">
+    <div className="w-full bg-white overflow-hidden pb-20">
+
+        <section className='relative w-full h-auto bg-cover bg-center py-12 md:py-24' style={{ backgroundImage: `url(${headerbg})` }}>
+            <div className='text-white text-center px-4'>
+                <h1 className='text-4xl md:text-6xl font-bold'>Our Products</h1>
+            </div>
+        </section>
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 mt-20">
         
         {/* ================= LEFT SIDEBAR ================= */}
         <div className="w-full lg:w-1/4 flex flex-col gap-8">
