@@ -3,6 +3,8 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from './pages/Home'
 import AboutUs from './pages/AboutUs'
 import Gallery from './pages/Gallery'
+import Products from './pages/Product'
+
 import ScrollToTop from './components/ScrollToTop'
 import Footer from './components/Footer'
 import Header from './components/Header'
@@ -16,6 +18,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path='/gallery' element={<Gallery />} />
+        <Route path='/products' element={<Products />} />
       </Routes>
       <Footer />
     </BrowserRouter>
