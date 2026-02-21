@@ -1,39 +1,62 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaPhoneAlt, FaCheckCircle, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { BsArrowRight, BsArrowDown } from 'react-icons/bs';
+import { FaCheckCircle } from 'react-icons/fa';
+import { BsArrowDown, BsArrowRight } from 'react-icons/bs';
 
-import headerbg from '../assets/page-header-bg.jpg'
+import headerbg from '../assets/page-header-bg.jpg';
 
-import tamarindpaste1 from "../assets/PRODUCT PAGE/Tamarind Paste/1.png"
-import tamarindpaste2 from "../assets/PRODUCT PAGE/Tamarind Paste/2.png"
-import tamarindpaste3 from "../assets/PRODUCT PAGE/Tamarind Paste/3.jpg"
-import bhelpuri1 from "../assets/PRODUCT PAGE/Bhel puri/1.png"
-import bhelpuri2 from "../assets/PRODUCT PAGE/Bhel puri/2.png"
-import bhelpuri3 from "../assets/PRODUCT PAGE/Bhel puri/3.jpg"
-import panipuri1 from "../assets/PRODUCT PAGE/Pani puri/1.png"
-import panipuri2 from "../assets/PRODUCT PAGE/Pani puri/2.png"
-import panipuri3 from "../assets/PRODUCT PAGE/Pani puri/3.jpg"
-import tamarinddate1 from "../assets/PRODUCT PAGE/Tamarind date/1.jpg"
-import tamarinddate2 from "../assets/PRODUCT PAGE/Tamarind date/2.jpg"
-import tamarinddate3 from "../assets/PRODUCT PAGE/Tamarind date/3.jpg"
-import tamarindchilli1 from "../assets/PRODUCT PAGE/Tamarind Chilli/1.png"
-import tamarindchilli2 from "../assets/PRODUCT PAGE/Tamarind Chilli/2.png"
-import tamarindchilli3 from "../assets/PRODUCT PAGE/Tamarind Chilli/3.jpg"
+// --- IMAGE IMPORTS ---
+import tamarindpaste1 from "../assets/PRODUCT PAGE/Tamarind Paste/1.png";
+import tamarindpaste2 from "../assets/PRODUCT PAGE/Tamarind Paste/2.png";
+import tamarindpaste3 from "../assets/PRODUCT PAGE/Tamarind Paste/3.jpg";
+import bhelpuri1 from "../assets/PRODUCT PAGE/Bhel puri/1.png";
+import bhelpuri2 from "../assets/PRODUCT PAGE/Bhel puri/2.png";
+import bhelpuri3 from "../assets/PRODUCT PAGE/Bhel puri/3.jpg";
+import panipuri1 from "../assets/PRODUCT PAGE/Pani puri/1.png";
+import panipuri2 from "../assets/PRODUCT PAGE/Pani puri/2.png";
+import panipuri3 from "../assets/PRODUCT PAGE/Pani puri/3.jpg";
+import tamarinddate1 from "../assets/PRODUCT PAGE/Tamarind date/1.jpg";
+import tamarinddate2 from "../assets/PRODUCT PAGE/Tamarind date/2.jpg";
+import tamarinddate3 from "../assets/PRODUCT PAGE/Tamarind date/3.jpg";
+import tamarindchilli1 from "../assets/PRODUCT PAGE/Tamarind Chilli/1.png";
+import tamarindchilli2 from "../assets/PRODUCT PAGE/Tamarind Chilli/2.png";
+import tamarindchilli3 from "../assets/PRODUCT PAGE/Tamarind Chilli/3.jpg";
 
-// --- REPLACE THESE WITH YOUR ACTUAL IMAGES ---
-// For the demo, I'm using placeholder arrays for each product
+import icon1 from '../assets/PRODUCT PAGE/ICONS/27.png';
+import icon2 from '../assets/PRODUCT PAGE/ICONS/28.png';
+import icon3 from '../assets/PRODUCT PAGE/ICONS/29.png';
+import icon4 from '../assets/PRODUCT PAGE/ICONS/30.png';
+
 const imgPaste = [tamarindpaste1, tamarindpaste2, tamarindpaste3]; 
 const imgBhel = [bhelpuri1, bhelpuri2, bhelpuri3]; 
 const imgPani = [panipuri1, panipuri2, panipuri3]; 
 const imgDate = [tamarinddate1, tamarinddate2, tamarinddate3]; 
 const imgChilli = [tamarindchilli1, tamarindchilli2, tamarindchilli3]; 
 
-// --- DYNAMIC PRODUCT DATA ---
-// --- DYNAMIC PRODUCT DATA ---
+// --- GLOBAL STATIC DATA (Optimized to prevent re-renders) ---
+
+// 1. Same FAQs for all products
+const globalFaqs = [
+  { id: 1, q: "Is it ready to use or does it need dilution?", a: "Most products are ready to use. Pani Puri chutney is a concentrate and should be diluted as per instructions." },
+  { id: 2, q: "How long does it stay fresh after opening?", a: "When refrigerated and handled properly, it remains usable as per the shelf life mentioned on the pack." },
+  { id: 3, q: "Are your products pasteurized?", a: "Yes. Our products undergo hygienic processing and pasteurization to ensure safety and consistency." },
+  { id: 4, q: "Can I use this as a base for my own recipes?", a: "Yes. Many chefs and home cooks use it as a base for sauces, marinades, and flavour blends." },
+  { id: 5, q: "Are the products safe for commercial kitchens and HoReCa use?", a: "Yes. Our processing standards, batch consistency, and packaging are designed to meet the needs of restaurants, caterers, and institutional buyers." },
+  { id: 6, q: "Are your products suitable for export or bulk supply?", a: "Yes. We cater to bulk, private label, and export requirements subject to order specifications and regulatory compliance." },
+];
+
+// 2. Trust Banner Features mapped dynamically
+const trustFeatures = [
+  { icon: icon1, text: "Natural &\nChemical Free" },
+  { icon: icon2, text: "Sourced Directly\nfrom Bastar" },
+  { icon: icon3, text: "Safety Tested &\nPasteurized" },
+  { icon: icon4, text: "Controlled Facility\nPackaging" }
+];
+
+// 3. Dynamic Product Data
 const productsData = {
   'Tamarind Paste': {
-    images: imgPaste, // Make sure these variables exist above
+    images: imgPaste,
     title: 'Tamarind Paste',
     tagline: 'A perfect balance of sour and spice to bring your recipes to life.',
     description: [
@@ -58,10 +81,6 @@ const productsData = {
       'Thick, tangy, and versatile condiment',
       'Perfect for sweet and savory dishes',
       'Forest-sourced, processed by Bastar tribes'
-    ],
-    faqs: [
-      { id: 1, q: "Are Bastar Farms products suitable for vegetarians?", a: "Yes, all our products are 100% vegetarian and naturally sourced from the forests of Bastar." },
-      { id: 2, q: "Can I use your chutneys and pastes for non-Indian dishes?", a: "Absolutely! While our products are designed with Indian flavors in mind, they work wonderfully as marinades, dips, or condiments for a variety of cuisines." }
     ]
   },
   'Tamarind Date': {
@@ -91,8 +110,7 @@ const productsData = {
       'Perfect pairing for snacks and chaat',
       'Forest sourced tamarind',
       'Processed by tribal communities of Bastar'
-    ],
-    faqs: []
+    ]
   },
   'Bhel Puri': {
     images: imgBhel,
@@ -121,8 +139,7 @@ const productsData = {
       'Perfect balance of iconic street food flavours',
       'Forest sourced tamarind',
       'Processed by tribal communities of Bastar'
-    ],
-    faqs: []
+    ]
   },
   'Pani Puri': {
     images: imgPani,
@@ -151,8 +168,7 @@ const productsData = {
       'Authentic street food flavour',
       'Forest sourced tamarind',
       'Processed by tribal communities of Bastar'
-    ],
-    faqs: []
+    ]
   },
   'Tamarind Chilli': {
     images: imgChilli,
@@ -181,11 +197,10 @@ const productsData = {
       'Balanced sour and spicy taste',
       'Forest sourced tamarind',
       'Processed by tribal communities of Bastar'
-    ],
-    faqs: []
+    ]
   },
   'Tamarind Pulp': {
-    images: imgPaste, // Replace with your pulp image array if different
+    images: imgPaste, 
     title: 'Tamarind Pulp',
     tagline: 'Consistent, kitchen ready tamarind pulp crafted for professional culinary use.',
     description: [
@@ -213,291 +228,259 @@ const productsData = {
       'Ready to use for commercial kitchens',
       'Forest sourced tamarind',
       'Processed at source in Bastar'
-    ],
-    faqs: []
+    ]
   }
+};
+
+// --- HELPER COMPONENT FOR BOLDING TEXT ---
+const SpecListItem = ({ text }) => {
+  if (text.includes(':')) {
+    const parts = text.split(':');
+    return (
+      <li className="flex items-start text-lg md:text-xl">
+        <span className="font-black text-black mr-3">•</span>
+        <span>
+          <span className="font-extrabold text-gray-900">{parts[0]}:</span>
+          <span className="text-gray-700">{parts.slice(1).join(':')}</span>
+        </span>
+      </li>
+    );
+  }
+  return (
+    <li className="flex items-start text-lg md:text-xl">
+      <span className="font-black text-black mr-3">•</span>
+      <span className="text-gray-700">{text}</span>
+    </li>
+  );
 };
 
 
 const ProductPage = () => {
-  // States
-  const [activeTab, setActiveTab] = useState('Tamarind Paste');
-  const [openFaq, setOpenFaq] = useState(2); 
-  const [imgIndex, setImgIndex] = useState(0); // Tracks current image in carousel
+  const [activeTab, setActiveTab] = useState('Tamarind Chilli');
+  const [mainImgIndex, setMainImgIndex] = useState(0);
+  const [openFaq, setOpenFaq] = useState(null);
 
   const currentProduct = productsData[activeTab];
 
-  // Handlers
-  const handleTabChange = (tabName) => {
-    setActiveTab(tabName);
-    setOpenFaq(null); 
-    setImgIndex(0); // Reset image to first one when swapping products
+  const handleProductSwitch = (productKey) => {
+    setActiveTab(productKey);
+    setMainImgIndex(0);
+    setOpenFaq(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const toggleFaq = (id) => {
-    setOpenFaq(openFaq === id ? null : id);
-  };
-
-  // Carousel Logic
-  const nextImg = () => setImgIndex((prev) => (prev === currentProduct.images.length - 1 ? 0 : prev + 1));
-  const prevImg = () => setImgIndex((prev) => (prev === 0 ? currentProduct.images.length - 1 : prev - 1));
-
-  // Framer Motion Drag (Swipe) Logic
-  const handleDragEnd = (e, { offset, velocity }) => {
-    const swipe = offset.x;
-    if (swipe < -50) { // Swiped left
-      nextImg();
-    } else if (swipe > 50) { // Swiped right
-      prevImg();
-    }
-  };
+  const toggleFaq = (id) => setOpenFaq(openFaq === id ? null : id);
 
   return (
-    <div className="w-full bg-white overflow-hidden pb-20">
-
-        <section className='relative w-full h-auto bg-cover bg-center py-12 md:py-24' style={{ backgroundImage: `url(${headerbg})` }}>
-            <div className='text-white text-center px-4'>
-                <h1 className='text-4xl md:text-6xl font-bold'>Our Products</h1>
-            </div>
-        </section>
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 mt-20">
-        
-        {/* ================= LEFT SIDEBAR ================= */}
-        <div className="w-full lg:w-1/4 flex flex-col gap-8">
-          {/* Category Navigation */}
-          <div className="flex flex-col gap-3">
-            {Object.keys(productsData).map((cat) => (
-              <button
-                key={cat}
-                onClick={() => handleTabChange(cat)}
-                className={`flex items-center justify-between w-full px-6 py-4 rounded-md font-bold text-left transition-colors duration-300 ${
-                  activeTab === cat
-                    ? 'bg-[#50a72c] text-white shadow-md'
-                    : 'bg-[#f4f7f1] text-[#2a491d] hover:bg-[#e6ecd9]'
-                }`}
-              >
-                {cat}
-                {activeTab === cat && <BsArrowRight className="text-white" />}
-              </button>
-            ))}
-          </div>
-
-          {/* Contact Card */}
-          <div className="bg-[#1a3a1f] rounded-xl p-8 text-center text-white shadow-xl mt-4">
-            <h3 className="text-2xl font-bold mb-8 leading-tight">We're selling <br /> natural products</h3>
-            <div className="flex justify-center mb-6">
-              <div className="bg-[#ffbd3c] w-16 h-16 rounded-full flex items-center justify-center shadow-lg">
-                <FaPhoneAlt className="text-white text-xl" />
-              </div>
-            </div>
-            <p className="text-sm text-gray-300 mb-2">Call us to get more details</p>
-            <p className="text-xl font-bold">+ 91 ( 848 ) 29 - 50500</p>
-          </div>
+    <div className="w-full bg-white overflow-hidden pb-20 font-sans">
+      
+      {/* PAGE HEADER */}
+      <section className='relative w-full h-auto bg-cover bg-center py-12 md:py-24' style={{ backgroundImage: `url(${headerbg})` }}>
+        <div className='text-white text-center px-4'>
+          <h1 className='text-4xl md:text-6xl font-bold'>Our Products</h1>
         </div>
+      </section>
 
-        {/* ================= RIGHT CONTENT AREA ================= */}
-        <div className="w-full lg:w-3/4 flex flex-col gap-10">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.4 }}
+        >
           
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab} // Retriggers fade when clicking sidebar
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-              className="flex flex-col gap-10"
-            >
-              
-              {/* --- SWIPEABLE IMAGE CAROUSEL --- */}
-              <div className="relative w-full bg-[#fcfdfa] rounded-2xl border border-gray-100 flex items-center justify-center p-8 overflow-hidden min-h-[300px] md:min-h-[400px] group">
-                {/* Background Grid Pattern */}
-                <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#2a491d 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
-                
-                <AnimatePresence mode="wait">
-                  <motion.img 
-                    key={imgIndex} // Retriggers slide when index changes
-                    src={currentProduct.images[imgIndex]} 
-                    alt={`${currentProduct.title} ${imgIndex + 1}`}
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -50 }}
-                    transition={{ duration: 0.2 }}
-                    drag="x" // Enables swipe
-                    dragConstraints={{ left: 0, right: 0 }} // Snaps back
-                    dragElastic={0.2}
-                    onDragEnd={handleDragEnd}
-                    className="relative z-10 w-full max-w-sm md:max-w-md object-contain cursor-grab active:cursor-grabbing"
-                  />
-                </AnimatePresence>
+          {/* ================= 1. HERO SECTION ================= */}
+          <section className="max-w-7xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+            {/* Left: Main Image */}
+            <div className="w-full md:w-1/2 relative flex justify-center items-center bg-[#fcfdfa] p-10 rounded-3xl border border-gray-100 min-h-[400px]">
+              <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#2a491d 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+              <img 
+                src={currentProduct.images[mainImgIndex]} 
+                alt={currentProduct.title} 
+                className="relative z-10 w-full max-w-sm object-contain drop-shadow-2xl transition-all duration-300"
+              />
+            </div>
 
-                {/* Left/Right Carousel Controls (Hidden on mobile, visible on hover for Desktop) */}
-                <button onClick={prevImg} className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 p-3 rounded-full shadow-md text-[#2a491d] opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white md:block hidden">
-                  <FaChevronLeft />
-                </button>
-                <button onClick={nextImg} className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 p-3 rounded-full shadow-md text-[#2a491d] opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white md:block hidden">
-                  <FaChevronRight />
-                </button>
+            {/* Right: Title, Tagline, Thumbnails */}
+            <div className="w-full md:w-1/2 flex flex-col items-start text-left">
+              <h1 className="text-4xl md:text-6xl font-black text-[#1a3a1f] uppercase tracking-tight mb-4 leading-none">
+                {currentProduct.title}
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-700 font-medium mb-10 leading-relaxed">
+                {currentProduct.tagline}
+              </p>
 
-                {/* Pagination Dots */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-                  {currentProduct.images.map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setImgIndex(idx)}
-                      className={`w-2.5 h-2.5 rounded-full transition-all ${imgIndex === idx ? 'bg-[#50a72c] w-6' : 'bg-gray-300 hover:bg-gray-400'}`}
-                    />
-                  ))}
-                </div>
-
-                {/* Floating Yellow Icon Box */}
-                {/* <div className="absolute top-6 right-6 bg-[#ffbd3c] p-4 rounded-xl shadow-lg z-20 hidden sm:block pointer-events-none">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                     <path d="M4 19V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14"/>
-                     <path d="M4 19h16"/>
-                     <path d="M8 11h8"/>
-                     <path d="M8 15h8"/>
-                  </svg>
-                </div> */}
+              {/* Thumbnail Gallery */}
+              <div className="flex gap-4">
+                {currentProduct.images.map((img, idx) => (
+                  <button 
+                    key={idx} 
+                    onClick={() => setMainImgIndex(idx)}
+                    className={`w-24 h-24 p-2 rounded-xl border-2 transition-all duration-300 bg-white shadow-sm flex items-center justify-center
+                      ${mainImgIndex === idx ? 'border-[#50a72c] scale-105 shadow-md' : 'border-gray-200 hover:border-[#50a72c]'}`}
+                  >
+                    <img src={img} alt={`Thumbnail ${idx}`} className="w-full h-full object-contain" />
+                  </button>
+                ))}
               </div>
-              {/* --- END CAROUSEL --- */}
+            </div>
+          </section>
 
-
-              {/* --- TEXT CONTENT --- */}
-              <div className="space-y-10">
-                
-                {/* Title & Tagline */}
-                <div>
-                  <h1 className="text-4xl md:text-5xl font-extrabold text-[#1a3a1f] mb-4">
-                    {currentProduct.title}
-                  </h1>
-                  <p className="text-xl md:text-2xl text-[#50a72c] font-semibold leading-relaxed">
-                    {currentProduct.tagline}
-                  </p>
+          {/* ================= 2. GREEN FEATURE BAR ================= */}
+          <section className="w-full bg-[#3a692a] py-8">
+            <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-white text-center md:text-left">
+              {trustFeatures.map((feature, idx) => (
+                <div key={idx} className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-4">
+                  <img src={feature.icon} alt="Icon" className='w-16 h-16' />
+                  <span className="font-bold text-sm md:text-base leading-tight whitespace-pre-line">
+                    {feature.text}
+                  </span>
                 </div>
+              ))}
+            </div>
+          </section>
 
-                {/* 3-Column Grid for Specs (Description, Storage, Packaging) */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 bg-[#f4f7f1] p-8 rounded-2xl border border-gray-100">
-                  
-                  {/* Description List */}
-                  <div>
-                    <h3 className="text-lg font-bold text-[#1a3a1f] mb-3 border-b-2 border-[#50a72c] pb-2 inline-block">
-                      Description
-                    </h3>
-                    <ul className="space-y-2 text-gray-700 text-sm md:text-base">
-                      {currentProduct.description.map((item, idx) => (
-                        <li key={idx} className="flex items-start">
-                          <span className="mr-2 text-[#50a72c]">•</span> 
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+          {/* ================= 3. INGREDIENTS & SPECS ================= */}
+          <section className="max-w-7xl mx-auto px-6 py-16 md:py-24 flex flex-col md:flex-row gap-12 items-center">
+            <div className="w-full md:w-2/3 text-center md:text-left">
+              <h2 className="text-lg md:text-xl font-bold text-gray-800 tracking-wider mb-2">Ingredients and Specifications</h2>
+              <h1 className="text-4xl md:text-5xl font-black text-[#1a3a1f]">What's in The Blend</h1>
+            </div>
+            
+            <div className="w-full md:w-2/3 border-l-4 border-[#50a72c] pl-6 md:pl-10">
+              <ul className="space-y-4">
+                {currentProduct.description.map((item, idx) => (
+                  <SpecListItem key={idx} text={item} />
+                ))}
+              </ul>
+            </div>
+          </section>
 
-                  {/* Storage List */}
-                  <div>
-                    <h3 className="text-lg font-bold text-[#1a3a1f] mb-3 border-b-2 border-[#50a72c] pb-2 inline-block">
-                      Storage & Care
-                    </h3>
-                    <ul className="space-y-2 text-gray-700 text-sm md:text-base">
-                      {currentProduct.storage.map((item, idx) => (
-                        <li key={idx} className="flex items-start">
-                          <span className="mr-2 text-[#50a72c]">•</span> 
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Packaging List */}
-                  <div>
-                    <h3 className="text-lg font-bold text-[#1a3a1f] mb-3 border-b-2 border-[#50a72c] pb-2 inline-block">
-                      Packaging Details
-                    </h3>
-                    <ul className="space-y-2 text-gray-700 text-sm md:text-base whitespace-pre-line">
-                      {currentProduct.packaging.map((item, idx) => (
-                        <li key={idx} className="flex items-start">
-                          <span className="mr-2 text-[#50a72c]">•</span> 
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                </div>
-
-                {/* Best Suited For */}
+          {/* ================= 4. DARK GREEN DETAILS SECTION ================= */}
+          <section className="w-full bg-[#416a30] text-white py-16 md:py-24 relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 items-center relative z-10">
+              
+              {/* Left Column */}
+              <div className="space-y-12">
                 <div>
-                  <h2 className="text-2xl font-extrabold text-[#1a3a1f] mb-3">Best Suited For</h2>
-                  <p className="text-gray-600 text-lg leading-relaxed">
-                    {currentProduct.bestSuitedFor}
-                  </p>
+                  <h3 className="text-[#ffbd3c] text-3xl font-extrabold mb-4">Storage & Care</h3>
+                  <ul className="space-y-2 text-lg opacity-90">
+                    {currentProduct.storage.map((item, idx) => (
+                      <li key={idx}>• {item}</li>
+                    ))}
+                  </ul>
                 </div>
-
-                {/* Key Highlights / Features */}
                 <div>
-                  <h2 className="text-2xl font-extrabold text-[#1a3a1f] mb-4">Key Highlights</h2>
+                  <h3 className="text-[#ffbd3c] text-3xl font-extrabold mb-4">Best Suited For</h3>
+                  <p className="text-lg leading-relaxed opacity-90">{currentProduct.bestSuitedFor}</p>
+                </div>
+              </div>
+
+              {/* Center Image */}
+              <div className="flex justify-center items-center py-10 md:py-0">
+                <img 
+                  src={currentProduct.images[1]} 
+                  alt={currentProduct.title} 
+                  className="w-full max-w-[280px] drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+
+              {/* Right Column */}
+              <div className="space-y-12">
+                <div>
+                  <h3 className="text-[#ffbd3c] text-3xl font-extrabold mb-4">Packaging Details</h3>
+                  <ul className="space-y-2 text-lg opacity-90 whitespace-pre-line">
+                    {currentProduct.packaging.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
                   <ul className="space-y-4">
                     {currentProduct.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-3">
-                        <FaCheckCircle className="text-[#ffbd3c] text-xl mt-1 flex-shrink-0" />
-                        <span className="text-gray-800 font-bold text-lg">{feature}</span>
+                        <FaCheckCircle className="text-[#ffbd3c] text-2xl flex-shrink-0" />
+                        <span className="text-lg font-bold">{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-
               </div>
-              {/* --- END TEXT CONTENT --- */}
 
-              {/* ================= FAQ SECTION =================
-              <div className="mt-8 space-y-4">
-                {currentProduct.faqs.map((faq) => {
-                  const isOpen = openFaq === faq.id;
-                  return (
-                    <div 
-                      key={faq.id} 
-                      className={`border rounded-xl transition-all duration-300 ${isOpen ? 'border-gray-200 shadow-lg' : 'border-gray-200'}`}
+            </div>
+          </section>
+
+          {/* ================= 5. FAQ SECTION (Global FAQs) ================= */}
+          <section className="max-w-7xl mx-auto px-6 py-20 bg-gray-50/50">
+            <h2 className="text-4xl font-black text-center text-[#1a3a1f] mb-12">Frequently Asked Questions</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {globalFaqs.map((faq) => {
+                const isOpen = openFaq === faq.id;
+                return (
+                  <div key={faq.id} className="h-fit">
+                    <button
+                      onClick={() => toggleFaq(faq.id)}
+                      className={`w-full flex items-start justify-between p-6 bg-white rounded-xl text-left border transition-all duration-300 ${isOpen ? 'border-[#50a72c] shadow-md' : 'border-gray-200 shadow-sm hover:border-gray-300'}`}
                     >
-                      <button
-                        onClick={() => toggleFaq(faq.id)}
-                        className="w-full flex items-center justify-between p-6 bg-white rounded-xl text-left"
-                      >
-                        <span className={`text-xl font-bold pr-4 transition-colors ${isOpen ? 'text-[#50a72c]' : 'text-[#1a3a1f]'}`}>
-                          {faq.q}
-                        </span>
-                        <span className="flex-shrink-0">
-                          {isOpen ? (
-                            <BsArrowDown className="text-[#ffbd3c] text-xl" />
-                          ) : (
-                            <BsArrowRight className="text-gray-400 text-xl" />
-                          )}
-                        </span>
-                      </button>
-                      
-                      <AnimatePresence>
-                        {isOpen && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            className="overflow-hidden"
-                          >
-                            <div className="px-6 pb-6 bg-white rounded-b-xl text-gray-600 text-lg leading-relaxed">
-                              {faq.a}
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  );
-                })}
-              </div> */}
+                      <span className={`text-lg font-bold pr-4 transition-colors ${isOpen ? 'text-[#50a72c]' : 'text-[#1a3a1f]'}`}>
+                        {faq.q}
+                      </span>
+                      <span className="flex-shrink-0 mt-1">
+                        {isOpen ? <BsArrowDown className="text-[#ffbd3c] text-xl" /> : <BsArrowRight className="text-gray-400 text-xl" />}
+                      </span>
+                    </button>
+                    
+                    <AnimatePresence>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-6 pb-6 pt-2 bg-white rounded-b-xl border-x border-b border-slate-200 text-gray-600 text-md leading-relaxed">
+                            {faq.a}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
 
-            </motion.div>
-          </AnimatePresence>
+        </motion.div>
+      </AnimatePresence>
 
+      {/* ================= 6. VIEW OTHER PRODUCTS (Navigation) ================= */}
+      <section className="w-full bg-[#f4f7f1] py-20 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h2 className="text-4xl font-black text-[#1a3a1f] mb-12">View Other Products</h2>
+          
+          <div className="flex flex-wrap justify-center gap-8">
+            {Object.keys(productsData)
+              .filter(key => key !== activeTab)
+              .map(key => (
+                <button 
+                  key={key} 
+                  onClick={() => handleProductSwitch(key)}
+                  className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 w-48 group"
+                >
+                  <img 
+                    src={productsData[key].images[0]} 
+                    alt={key} 
+                    className="h-32 object-contain mb-4 group-hover:scale-110 transition-transform duration-300" 
+                  />
+                  <h3 className="font-extrabold text-[#1a3a1f] text-lg leading-tight">{key}</h3>
+                  <span className="text-[#50a72c] text-sm font-bold mt-2 opacity-0 group-hover:opacity-100 transition-opacity">View Details →</span>
+                </button>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
     </div>
   );
 };
