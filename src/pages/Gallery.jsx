@@ -83,8 +83,8 @@ const eventsData = [
     date: 'January 2022',
     description: 'Tamarind flower makers from the Bastar division visiting Bastar Farms for skill development and plant interaction.',
     borderColor: '#3a692a', 
-    borderStyle: 'border-t-[3px] border-black pt-4',
-    gridClass: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
+    hasBorder: true,
+    gridClass: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3', // 3 images per row
     images: [
       { src: flowermaker1, alt: 'Group photo indoors' },
       { src: flowermaker2, alt: 'Team meeting' },
@@ -100,8 +100,8 @@ const eventsData = [
     date: 'September 2023',
     description: 'Health camp conducted at our Bastar facility for employees and the local tribal community.',
     borderColor: '#3a692a',
-    borderStyle: 'border-t-[3px] border-black pt-4',
-    gridClass: 'grid-cols-1 md:grid-cols-3',
+    hasBorder: true,
+    gridClass: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3', // 3 images per row
     images: [
       { src: healthcamp1, alt: 'Health checkup queue' },
       { src: healthcamp2, alt: 'Doctor consultation' },
@@ -114,8 +114,8 @@ const eventsData = [
     date: 'December 2023',
     description: "Interactive session led by Bastar Farms' tribal team for students of Government Post Graduate College, Jagdalpur.",
     borderColor: '#4a332a', 
-    borderStyle: 'border-t-[3px] border-black pt-4',
-    gridClass: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
+    hasBorder: true,
+    gridClass: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3', // 3 images per row
     images: [
       { src: pgstudents1, alt: 'Students arriving' },
       { src: pgstudents2, alt: 'Touring machines' },
@@ -131,12 +131,12 @@ const eventsData = [
     date: 'September 2024',
     description: 'Showcasing our products and engaging with industry stakeholders at the exhibition.',
     borderColor: '#a67b27',
-    borderStyle: 'border-t-[3px] border-black pt-4',
-    gridClass: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
+    hasBorder: true,
+    gridClass: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3', // 3 images per row
     images: [
       { src: faic1, alt: 'FAIC Booth team' },
       { src: faic2, alt: 'Explaining products' },
-      { src: faic3, alt: 'Product handover', className: 'md:row-span-2 md:h-full' }, 
+      { src: faic3, alt: 'Product handover' }, // Fixed: Removed the row-span override
       { src: faic4, alt: 'Selfie at booth' },
       { src: faic5, alt: 'Customer interaction' },
       { src: faic6, alt: 'Team at FAIC' },
@@ -148,8 +148,8 @@ const eventsData = [
     date: 'August 2025',
     description: "Meeting with Hon'ble Minister of State for Agriculture and Farmers Welfare, Shri Ramnath Thakur, at Krishi Bhawan.",
     borderColor: '#4a332a',
-    borderStyle: 'border-t-[3px] border-black pt-4',
-    gridClass: 'grid-cols-1 md:grid-cols-3',
+    hasBorder: true,
+    gridClass: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3', // 3 images per row
     images: [
       { src: krishibhawan1, alt: 'Meeting pose 1' },
       { src: krishibhawan2, alt: 'Presenting products' },
@@ -162,8 +162,8 @@ const eventsData = [
     date: 'October 2025',
     description: 'Official launch of Bastar Farms Premium Tamarind Paste in collaboration with the Kerala Hotel and Restaurant Association (KHRA).',
     borderColor: '#3a692a',
-    borderStyle: 'border-t-[3px] border-black pt-4',
-    gridClass: 'grid-cols-1 md:grid-cols-3',
+    hasBorder: true,
+    gridClass: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3', // 3 images per row
     images: [
       { src: kerala1, alt: 'Handing over paste' },
       { src: kerala2, alt: 'Audience seated' },
@@ -182,20 +182,25 @@ const SpecialMoments = [
 
 // --- REUSABLE MINI-COMPONENTS (OPTIMIZATION) ---
 
-// 1. Handles the Title, Description, and Date cleanly
-const SectionHeader = ({ title, description, date, borderStyle = "" }) => (
-  <div className={`flex flex-col md:flex-row justify-between items-start mb-10 ${borderStyle}`}>
-    <div className="w-full md:w-4/5">
+// Section Header with Line and Date perfectly side-by-side
+const SectionHeader = ({ title, description, date, hasBorder = true }) => (
+  <div className="w-full mb-10">
+    <div className="flex items-center gap-6 mb-6">
+      {hasBorder && <div className="h-[3px] bg-black flex-grow"></div>}
+      {date && (
+        <span className="text-xl md:text-2xl font-bold text-black whitespace-nowrap">
+          {date}
+        </span>
+      )}
+    </div>
+    <div>
       <h1 className="text-4xl md:text-5xl font-black text-black mb-3 md:mb-4">{title}</h1>
       <p className="text-[#2a491d] text-lg font-bold leading-tight max-w-4xl">{description}</p>
-    </div>
-    <div className="mt-4 md:mt-0 pt-2 md:pt-4">
-      <span className="text-xl font-bold text-black uppercase tracking-widest md:text-right block">{date}</span>
     </div>
   </div>
 );
 
-// 2. Automatically detects if a file is an image or a video to prevent broken media
+// Media Renderer for Images/Video
 const MediaRenderer = ({ src, alt }) => {
   const isVideo = src.endsWith('.mp4') || src.endsWith('.webm');
   const mediaClasses = "w-full h-full object-cover transition-transform duration-500 group-hover:scale-105";
@@ -214,11 +219,11 @@ function Gallery() {
   return (
     <div className="w-full bg-white overflow-hidden pb-20">
 
-        <section className='relative w-full h-auto bg-cover bg-center py-12 md:py-24' style={{ backgroundImage: `url(${headerbg})` }}>
-            <div className='text-white text-center px-4'>
-                <h1 className='text-4xl md:text-6xl font-bold'>Happy Moments at Bastar Farms</h1>
-            </div>
-        </section>
+      <section className='relative w-full h-auto bg-cover bg-center py-12 md:py-24' style={{ backgroundImage: `url(${headerbg})` }}>
+          <div className='text-white text-center px-4'>
+              <h1 className='text-4xl md:text-6xl font-bold'>Happy Moments at Bastar Farms</h1>
+          </div>
+      </section>
       
       {/* 1. INAUGURATION SECTION */}
       <section className="bg-white py-16 px-6 md:px-20 font-sans max-w-7xl mx-auto">
@@ -226,11 +231,12 @@ function Gallery() {
           title="Inauguration of Bastar Farms Facility"
           description={<>Inauguration of our food processing facility in Bastar by Hon'ble Chief <br className="hidden md:block" /> Minister of Chhattisgarh, Shri Bhupesh Baghel.</>}
           date="December 2022"
-          borderStyle="border-t-4 border-black pt-4"
+          hasBorder={true}
         />
+        {/* Strictly 3 images per row */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {inauguarationData.map((img) => (
-            <div key={img.id} className="relative aspect-[4/5] overflow-hidden rounded-2xl border-4 border-[#2a491d] shadow-lg group">
+            <div key={img.id} className="relative h-64 md:h-80 overflow-hidden rounded-2xl border-[4px] border-[#2a491d] shadow-lg group">
               <MediaRenderer src={img.src} alt={img.alt} />
               <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
@@ -244,17 +250,15 @@ function Gallery() {
           title="First Tamarind Consignment Dispatch"
           description={<>Ceremony held in the presence of Hon. MP Shri Deepak Baij, District Collector <br className="hidden md:block" /> Shri Chandan Kumar, SDM Shri Mahesh Kashyap, and senior officials.</>}
           date="January 2022"
-          borderStyle="border-t-[3px] border-black pt-4"
+          hasBorder={true}
         />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {dispatchData.map((img, index) => {
-            const isMiddle = index === 1 || index === 4;
-            return (
-              <div key={img.id} className={`relative overflow-hidden rounded-2xl border-[5px] border-[#50a72c] shadow-sm group h-[250px] sm:h-[300px] md:h-[350px] ${isMiddle ? 'lg:col-span-2' : 'lg:col-span-1'}`}>
-                <MediaRenderer src={img.src} alt={img.alt} />
-              </div>
-            );
-          })}
+        {/* Simplified strictly to 3 images per row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {dispatchData.map((img) => (
+            <div key={img.id} className="relative h-64 md:h-80 overflow-hidden rounded-2xl border-[4px] border-[#50a72c] shadow-sm group">
+              <MediaRenderer src={img.src} alt={img.alt} />
+            </div>
+          ))}
         </div>
       </section>
 
@@ -266,11 +270,12 @@ function Gallery() {
               title={event.title}
               description={event.description}
               date={event.date}
-              borderStyle={event.borderStyle}
+              hasBorder={event.hasBorder}
             />
-            <div className={`grid gap-4 md:gap-6 ${event.gridClass}`}>
+            {/* Strictly 3 images per row for all events */}
+            <div className={`grid gap-6 ${event.gridClass}`}>
               {event.images.map((img, idx) => (
-                <div key={idx} className={`relative overflow-hidden rounded-xl border-[4px] shadow-sm group ${img.className || ''}`} style={{ borderColor: event.borderColor }}>
+                <div key={idx} className="relative h-64 md:h-80 overflow-hidden rounded-xl border-[4px] shadow-sm group" style={{ borderColor: event.borderColor }}>
                   <MediaRenderer src={img.src} alt={img.alt} />
                 </div>
               ))}
@@ -279,14 +284,13 @@ function Gallery() {
         ))}
       </section>
 
-      {/* 4. SPECIAL MOMENTS SECTION */}
+      {/* 4. SPECIAL MOMENTS SECTION (Masonry Layout remains as is) */}
       <section className="bg-white py-16 px-6 md:px-20 font-sans max-w-7xl mx-auto pt-8">
         <h1 className="text-4xl md:text-5xl font-bold text-black mb-10">More Special Moments at Bastar</h1>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
           {SpecialMoments.map((item, idx) => (
             <div key={idx} className={`flex flex-col ${item.gridCol}`}>
               <div className="relative overflow-hidden rounded-2xl border-[4px] border-[#6b4226] shadow-md group h-64 md:h-80 lg:h-[400px] w-full">
-                {/* Because of MediaRenderer, your .mp4 files will automatically play here now! */}
                 <MediaRenderer src={item.src} alt={item.alt} />
               </div>
               <p className="text-center text-[#1a3a1f] font-bold text-lg mt-4 px-2">{item.caption}</p>

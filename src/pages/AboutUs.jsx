@@ -6,6 +6,7 @@ import core from '../assets/core.png'
 import clients from '../assets/clients.png'
 import foot from '../assets/foot.png'
 import fssai from '../assets/fssai.png'
+import fostac from '../assets/fostac.jpeg'
 
 
 import c1 from '../assets/logo file/1.png'
@@ -136,9 +137,15 @@ function AboutUs() {
             <section className='py-12 px-6'>
                 <h1 className='text-center text-4xl md:text-6xl font-bold'>Certifications</h1>
                 <p className='text-center text-xl md:text-2xl font-semibold mb-8'>Quality & Compliance</p>
-                <div className='flex flex-col items-center max-w-4xl mx-auto'>
-                    <p className='text-center text-md md:text-lg mb-4'>Food Safety and Standards Authority of India</p>
-                    <img src={fssai} alt="FSSAI Certification" className='w-full md:w-auto max-h-[400px] md:max-h-[600px] object-contain border-4 md:border-8 border-[#2a491d] rounded-xl' />
+                <div className='flex flex-col lg:flex-row gap-8 items-center max-w-4xl mx-auto'>
+                    <div>
+                        <p className='text-center text-md md:text-lg mb-4'>Food Safety and Standards Authority of India</p>
+                        <img src={fssai} alt="FSSAI Certification" className='w-full md:w-auto max-h-[400px] md:max-h-[600px] object-contain border-4 md:border-8 border-[#2a491d] rounded-xl' />
+                    </div>
+                    <div>
+                        <p className='text-center text-md md:text-lg mb-4'>Food Safety Supervisor</p>
+                        <img src={fostac} alt="FSSAI Certification" className='w-full md:w-auto max-h-[400px] md:max-h-[600px] object-contain border-4 md:border-8 border-[#2a491d] rounded-xl' />
+                    </div>
                 </div>
             </section>
         </div>

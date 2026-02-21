@@ -9,8 +9,9 @@ import tamarind_bhel_puri from '../assets/tamarind_bhel_puri.png'
 import pani_puri from '../assets/pani_puri.png'
 import tamarind_date from '../assets/tamarind_date.png'
 import tamarind_chilli from '../assets/tamarind_chilli.png'
-import tamarindTreeImg from '../assets/tamarindtree.jpeg'
-import tamarindBowlImg from '../assets/tamarindt.jpeg'
+
+import tamarindTreeImg from '../assets/31.png'
+import tamarindBowlImg from '../assets/32.png'
 
 import icon1 from '../assets/ICONS 1/14.png'
 import icon2 from '../assets/ICONS 1/15.png'
@@ -50,24 +51,27 @@ function Home() {
     { src: img3, alt: "Workers at the packaging station" },
   ];
 
+  // 1. ADDED TAGLINE PROPERTY HERE
   const slides = [
     {
       sub: "Select only Natural Products",
-      main: "Choose the healthy food."
+      main: "Choose the healthy food.",
+      tagline: "" 
     },
     {
       sub: "Experience the",
-      main: "Taste of Tradition."
+      main: "Taste of Tradition.",
+      tagline: "Rooted in Bastar. Built on Quality."
     }
   ];
 
   const [index, setIndex] = useState(0);
 
-  // 2. Setup the 10-second timer
+  // 2. Setup the timer
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % slides.length);
-    }, 8000); // 10000ms = 10 seconds
+    }, 8000); 
 
     return () => clearInterval(timer);
   }, [slides.length]);
@@ -85,7 +89,7 @@ function Home() {
           <div className="flex flex-col items-start w-full lg:w-1/2 gap-6 text-center lg:text-left lg:ml-12">
             
             {/* 3. Wrap text in AnimatePresence for smooth switching */}
-            <div className="h-[180px] md:h-[300px] flex flex-col justify-center"> 
+            <div className="h-[220px] md:h-[300px] flex flex-col justify-center"> 
               <AnimatePresence mode="wait">
                 <motion.div
                   key={index}
@@ -100,6 +104,12 @@ function Home() {
                   <h1 className='text-5xl md:text-8xl text-[#2a491d] font-bold leading-tight'>
                     {slides[index].main}
                   </h1>
+                  {/* ADDED CONDITIONAL RENDER FOR TAGLINE HERE */}
+                  {slides[index].tagline && (
+                    <p className="text-xl md:text-2xl font-bold text-[#50a72c] mt-4 tracking-wide">
+                      {slides[index].tagline}
+                    </p>
+                  )}
                 </motion.div>
               </AnimatePresence>
             </div>
@@ -211,7 +221,7 @@ function Home() {
       <section className="relative w-full min-h-[600px] bg-[#1a3a1f] overflow-hidden flex items-center py-20 px-6 md:px-20">
         <div className="z-10 w-full lg:w-1/2 text-white">
           <p className="text-emerald-400 italic font-medium mb-2">Why Choose Bastar Farms</p>
-          <h2 className="text-3xl md:text-5xl font-bold mb-10 max-w-md leading-tight">
+          <h2 className="text-3xl md:text-5xl font-bold mb-10 max-w-lg leading-tight">
             Few reasons for people choosing Bastar Farms
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6">
@@ -233,7 +243,7 @@ function Home() {
                 <img 
                   src={tamarindTreeImg} 
                   alt="Tamarind on tree"
-                  className="absolute top-1/2 left-1/2 w-[190%] h-[190%] max-w-none object-contain -translate-x-1/2 -translate-y-1/2 -rotate-45"
+                  className="absolute top-1/2 left-1/2 w-[210%] h-[210%] max-w-none object-cover -translate-x-1/2 -translate-y-1/2 -rotate-45"
                 />
               </div>
 
@@ -251,7 +261,7 @@ function Home() {
                 <img 
                   src={tamarindBowlImg} 
                   alt="Tamarind pods"
-                  className="absolute top-1/2 left-1/2 w-[190%] h-[190%] max-w-none object-contain -translate-x-1/2 -translate-y-1/2 -rotate-45"
+                  className="absolute top-1/2 left-1/2 w-[210%] h-[210%] max-w-none object-cover -translate-x-1/2 -translate-y-1/2 -rotate-45"
                 />
               </div>
 
@@ -280,21 +290,34 @@ function Home() {
           </div>
         </div>
 
-        {/* GREEN BANNER - FIXED FOR MOBILE */}
-        <div className="max-w-full mx-auto relative mt-40 md:mt-32">
-          <div className="absolute -top-24 md:-top-8 lg:-top-16 left-1/2 -translate-x-1/2 md:-left-6 md:translate-x-0 z-10 w-48 md:w-80">
-            <div className="relative">
-              <div className="absolute inset-0 bg-amber-900 rounded-full scale-110 -translate-y-4" />
-              <img src={q1} alt="Products" className="relative z-10 -top-4 w-full drop-shadow-2xl" />
-            </div>
-          </div>
-          <div className="bg-lime-500 rounded-3xl md:rounded-full py-12 px-6 md:pl-80 md:pr-16 flex flex-col lg:flex-row items-center justify-between gap-8 text-center md:text-left">
-            <h3 className="text-xl md:text-2xl font-black text-[#1a3a1f] max-w-md pt-16 md:pt-0">
+        {/* ================= GREEN BANNER WITH OVERLAPPING HORIZONTAL OVAL ================= */}
+        <div className="max-w-7xl mx-auto relative mt-48 lg:mt-32 mb-20 px-4 md:px-0">
+          
+          {/* The Green Background Box */}
+          <div className="bg-[#8ac24c] w-full lg:w-[92%] ml-auto rounded-3xl flex flex-col lg:flex-row items-center justify-between py-10 px-8 lg:pr-16 lg:pl-[320px] gap-8 shadow-md">
+            
+            {/* Text */}
+            <h3 className="text-2xl md:text-3xl font-bold text-black max-w-xl leading-snug text-center lg:text-left pt-36 lg:pt-0 z-20">
               Quality food is not just ingredients, but the people and place behind it.
             </h3>
-            <button className="bg-[#ffb347] hover:bg-[#ffa020] text-[#1a3a1f] font-bold py-4 px-10 rounded-2xl transition-all">
+            
+            {/* Button */}
+            <button className="bg-[#fab855] hover:bg-[#e5a54c] text-black font-bold text-lg py-4 px-10 rounded-xl transition-all shadow-md flex-shrink-0 z-20">
               Contact Us Now!
             </button>
+
+          </div>
+
+          {/* The Overlapping Brown Horizontal Oval */}
+          <div className="absolute -top-40 left-1/2 -translate-x-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:-left-16 lg:translate-x-0 w-[350px] h-[280px] lg:w-[480px] lg:h-[380px] bg-[#a06822] rounded-[50%] flex items-center justify-center shadow-xl z-10">
+            
+            {/* The Product Image */}
+            <img 
+              src={q1} 
+              alt="Bastar Farms Products" 
+              className="w-[85%] md:w-[75%] h-auto object-contain drop-shadow-2xl relative top-2 hover:scale-105 transition-transform duration-500" 
+            />
+            
           </div>
         </div>
       </section>

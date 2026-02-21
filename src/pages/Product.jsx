@@ -43,6 +43,10 @@ const globalFaqs = [
   { id: 4, q: "Can I use this as a base for my own recipes?", a: "Yes. Many chefs and home cooks use it as a base for sauces, marinades, and flavour blends." },
   { id: 5, q: "Are the products safe for commercial kitchens and HoReCa use?", a: "Yes. Our processing standards, batch consistency, and packaging are designed to meet the needs of restaurants, caterers, and institutional buyers." },
   { id: 6, q: "Are your products suitable for export or bulk supply?", a: "Yes. We cater to bulk, private label, and export requirements subject to order specifications and regulatory compliance." },
+  { id: 7, q: "Are Bastar Farms products suitable for vegetarians?", a: "Yes, all Bastar Farms products are vegetarian and crafted to cater to diverse dietary preferences. These can be used for Non-Vegarians as well." },
+  { id: 8, q: "Can I use your chutneys and pastes for non-Indian dishes?", a: "Absolutely! While our products are designed with Indian flavors in mind, they work wonderfully as marinades, dips, or condiments for a variety of cuisines." },
+  { id: 9, q: "What makes Bastar Farms products unique?", a: "Our products are crafted from authentic, forest-sourced ingredients and processed by tribal communities of Bastar, ensuring unmatched quality and flavor." },
+  { id: 10, q: "Can I use Bastar Farms Tamarind Paste for desserts?", a: "Yes, our Tamarind Paste adds a unique tangy sweetness to desserts like tamarind candies, tarts, and even fusion recipes." }
 ];
 
 // 2. Trust Banner Features mapped dynamically
@@ -272,18 +276,18 @@ const ProductPage = () => {
   const toggleFaq = (id) => setOpenFaq(openFaq === id ? null : id);
 
   return (
-    <div className="w-full bg-white overflow-hidden pb-20 font-sans">
+    <div className="w-full bg-white overflow-hidden font-sans">
       
       {/* PAGE HEADER */}
-      <section className='relative w-full h-auto bg-cover bg-center py-12 md:py-24' style={{ backgroundImage: `url(${headerbg})` }}>
+      {/* <section className='relative w-full h-auto bg-cover bg-center py-12 md:py-24' style={{ backgroundImage: `url(${headerbg})` }}>
         <div className='text-white text-center px-4'>
           <h1 className='text-4xl md:text-6xl font-bold'>Our Products</h1>
         </div>
-      </section>
+      </section> */}
 
-      <section className="w-full bg-[#f4f7f1] py-20 border-t border-gray-200">
+      <section className="w-full bg-[#2a491d] py-12 border-gray-200">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-black text-[#1a3a1f] mb-12">View Other Products</h2>
+          <h2 className="text-4xl font-black text-white mb-12">View Other Products</h2>
           
           <div className="flex flex-wrap justify-center gap-8">
             {Object.keys(productsData)
@@ -404,11 +408,11 @@ const ProductPage = () => {
               </div>
 
               {/* Center Image */}
-              <div className="flex justify-center items-center py-10 md:py-0">
+              <div className="flex justify-center items-center">
                 <img 
                   src={currentProduct.images[1]} 
                   alt={currentProduct.title} 
-                  className="w-full max-w-[280px] drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                  className="w-[500px] drop-shadow-2xl hover:scale-105 transition-transform duration-500"
                 />
               </div>
 
@@ -481,9 +485,9 @@ const ProductPage = () => {
       </AnimatePresence>
 
       {/* ================= 6. VIEW OTHER PRODUCTS (Navigation) ================= */}
-      <section className="w-full bg-[#f4f7f1] py-20 border-t border-gray-200">
+      <section className="w-full bg-[#2a491d] py-12 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-black text-[#1a3a1f] mb-12">View Other Products</h2>
+          <h2 className="text-4xl font-black text-white mb-12">View Other Products</h2>
           
           <div className="flex flex-wrap justify-center gap-8">
             {Object.keys(productsData)
