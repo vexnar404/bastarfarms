@@ -281,6 +281,32 @@ const ProductPage = () => {
         </div>
       </section>
 
+      <section className="w-full bg-[#f4f7f1] py-20 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h2 className="text-4xl font-black text-[#1a3a1f] mb-12">View Other Products</h2>
+          
+          <div className="flex flex-wrap justify-center gap-8">
+            {Object.keys(productsData)
+              .filter(key => key !== activeTab)
+              .map(key => (
+                <button 
+                  key={key} 
+                  onClick={() => handleProductSwitch(key)}
+                  className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 w-48 group"
+                >
+                  <img 
+                    src={productsData[key].images[0]} 
+                    alt={key} 
+                    className="h-32 object-contain mb-4 group-hover:scale-110 transition-transform duration-300" 
+                  />
+                  <h3 className="font-extrabold text-[#1a3a1f] text-lg leading-tight">{key}</h3>
+                  <span className="text-[#50a72c] text-sm font-bold mt-2 opacity-0 group-hover:opacity-100 transition-opacity">View Details →</span>
+                </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTab}
