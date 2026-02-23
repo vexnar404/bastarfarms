@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import bgImage from '../assets/video-one-bg.jpg';
+import {FaPlay} from 'react-icons/fa';
 
 const VideoSection = ({ 
   videoUrl = 'https://www.youtube.com/watch?v=Get7rqXYrbQ'
@@ -53,7 +54,7 @@ const VideoSection = ({
               className="group inline-flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full bg-white text-green-600 hover:bg-green-600 hover:text-white transition-all duration-300 mb-6 shadow-lg hover:shadow-xl focus:outline-none"
               aria-label="Play video"
             >
-              <i className="fas fa-play text-2xl md:text-3xl ml-1"></i>
+              <FaPlay className="md:w-16 md:h-16 w-12 h-12 group-hover:scale-110 transition-transform duration-300" />
             </button>
 
             {/* Title */}

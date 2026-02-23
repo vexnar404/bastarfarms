@@ -202,7 +202,7 @@ function Home() {
           
           <div className='flex flex-col lg:flex-row w-full gap-32 items-center lg:justify-center'>
             {/* Video Container */}
-            <div className="max-h-[640px] overflow-hidden shadow-inner rounded-3xl flex-shrink-0">
+            <div className="max-h-[640px] lg:h-[640px] overflow-hidden shadow-inner rounded-3xl flex-shrink-0">
                <video src={bfvideo} autoPlay loop muted playsInline className="w-full h-full object-contain" />
             </div>
 
@@ -290,7 +290,7 @@ function Home() {
             <h2 className="text-3xl md:text-6xl font-bold text-amber-800 mb-6 leading-tight">
               How things are done <br /> at Bastar Farms
             </h2>
-            <p className="text-gray-700 text-2xl lg:pr-10 leading-relaxed">
+            <p className="text-gray-700 text-xl lg:text-2xl px-2 lg:pr-10 leading-relaxed">
               At Bastar Farms, tamarind is sourced directly from
               the forests around Bastar and processed at our
               Lohandiguda unit. The same people who live here
@@ -305,11 +305,11 @@ function Home() {
         </div>
 
         {/* ================= BULLETPROOF GREEN BANNER ================= */}
-        <div className="w-full mx-auto relative mt-48 lg:mt-32 mb-20 -top-8">
+        <div className="w-full mx-auto relative mt-48 lg:mt-32 mb-8 lg:mb-20 -top-2 lg:-top-8">
           <div className="relative w-full flex flex-col lg:flex-row items-center justify-end">
             
             {/* The Overlapping Brown Horizontal Oval */}
-            <div className="absolute top-4 left-1/2 -translate-y-[60%] lg:top-1/2 lg:-translate-y-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 w-[350px] h-[280px] lg:w-[450px] lg:h-[300px] bg-[#a06822] rounded-[50%] flex items-center justify-center shadow-2xl z-20">
+            <div className="absolute top-12 left-1/2 -translate-y-[60%] lg:top-1/2 lg:-translate-y-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 w-[350px] h-[280px] lg:w-[450px] lg:h-[300px] bg-[#a06822] rounded-[50%] flex items-center justify-center shadow-2xl z-20">
               <img 
                 src={q1} 
                 alt="Products" 
@@ -335,7 +335,7 @@ function Home() {
       </section>
 
       {/* ================= COMMUNITY GRID ================= */}
-      <section className="bg-white py-16 px-6">
+      <section className="bg-white py-4 lg:py-16 px-6">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-2xl md:text-4xl font-black uppercase mb-4 text-[#1a3a1f]">Working with the communities of Bastar</h2>
           <p className="text-gray-700 text-lg mb-12 max-w-3xl mx-auto">Our processing unit in Lohandiguda operates with a one hundred percent local and tribal workforce.</p>

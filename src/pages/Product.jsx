@@ -33,11 +33,19 @@ import icon2 from '../assets/PRODUCT PAGE/ICONS/28.png';
 import icon3 from '../assets/PRODUCT PAGE/ICONS/29.png';
 import icon4 from '../assets/PRODUCT PAGE/ICONS/30.png';
 
-const imgPaste = [tamarindpaste1, tamarindpaste2, tamarindpaste3]; 
-const imgBhel = [bhelpuri1, bhelpuri2, bhelpuri3]; 
-const imgPani = [panipuri1, panipuri2, panipuri3]; 
-const imgDate = [tamarinddate1, tamarinddate2, tamarinddate3]; 
-const imgChilli = [tamarindchilli1, tamarindchilli2, tamarindchilli3]; 
+const imgPaste = [hero4, tamarindpaste2, tamarindpaste3 ]; 
+const imgBhel = [hero1,  bhelpuri2, bhelpuri3 ]; 
+const imgPani = [hero2, panipuri2, panipuri3]; 
+const imgDate = [hero5, tamarinddate2, tamarinddate3]; 
+const imgChilli = [hero3, tamarindchilli2, tamarindchilli3]; 
+
+const imgpasteh = [tamarindpaste1];
+const imgbhelh = [bhelpuri1];
+const imgpanih = [panipuri1];
+const imgdateh = [tamarinddate1];
+const imgchillih = [tamarindchilli1];
+
+
 
 // --- GLOBAL STATIC DATA (Optimized to prevent re-renders) ---
 
@@ -67,6 +75,7 @@ const trustFeatures = [
 const productsData = {
   'Tamarind Paste': {
     images: imgPaste,
+    imagesh: imgpasteh,
     title: 'Tamarind Paste',
     tagline: 'A perfect balance of sour and spice to bring your recipes to life.',
     description: [
@@ -95,6 +104,7 @@ const productsData = {
   },
   'Tamarind Date': {
     images: imgDate,
+    imagesh: imgdateh,
     title: 'Tamarind Date Chutney',
     tagline: 'A rich blend of sweet dates and tangy tamarind crafted to enhance the taste of snacks and chaat.',
     description: [
@@ -124,6 +134,7 @@ const productsData = {
   },
   'Bhel Puri': {
     images: imgBhel,
+    imagesh: imgbhelh,
     title: 'Tamarind Bhel Puri',
     tagline: 'A tangy sweet chutney crafted to bring the authentic street food flavour to every plate of bhel puri.',
     description: [
@@ -153,6 +164,7 @@ const productsData = {
   },
   'Pani Puri': {
     images: imgPani,
+    imagesh: imgpanih,
     title: 'Tamarind Pani Puri',
     tagline: 'A sweet tangy chutney crafted to deliver authentic street food flavour in every pani puri bite.',
     description: [
@@ -182,6 +194,7 @@ const productsData = {
   },
   'Tamarind Chilli': {
     images: imgChilli,
+    imagesh: imgchillih,
     title: 'Tamarind Chilli',
     tagline: 'A bold blend of tangy tamarind and chilli crafted to add instant flavour to everyday cooking.',
     description: [
@@ -209,37 +222,38 @@ const productsData = {
       'Processed by tribal communities of Bastar'
     ]
   },
-  'Tamarind Pulp': {
-    images: imgPaste, 
-    title: 'Tamarind Pulp',
-    tagline: 'Consistent, kitchen ready tamarind pulp crafted for professional culinary use.',
-    description: [
-      'Raw material: Ripe tamarind',
-      'Form: Seedless pulp',
-      'Texture: Thick and uniform',
-      'Taste profile: Naturally sour with balanced acidity',
-      'Colour: Deep brown',
-      'Processing: Hygienically processed and pasteurized'
-    ],
-    storage: [
-      'Store in a cool and dry place',
-      'Refrigerate after opening',
-      'Use a clean, dry spoon',
-      'Seal tightly after each use'
-    ],
-    packaging: [
-      'Available pack sizes: 5 kg HORECA pack',
-      'Packaging type: Food grade bulk pack',
-      'Shelf life: 12 months from manufacturing'
-    ],
-    bestSuitedFor: 'Ideal for large scale preparation of curries, gravies, rasam, sambhar, chutneys, marinades, tamarind rice, and institutional cooking applications.',
-    features: [
-      'Consistent batch to batch quality',
-      'Ready to use for commercial kitchens',
-      'Forest sourced tamarind',
-      'Processed at source in Bastar'
-    ]
-  }
+  // 'Tamarind Pulp': {
+  //   images: imgPaste, 
+  //   imagesh: imgpasteh,
+  //   title: 'Tamarind Pulp',
+  //   tagline: 'Consistent, kitchen ready tamarind pulp crafted for professional culinary use.',
+  //   description: [
+  //     'Raw material: Ripe tamarind',
+  //     'Form: Seedless pulp',
+  //     'Texture: Thick and uniform',
+  //     'Taste profile: Naturally sour with balanced acidity',
+  //     'Colour: Deep brown',
+  //     'Processing: Hygienically processed and pasteurized'
+  //   ],
+  //   storage: [
+  //     'Store in a cool and dry place',
+  //     'Refrigerate after opening',
+  //     'Use a clean, dry spoon',
+  //     'Seal tightly after each use'
+  //   ],
+  //   packaging: [
+  //     'Available pack sizes: 5 kg HORECA pack',
+  //     'Packaging type: Food grade bulk pack',
+  //     'Shelf life: 12 months from manufacturing'
+  //   ],
+  //   bestSuitedFor: 'Ideal for large scale preparation of curries, gravies, rasam, sambhar, chutneys, marinades, tamarind rice, and institutional cooking applications.',
+  //   features: [
+  //     'Consistent batch to batch quality',
+  //     'Ready to use for commercial kitchens',
+  //     'Forest sourced tamarind',
+  //     'Processed at source in Bastar'
+  //   ]
+  // }
 };
 
 // --- HELPER COMPONENT FOR BOLDING TEXT ---
@@ -291,7 +305,7 @@ const ProductPage = () => {
         </div>
       </section> */}
 
-      <section className="w-full bg-[#2a491d] py-12 border-gray-200">
+      <section className="hidden md:flex w-full bg-[#2a491d] py-12 border-gray-200">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-black text-white mb-12">View Other Products</h2>
           
@@ -305,7 +319,7 @@ const ProductPage = () => {
                   className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 w-48 group"
                 >
                   <img 
-                    src={productsData[key].images[0]} 
+                    src={productsData[key].imagesh[0]} 
                     alt={key} 
                     className="h-32 object-contain mb-4 group-hover:scale-110 transition-transform duration-300" 
                   />
@@ -327,14 +341,13 @@ const ProductPage = () => {
         >
           
           {/* ================= 1. HERO SECTION ================= */}
-          <section className="max-w-7xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+          <section className="max-w-7xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center justify-center gap-12 lg:gap-20">
             {/* Left: Main Image */}
-            <div className="w-full md:w-1/2 relative flex justify-center items-center bg-[#fcfdfa] p-10 rounded-3xl border border-gray-100 min-h-[400px]">
-              <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#2a491d 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+            <div className="w-full md:w-1/2 relative bg-[#fcfdfa] rounded-3xl border border-gray-100 h-[400px]">
               <img 
                 src={currentProduct.images[mainImgIndex]} 
                 alt={currentProduct.title} 
-                className="relative z-10 w-full max-w-sm object-contain drop-shadow-2xl transition-all duration-300"
+                className="relative w-full h-full object-contain transition-all duration-300"
               />
             </div>
 
@@ -348,12 +361,12 @@ const ProductPage = () => {
               </p>
 
               {/* Thumbnail Gallery */}
-              <div className="flex gap-4">
+              <div className="flex flex-wrap gap-3 md:gap-4 mt-2">
                 {currentProduct.images.map((img, idx) => (
                   <button 
                     key={idx} 
                     onClick={() => setMainImgIndex(idx)}
-                    className={`w-24 h-24 p-2 rounded-xl border-2 transition-all duration-300 bg-white shadow-sm flex items-center justify-center
+                    className={`w-20 h-20 md:w-24 md:h-24 p-2 rounded-xl border-2 transition-all duration-300 bg-white shadow-sm flex items-center justify-center flex-shrink-0
                       ${mainImgIndex === idx ? 'border-[#50a72c] scale-105 shadow-md' : 'border-gray-200 hover:border-[#50a72c]'}`}
                   >
                     <img src={img} alt={`Thumbnail ${idx}`} className="w-full h-full object-contain" />
@@ -505,7 +518,7 @@ const ProductPage = () => {
                   className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 w-48 group"
                 >
                   <img 
-                    src={productsData[key].images[0]} 
+                    src={productsData[key].imagesh[0]} 
                     alt={key} 
                     className="h-32 object-contain mb-4 group-hover:scale-110 transition-transform duration-300" 
                   />

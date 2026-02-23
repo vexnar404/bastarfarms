@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import core1 from '../assets/c1kartikKapoor.png'
+import core1 from '../assets/c0kartikKapoor1.png'
 import core2 from '../assets/c2yashBirla.png'
 import core3 from '../assets/c3balliHangSubba.png'
 import core4 from '../assets/c4pravirKrishna.png'
