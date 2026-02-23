@@ -14,6 +14,7 @@ import tamarind_chilli from '../assets/tamarind_chilli.png'
 import tamarindTreeImg from '../assets/31.png'
 import tamarindBowlImg from '../assets/32.png'
 import bfvideo from '../assets/bastarfarms.mp4'
+import bf1 from '../assets/bf1.mp4'
 
 import icon1 from '../assets/ICONS 1/14.png'
 import icon2 from '../assets/ICONS 1/15.png'
@@ -35,6 +36,8 @@ import img3 from '../assets/img3.jpg'
 
 import q1 from '../assets/1.png'
 
+import i70 from '../assets/i70.jpeg'
+
 
 function Home() {
   const features = [
@@ -54,7 +57,7 @@ function Home() {
 
   const slides = [
     {
-      sub: "Select only Natural Products",
+      sub: "Trusted by Kitchens Everywhere",
       main: "Choose the healthy food.",
       tagline: "" 
     },
@@ -188,20 +191,25 @@ function Home() {
       </section>
 
       {/* ================= HOUSEHOLD SECTION ================= */}
-      <section className='w-full py-16 px-6 md:px-14 bg-white'>
-        <div className="max-w-7xl mx-auto w-full">
-          <h1 className='text-4xl md:text-6xl text-[#2a491d] font-bold text-center mb-16'>Authentic Taste, Everyday Reliability</h1>
+      <section className='relative w-full h-screen py-16 px-6 md:px-14'>
+        <img 
+          src={headerbg} 
+          alt="background" 
+          className="absolute inset-0 w-full h-full object-cover -z-10 bg-[#1a3a1f]" 
+        />
+        <div className="max-w-7xl mx-auto w-full z-10">
+          <h1 className='text-4xl md:text-6xl text-white font-bold text-center mb-6'>Authentic Taste, Everyday Reliability</h1>
           
-          <div className='flex flex-col lg:flex-row w-full gap-12 items-center'>
+          <div className='flex flex-col lg:flex-row w-full gap-32 items-center lg:justify-center'>
             {/* Video Container */}
-            <div className="w-full lg:w-[45%] h-[400px] lg:h-[600px] bg-slate-100 rounded-3xl overflow-hidden shadow-inner flex-shrink-0">
-               <video src={bfvideo} autoPlay loop muted playsInline className="w-full h-full object-cover" />
+            <div className="h-[640px] overflow-hidden shadow-inner rounded-3xl flex-shrink-0">
+               <video src={bfvideo} autoPlay loop muted playsInline className="w-full h-full object-contain" />
             </div>
 
             {/* List Content */}
-            <div className="flex-1 flex flex-col gap-8 text-center lg:text-left">
-              <h1 className='text-3xl md:text-5xl font-bold leading-tight'>For households and <br /> professional kitchens</h1>
-              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 text-left'>
+            <div className="flex flex-col gap-4 text-center lg:text-left">
+              <h1 className='text-3xl md:text-5xl font-bold leading-tight text-slate-200'>For households and <br /> professional kitchens</h1>
+              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4 text-left'>
                 {[
                   { icon: icon1, t: "Consistent taste, Ready to Use", p: "So your food tastes the same every time." },
                   { icon: icon2, t: "Easy to Use", p: "Works well in daily recipes and high volume." },
@@ -213,13 +221,13 @@ function Home() {
                   <div key={i} className='flex items-center gap-4'>
                     <img src={item.icon} alt="icon" className='w-12 h-12 md:w-16 md:h-16 flex-shrink-0' />
                     <div>
-                      <h2 className='text-lg md:text-2xl font-bold text-gray-900'>{item.t}</h2>
-                      <p className='text-sm md:text-lg text-gray-600'>{item.p}</p>
+                      <h2 className='text-lg md:text-2xl font-bold text-gray-100'>{item.t}</h2>
+                      <p className='text-sm md:text-lg text-gray-300'>{item.p}</p>
                     </div>
                   </div>
                 ))}
               </div>
-              <div className="mt-4">
+              <div className="mt-2">
                 <Link to='/about-us'>
                   <button className='bg-[#ffbd3c] px-8 py-4 rounded-xl text-black font-bold text-lg hover:shadow-lg hover:bg-[#e6a82a] transition-all'>
                     Our Bastar Family
@@ -227,12 +235,14 @@ function Home() {
                 </Link>
               </div>
             </div>
+
+          
           </div>
         </div>
       </section>
 
       {/* ================= WHY CHOOSE SECTION ================= */}
-      <section className="relative w-full min-h-[600px] bg-[#1a3a1f] overflow-hidden flex items-center py-20 px-6">
+      <section className="relative w-full h-screen bg-[#1a3a1f] overflow-hidden flex items-center py-20 px-6">
         <div className="max-w-7xl mx-auto w-full relative flex items-center">
           
           <div className="z-10 w-full lg:w-[55%] text-white text-center lg:text-left">
@@ -251,7 +261,7 @@ function Home() {
           </div>
 
           {/* Decorative Diamonds anchored to the screen edge so they stay flush right */}
-          <div className="absolute top-1/2 -right-40 md:-right-20 lg:-right-32 -translate-y-1/2 hidden lg:block opacity-20 lg:opacity-100 pointer-events-none">
+          <div className="absolute top-1/2 -right-48 -translate-y-1/2 hidden lg:block opacity-20 lg:opacity-100 pointer-events-none">
             <div className="relative w-[650px] h-[650px] rotate-45 rounded-[100px] bg-[#142d19] overflow-hidden shadow-2xl border-[15px] border-[#1a3a1f]">
               <div className="grid grid-cols-2 grid-rows-2 w-full h-full gap-6 p-6">
                 <div className="relative overflow-hidden rounded-[40px] bg-[#142d19]">
@@ -272,15 +282,15 @@ function Home() {
       </section>
 
       {/* ================= HOW THINGS ARE DONE & BULLETPROOF BANNER ================= */}
-      <section className="bg-white py-16 px-6 md:px-20 overflow-hidden">
+      <section className="bg-white py-16 relative overflow-hidden">
         
         {/* Top Split Area */}
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center mb-20">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center mb-20 md:px-12">
           <div className="text-center lg:text-left">
-            <h2 className="text-3xl md:text-5xl font-bold text-amber-800 mb-6 leading-tight">
+            <h2 className="text-3xl md:text-6xl font-bold text-amber-800 mb-6 leading-tight">
               How things are done <br /> at Bastar Farms
             </h2>
-            <p className="text-gray-700 text-lg lg:pr-10 leading-relaxed">
+            <p className="text-gray-700 text-2xl lg:pr-10 leading-relaxed">
               At Bastar Farms, tamarind is sourced directly from
               the forests around Bastar and processed at our
               Lohandiguda unit. The same people who live here
@@ -289,26 +299,26 @@ function Home() {
               clean, and the quality consistent.
             </p>
           </div>
-          <div className="rounded-3xl overflow-hidden shadow-xl w-full">
-            <img src={img1} alt="Bastar Farms Team" className="w-full h-[300px] md:h-[400px] object-cover" />
+          <div className="rounded-3xl overflow-hidden shadow-xl w-full border-4 border-[#1a3a1f]">
+            <video src={bf1} alt="Bastar Farms Team" className="w-full h-[300px] md:h-[400px] object-cover" autoPlay muted loop playsInline />
           </div>
         </div>
 
         {/* ================= BULLETPROOF GREEN BANNER ================= */}
-        <div className="max-w-full mx-auto relative mt-48 lg:mt-32 mb-20 px-4 md:px-8">
+        <div className="w-full mx-auto relative mt-48 lg:mt-32 mb-20 -top-8">
           <div className="relative w-full flex flex-col lg:flex-row items-center justify-end">
             
             {/* The Overlapping Brown Horizontal Oval */}
-            <div className="absolute top-0 -translate-y-[60%] lg:top-1/2 lg:-translate-y-1/2 left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 w-[350px] h-[280px] lg:w-[450px] lg:h-[350px] bg-[#a06822] rounded-[50%] flex items-center justify-center shadow-2xl z-20">
+            <div className="absolute top-0 -left-8 -translate-y-[60%] lg:top-1/2 lg:-translate-y-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 w-[350px] h-[280px] lg:w-[450px] lg:h-[300px] bg-[#a06822] rounded-[50%] flex items-center justify-center shadow-2xl z-20">
               <img 
                 src={q1} 
                 alt="Products" 
-                className="w-[85%] md:w-[75%] h-auto object-contain drop-shadow-2xl relative top-2 hover:scale-105 transition-transform duration-500" 
+                className="w-[85%] md:w-[75%] h-auto object-contain drop-shadow-2xl relative hover:scale-105 transition-transform duration-500" 
               />
             </div>
 
             {/* The Green Background Box */}
-            <div className="bg-[#8ac24c] w-full lg:w-[85%] rounded-3xl flex flex-col lg:flex-row items-center justify-between py-4 px-8 lg:pr-16 lg:pl-[280px] xl:pl-[320px] gap-8 shadow-md relative z-10 mt-16 lg:mt-0">
+            <div className="bg-[#8ac24c] w-full lg:w-[85%] flex flex-col lg:flex-row items-center justify-between py-8 px-8 lg:pr-16 lg:pl-[280px] xl:pl-[320px] gap-8 shadow-md relative z-10 mt-16 lg:mt-0">
               <h3 className="text-2xl md:text-3xl font-bold text-black max-w-xl leading-snug text-center lg:text-left pt-20 lg:pt-0">
                 Quality food is not just ingredients, but the people and place behind it.
               </h3>
