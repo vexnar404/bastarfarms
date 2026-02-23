@@ -22,6 +22,12 @@ import tamarindchilli1 from "../assets/PRODUCT PAGE/Tamarind Chilli/1.png";
 import tamarindchilli2 from "../assets/PRODUCT PAGE/Tamarind Chilli/2.png";
 import tamarindchilli3 from "../assets/PRODUCT PAGE/Tamarind Chilli/3.jpg";
 
+import hero1 from '../assets/36.png';
+import hero2 from '../assets/37.png';
+import hero3 from '../assets/38.png';
+import hero4 from '../assets/39.png';
+import hero5 from '../assets/40.png';
+
 import icon1 from '../assets/PRODUCT PAGE/ICONS/27.png';
 import icon2 from '../assets/PRODUCT PAGE/ICONS/28.png';
 import icon3 from '../assets/PRODUCT PAGE/ICONS/29.png';

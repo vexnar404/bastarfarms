@@ -109,7 +109,7 @@ function Home() {
                     {slides[index].main}
                   </h1>
                   {slides[index].tagline && (
-                    <p className="text-xl md:text-2xl font-bold text-[#50a72c] mt-4 tracking-wide">
+                    <p className="text-xl md:text-2xl font-semibold text-[#50a72c] mt-4 tracking-wide">
                       {slides[index].tagline}
                     </p>
                   )}
@@ -191,7 +191,7 @@ function Home() {
       </section>
 
       {/* ================= HOUSEHOLD SECTION ================= */}
-      <section className='relative w-full h-screen py-16 px-6 md:px-14'>
+      <section className='relative w-full min-h-screen py-16 px-6 md:px-14'>
         <img 
           src={headerbg} 
           alt="background" 
@@ -202,7 +202,7 @@ function Home() {
           
           <div className='flex flex-col lg:flex-row w-full gap-32 items-center lg:justify-center'>
             {/* Video Container */}
-            <div className="h-[640px] overflow-hidden shadow-inner rounded-3xl flex-shrink-0">
+            <div className="max-h-[640px] overflow-hidden shadow-inner rounded-3xl flex-shrink-0">
                <video src={bfvideo} autoPlay loop muted playsInline className="w-full h-full object-contain" />
             </div>
 
@@ -299,8 +299,8 @@ function Home() {
               clean, and the quality consistent.
             </p>
           </div>
-          <div className="rounded-3xl overflow-hidden shadow-xl w-full border-4 border-[#1a3a1f]">
-            <video src={bf1} alt="Bastar Farms Team" className="w-full h-[300px] md:h-[400px] object-cover" autoPlay muted loop playsInline />
+          <div className="w-[350px] md:w-full mx-auto md:mx-0 h-[300px] md:h-[400px] rounded-3xl overflow-hidden shadow-xl border-4 border-[#1a3a1f]">
+            <video src={bf1} alt="Bastar Farms Team" className="w-full h-full object-cover" autoPlay muted loop playsInline />
           </div>
         </div>
 
@@ -309,7 +309,7 @@ function Home() {
           <div className="relative w-full flex flex-col lg:flex-row items-center justify-end">
             
             {/* The Overlapping Brown Horizontal Oval */}
-            <div className="absolute top-0 -left-8 -translate-y-[60%] lg:top-1/2 lg:-translate-y-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 w-[350px] h-[280px] lg:w-[450px] lg:h-[300px] bg-[#a06822] rounded-[50%] flex items-center justify-center shadow-2xl z-20">
+            <div className="absolute top-4 left-1/2 -translate-y-[60%] lg:top-1/2 lg:-translate-y-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 w-[350px] h-[280px] lg:w-[450px] lg:h-[300px] bg-[#a06822] rounded-[50%] flex items-center justify-center shadow-2xl z-20">
               <img 
                 src={q1} 
                 alt="Products" 
