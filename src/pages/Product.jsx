@@ -32,7 +32,7 @@ import back1 from '../assets/PRODUCT PAGE/Bhel puri/back.png';
 import back2 from '../assets/PRODUCT PAGE/Pani puri/back.png';
 import back3 from '../assets/PRODUCT PAGE/Tamarind Chilli/back.png';
 import back4 from '../assets/PRODUCT PAGE/Tamarind Paste/back.png';
-import back5 from '../assets/PRODUCT PAGE/Tamarind Date/back.png';
+import back5 from '../assets/PRODUCT PAGE/Tamarind date/back.png';
 
 import icon1 from '../assets/PRODUCT PAGE/ICONS/27.png';
 import icon2 from '../assets/PRODUCT PAGE/ICONS/28.png';
