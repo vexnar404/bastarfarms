@@ -85,7 +85,7 @@ function AboutUs() {
 
             {/* Stats Section - Responsive Flex */}
             <section className='bg-[#50a72c] py-12 text-white px-6'>
-                <div className='max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:flex gap-8 items-center text-center md:text-left'>
+                <div className='max-w-7xl mx-auto grid grid-cols-2 lg:flex gap-8 items-center text-center md:text-left'>
                     <div className="flex flex-col md:flex-row items-center gap-4">
                         <img src={i1} alt="" className='h-16 w-16' />
                         <h2 className='text-sm md:text-lg'>Tribal families supported <br className='hidden md:block'/>through employment</h2>

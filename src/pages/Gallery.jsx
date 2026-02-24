@@ -58,25 +58,41 @@ import spmoments4 from '../assets/gallery/specialmoments/4.mp4';
 
 
 // --- DATA ARRAYS ---
-const inauguarationData = [
-  { id: 1, src: inauguration1, alt: 'Chief Minister viewing facility' },
-  { id: 2, src: inauguration2, alt: 'Chief Minister at control panel' },
-  { id: 3, src: inauguration3, alt: 'Chief Minister with team' },
-  { id: 4, src: inauguration4, alt: 'Team seated at event' },
-  { id: 5, src: inauguration5, alt: 'Plaque unveiling' },
-  { id: 6, src: inauguration6, alt: 'Presenting memento' },
-];
-
-const dispatchData = [
-  { id: 1, src: dispatch1, alt: 'Group photo outdoors' },
-  { id: 2, src: dispatch2, alt: 'Kossher team indoors' },
-  { id: 3, src: dispatch3, alt: 'Team outdoors' },
-  { id: 4, src: dispatch4, alt: 'Inspecting products' },
-  { id: 5, src: dispatch5, alt: 'Truck dispatch' },
-  { id: 6, src: dispatch6, alt: 'Loading boxes' },
-];
-
 const eventsData = [
+  {
+    id: 'inauguration',
+    title: 'Inauguration of Bastar Farms Facility',
+    date: 'December 2022',
+    description: <>Inauguration of our food processing facility in Bastar by Hon'ble Chief <br className="hidden md:block" /> Minister of Chhattisgarh, Shri Bhupesh Baghel.</>,
+    borderColor: '#2a491d', 
+    hasBorder: true,
+    gridClass: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3', // 3 images per row
+    images: [
+      { src: inauguration1, alt: 'Chief Minister viewing facility' },
+      { src: inauguration2, alt: 'Chief Minister at control panel' },
+      { src: inauguration3, alt: 'Chief Minister with team' },
+      { src: inauguration4, alt: 'Team seated at event' },
+      { src: inauguration5, alt: 'Plaque unveiling' },
+      { src: inauguration6, alt: 'Presenting memento' },
+    ]
+  },
+  {
+    id: 'dispatch',
+    title: 'First Tamarind Consignment Dispatch',
+    date: 'January 2022',
+    description: <>Ceremony held in the presence of Hon. MP Shri Deepak Baij, District Collector <br className="hidden md:block" /> Shri Chandan Kumar, SDM Shri Mahesh Kashyap, and senior officials.</>,
+    borderColor: '#50a72c', 
+    hasBorder: true,
+    gridClass: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3', // 3 images per row
+    images: [
+      { src: dispatch1, alt: 'Group photo outdoors' },
+      { src: dispatch2, alt: 'Kossher team indoors' },
+      { src: dispatch3, alt: 'Team outdoors' },
+      { src: dispatch4, alt: 'Inspecting products' },
+      { src: dispatch5, alt: 'Truck dispatch' },
+      { src: dispatch6, alt: 'Loading boxes' },
+    ]
+  },
   {
     id: 'flower-makers',
     title: 'Tamarind Flower Makers Visit',
@@ -194,7 +210,7 @@ const SectionHeader = ({ title, description, date, hasBorder = true }) => (
       )}
     </div>
     <div>
-      <h1 className="text-4xl md:text-5xl font-black text-black mb-3 md:mb-4">{title}</h1>
+      <h1 className="text-3xl md:text-5xl font-black text-black mb-3 md:mb-4">{title}</h1>
       <p className="text-[#2a491d] text-lg font-bold leading-tight max-w-4xl">{description}</p>
     </div>
   </div>
@@ -224,45 +240,8 @@ function Gallery() {
               <h1 className='text-4xl md:text-6xl font-bold'>Happy Moments at Bastar Farms</h1>
           </div>
       </section>
-      
-      {/* 1. INAUGURATION SECTION */}
-      <section className="bg-white py-16 px-6 md:px-20 font-sans max-w-7xl mx-auto">
-        <SectionHeader 
-          title="Inauguration of Bastar Farms Facility"
-          description={<>Inauguration of our food processing facility in Bastar by Hon'ble Chief <br className="hidden md:block" /> Minister of Chhattisgarh, Shri Bhupesh Baghel.</>}
-          date="December 2022"
-          hasBorder={true}
-        />
-        {/* Strictly 3 images per row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {inauguarationData.map((img) => (
-            <div key={img.id} className="relative h-64 md:h-80 overflow-hidden rounded-2xl border-[4px] border-[#2a491d] shadow-lg group">
-              <MediaRenderer src={img.src} alt={img.alt} />
-              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-          ))}
-        </div>
-      </section>
 
-      {/* 2. DISPATCH SECTION */}
-      <section className="bg-white py-16 px-6 md:px-20 font-sans max-w-7xl mx-auto">
-        <SectionHeader 
-          title="First Tamarind Consignment Dispatch"
-          description={<>Ceremony held in the presence of Hon. MP Shri Deepak Baij, District Collector <br className="hidden md:block" /> Shri Chandan Kumar, SDM Shri Mahesh Kashyap, and senior officials.</>}
-          date="January 2022"
-          hasBorder={true}
-        />
-        {/* Simplified strictly to 3 images per row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {dispatchData.map((img) => (
-            <div key={img.id} className="relative h-64 md:h-80 overflow-hidden rounded-2xl border-[4px] border-[#50a72c] shadow-sm group">
-              <MediaRenderer src={img.src} alt={img.alt} />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 3. TIMELINE EVENTS SECTION */}
+      {/* 1. TIMELINE EVENTS SECTION (Now includes Inauguration & Dispatch) */}
       <section className="bg-white py-16 px-6 md:px-20 font-sans max-w-7xl mx-auto space-y-24">
         {eventsData.map((event) => (
           <div key={event.id}>
@@ -277,6 +256,10 @@ function Gallery() {
               {event.images.map((img, idx) => (
                 <div key={idx} className="relative h-64 md:h-80 overflow-hidden rounded-xl border-[4px] shadow-sm group" style={{ borderColor: event.borderColor }}>
                   <MediaRenderer src={img.src} alt={img.alt} />
+                  {/* Subtle overlay effect added back for the Inauguration images based on your original request */}
+                  {event.id === 'inauguration' && (
+                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  )}
                 </div>
               ))}
             </div>
@@ -284,13 +267,13 @@ function Gallery() {
         ))}
       </section>
 
-      {/* 4. SPECIAL MOMENTS SECTION (Masonry Layout remains as is) */}
+      {/* 2. SPECIAL MOMENTS SECTION (Masonry Layout remains as is) */}
       <section className="bg-white py-16 px-6 md:px-20 font-sans max-w-7xl mx-auto pt-8">
         <h1 className="text-4xl md:text-5xl font-bold text-black mb-10">More Special Moments at Bastar</h1>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
           {SpecialMoments.map((item, idx) => (
             <div key={idx} className={`flex flex-col ${item.gridCol}`}>
-              <div className="relative overflow-hidden rounded-2xl border-[4px] border-[#6b4226] shadow-md group h-64 md:h-80 lg:h-[400px] w-full">
+              <div className="relative overflow-hidden rounded-2xl border-[4px] border-[#6b4226] shadow-md group h-96 lg:h-[400px] w-full">
                 <MediaRenderer src={item.src} alt={item.alt} />
               </div>
               <p className="text-center text-[#1a3a1f] font-bold text-lg mt-4 px-2">{item.caption}</p>

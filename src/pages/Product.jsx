@@ -28,6 +28,12 @@ import hero3 from '../assets/38.png';
 import hero4 from '../assets/39.png';
 import hero5 from '../assets/40.png';
 
+import back1 from '../assets/PRODUCT PAGE/Bhel puri/back.png';
+import back2 from '../assets/PRODUCT PAGE/Pani puri/back.png';
+import back3 from '../assets/PRODUCT PAGE/Tamarind Chilli/back.png';
+import back4 from '../assets/PRODUCT PAGE/Tamarind Paste/back.png';
+import back5 from '../assets/PRODUCT PAGE/Tamarind Date/back.png';
+
 import icon1 from '../assets/PRODUCT PAGE/ICONS/27.png';
 import icon2 from '../assets/PRODUCT PAGE/ICONS/28.png';
 import icon3 from '../assets/PRODUCT PAGE/ICONS/29.png';
@@ -45,7 +51,11 @@ const imgpanih = [panipuri1];
 const imgdateh = [tamarinddate1];
 const imgchillih = [tamarindchilli1];
 
-
+const imgpasteb = [back4];
+const imgbhelb = [back1];
+const imgpanib = [back2];
+const imgdateb = [back5];
+const imgchillib = [back3];
 
 // --- GLOBAL STATIC DATA (Optimized to prevent re-renders) ---
 
@@ -76,6 +86,7 @@ const productsData = {
   'Tamarind Paste': {
     images: imgPaste,
     imagesh: imgpasteh,
+    imagesb: imgpasteb,
     title: 'Tamarind Paste',
     tagline: 'A perfect balance of sour and spice to bring your recipes to life.',
     description: [
@@ -105,6 +116,7 @@ const productsData = {
   'Tamarind Date': {
     images: imgDate,
     imagesh: imgdateh,
+    imagesb: imgdateb,
     title: 'Tamarind Date Chutney',
     tagline: 'A rich blend of sweet dates and tangy tamarind crafted to enhance the taste of snacks and chaat.',
     description: [
@@ -135,6 +147,7 @@ const productsData = {
   'Bhel Puri': {
     images: imgBhel,
     imagesh: imgbhelh,
+    imagesb: imgbhelb,
     title: 'Tamarind Bhel Puri',
     tagline: 'A tangy sweet chutney crafted to bring the authentic street food flavour to every plate of bhel puri.',
     description: [
@@ -165,6 +178,7 @@ const productsData = {
   'Pani Puri': {
     images: imgPani,
     imagesh: imgpanih,
+    imagesb: imgpanib,
     title: 'Tamarind Pani Puri',
     tagline: 'A sweet tangy chutney crafted to deliver authentic street food flavour in every pani puri bite.',
     description: [
@@ -195,6 +209,7 @@ const productsData = {
   'Tamarind Chilli': {
     images: imgChilli,
     imagesh: imgchillih,
+    imagesb: imgchillib,
     title: 'Tamarind Chilli',
     tagline: 'A bold blend of tangy tamarind and chilli crafted to add instant flavour to everyday cooking.',
     description: [
@@ -305,9 +320,8 @@ const ProductPage = () => {
         </div>
       </section> */}
 
-      <section className="hidden md:flex w-full bg-[#2a491d] py-12 border-gray-200">
+      <section className="hidden md:flex w-full bg-[#2a491d] py-4 border-gray-200">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-black text-white mb-12">View Other Products</h2>
           
           <div className="flex flex-wrap justify-center gap-8">
             {Object.keys(productsData)
@@ -316,7 +330,7 @@ const ProductPage = () => {
                 <button 
                   key={key} 
                   onClick={() => handleProductSwitch(key)}
-                  className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 w-48 group"
+                  className="flex flex-col items-center bg-white p-3 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 w-48 group"
                 >
                   <img 
                     src={productsData[key].imagesh[0]} 
@@ -343,11 +357,11 @@ const ProductPage = () => {
           {/* ================= 1. HERO SECTION ================= */}
           <section className="max-w-7xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center justify-center gap-12 lg:gap-20">
             {/* Left: Main Image */}
-            <div className="w-full md:w-1/2 relative bg-[#fcfdfa] rounded-3xl border border-gray-100 h-[400px]">
+            <div className="w-full md:w-1/2 relative bg-[#fcfdfa] rounded-3xl border border-gray-100 h-[450px]">
               <img 
                 src={currentProduct.images[mainImgIndex]} 
                 alt={currentProduct.title} 
-                className="relative w-full h-full object-contain transition-all duration-300"
+                className="relative w-full h-full object-cover transition-all duration-300"
               />
             </div>
 
@@ -391,7 +405,7 @@ const ProductPage = () => {
           </section>
 
           {/* ================= 3. INGREDIENTS & SPECS ================= */}
-          <section className="max-w-7xl mx-auto px-6 py-16 md:py-24 flex flex-col md:flex-row gap-12 items-center">
+          <section className="max-w-7xl mx-auto px-6 py-16 md:py-24 flex flex-col md:flex-row gap-8 items-center">
             <div className="w-full md:w-2/3 text-center md:text-left">
               <h2 className="text-lg md:text-xl font-bold text-gray-800 tracking-wider mb-2">Ingredients and Specifications</h2>
               <h1 className="text-4xl md:text-5xl font-black text-[#1a3a1f]">What's in The Blend</h1>
@@ -408,7 +422,7 @@ const ProductPage = () => {
 
           {/* ================= 4. DARK GREEN DETAILS SECTION ================= */}
           <section className="w-full bg-[#416a30] text-white py-16 md:py-24 relative overflow-hidden">
-            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 items-center relative z-10">
+            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-4 items-center relative z-10">
               
               {/* Left Column */}
               <div className="space-y-12">
@@ -427,11 +441,11 @@ const ProductPage = () => {
               </div>
 
               {/* Center Image */}
-              <div className="flex justify-center items-center">
+              <div className="w-[500px]">
                 <img 
-                  src={currentProduct.images[1]} 
+                  src={currentProduct.imagesb[0]} 
                   alt={currentProduct.title} 
-                  className="w-[500px] drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                  className="object-fit drop-shadow-2xl hover:scale-105 transition-transform duration-500"
                 />
               </div>
 
@@ -504,9 +518,8 @@ const ProductPage = () => {
       </AnimatePresence>
 
       {/* ================= 6. VIEW OTHER PRODUCTS (Navigation) ================= */}
-      <section className="w-full bg-[#2a491d] py-12 border-b border-gray-200">
+      <section className="hidden md:flex w-full bg-[#2a491d] py-4 border-gray-200">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-black text-white mb-12">View Other Products</h2>
           
           <div className="flex flex-wrap justify-center gap-8">
             {Object.keys(productsData)
@@ -515,7 +528,7 @@ const ProductPage = () => {
                 <button 
                   key={key} 
                   onClick={() => handleProductSwitch(key)}
-                  className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 w-48 group"
+                  className="flex flex-col items-center bg-white p-3 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 w-48 group"
                 >
                   <img 
                     src={productsData[key].imagesh[0]} 

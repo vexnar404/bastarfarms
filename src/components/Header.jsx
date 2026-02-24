@@ -126,9 +126,9 @@ function Header() {
 
           {/* Contact Button (Desktop) */}
           <div className="hidden lg:flex ml-auto mr-10">
-            <Link to="/contact" className="px-7 py-2.5 rounded-full bg-[#50a72c] text-white text-sm font-bold hover:shadow-lg hover:-translate-y-0.5 transition-all">
+            <a href="tel:918482950500" className="px-7 py-2.5 rounded-full bg-[#50a72c] text-white text-sm font-bold hover:shadow-lg hover:-translate-y-0.5 transition-all">
               CONTACT US
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -189,9 +189,9 @@ function Header() {
                     </motion.div>
                   ))}
                   <motion.div variants={itemVariants} className="pt-4">
-                    <Link to="/contact" onClick={closeMobileMenu} className="block w-full text-center py-4 rounded-xl bg-[#2a491d] text-white font-bold">
+                    <a href="tel:918482950500" onClick={closeMobileMenu} className="block w-full text-center py-4 rounded-xl bg-[#2a491d] text-white font-bold">
                       Contact Us
-                    </Link>
+                    </a>
                   </motion.div>
                 </nav>
 

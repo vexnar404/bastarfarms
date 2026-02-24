@@ -82,7 +82,7 @@ function Home() {
     <div className='overflow-x-hidden'>
       
       {/* ================= HERO SECTION ================= */}
-      <section className='relative w-full min-h-[600px] lg:min-h-[700px] py-10 md:py-24 flex items-center'>
+      <section className='relative w-full min-h-[600px] lg:min-h-[700px] py-4 md:py-24 flex items-center'>
         <img 
           src={headerbg} 
           alt="background" 
@@ -90,9 +90,9 @@ function Home() {
         />
         {/* Added max-w-7xl mx-auto to center content perfectly on ultra-wides */}
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center w-full px-6 gap-10 z-10">
-          <div className="flex flex-col items-center lg:items-start w-full lg:w-1/2 gap-6 text-center lg:text-left">
+          <div className="flex flex-col items-center lg:items-start w-full lg:w-1/2 gap-2 text-center lg:text-left">
             
-            <div className="min-h-[220px] md:min-h-[300px] flex flex-col justify-center w-full"> 
+            <div className="min-h-[220px] flex flex-col justify-center w-full"> 
               <AnimatePresence mode="wait">
                 <motion.div
                   key={index}
@@ -102,14 +102,14 @@ function Home() {
                   transition={{ duration: 0.8 }}
                   className="w-full"
                 >
-                  <h2 className='text-2xl md:text-3xl font-medium'>
+                  <h2 className='text-2xl md:text-2xl font-medium'>
                     {slides[index].sub}
                   </h2>
-                  <h1 className='text-5xl md:text-8xl text-[#2a491d] font-bold leading-tight mt-2'>
+                  <h1 className='text-5xl md:text-7xl text-[#2a491d] font-bold leading-tight mt-2'>
                     {slides[index].main}
                   </h1>
                   {slides[index].tagline && (
-                    <p className="text-xl md:text-2xl font-semibold text-[#50a72c] mt-4 tracking-wide">
+                    <p className="text-xl md:text-2xl font-semibold text-[#50a72c] mt-2 tracking-wide">
                       {slides[index].tagline}
                     </p>
                   )}
@@ -119,12 +119,12 @@ function Home() {
 
             <div className='flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-8 w-full'>
               <Link to="/products">
-                <button className='bg-[#2a491d] text-white font-semibold text-xl md:text-2xl px-8 py-3 rounded-full hover:bg-[#1e3515] transition-all'>
+                <button className='bg-[#2a491d] text-white font-semibold text-lg md:text-xl px-6 py-3 rounded-full hover:bg-[#1e3515] transition-all'>
                   View Products
                 </button>
               </Link>
               <Link to="/about-us">
-                <button className='bg-[#ffbd3c] text-white font-semibold text-xl md:text-2xl px-8 py-3 rounded-full hover:bg-[#e6a82a] transition-all'>
+                <button className='bg-[#ffbd3c] text-white font-semibold text-lg md:text-xl px-6 py-3 rounded-full hover:bg-[#e6a82a] transition-all'>
                   Our Story
                 </button>
               </Link>
@@ -191,18 +191,18 @@ function Home() {
       </section>
 
       {/* ================= HOUSEHOLD SECTION ================= */}
-      <section className='relative w-full min-h-screen py-16 px-6 md:px-14'>
+      <section className='relative w-full min-h-screen py-8 px-6 md:px-14 md:bg-transparent bg-[#1a3a1f] '>
         <img 
           src={headerbg} 
           alt="background" 
-          className="absolute inset-0 w-full h-full object-cover -z-10 bg-[#1a3a1f]" 
+          className="hidden md:block absolute inset-0 w-full h-full object-cover -z-10 bg-[#1a3a1f]" 
         />
         <div className="max-w-7xl mx-auto w-full z-10">
-          <h1 className='text-4xl md:text-6xl text-white font-bold text-center mb-6'>Authentic Taste, Everyday Reliability</h1>
+          <h1 className='text-4xl md:text-6xl text-[#ffc34c] font-bold text-center mb-8'>Authentic Taste, Everyday Reliability</h1>
           
-          <div className='flex flex-col lg:flex-row w-full gap-32 items-center lg:justify-center'>
+          <div className='flex flex-col lg:flex-row w-full gap-16 items-center lg:justify-center'>
             {/* Video Container */}
-            <div className="max-h-[640px] lg:h-[640px] overflow-hidden shadow-inner rounded-3xl flex-shrink-0">
+            <div className="h-[550px] lg:h-[640px] overflow-hidden shadow-inner rounded-3xl flex-shrink-0 lg:-ml-24">
                <video src={bfvideo} autoPlay loop muted playsInline className="w-full h-full object-contain" />
             </div>
 
@@ -242,7 +242,7 @@ function Home() {
       </section>
 
       {/* ================= WHY CHOOSE SECTION ================= */}
-      <section className="relative w-full h-screen bg-[#1a3a1f] overflow-hidden flex items-center py-20 px-6">
+      <section className="relative w-full h-[600px] bg-[#1a3a1f] overflow-hidden flex items-center py-20 px-6">
         <div className="max-w-7xl mx-auto w-full relative flex items-center">
           
           <div className="z-10 w-full lg:w-[55%] text-white text-center lg:text-left">
@@ -287,7 +287,7 @@ function Home() {
         {/* Top Split Area */}
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center mb-20 md:px-12">
           <div className="text-center lg:text-left">
-            <h2 className="text-3xl md:text-6xl font-bold text-amber-800 mb-6 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-bold text-amber-800 mb-6 leading-tight">
               How things are done <br /> at Bastar Farms
             </h2>
             <p className="text-gray-700 text-xl lg:text-2xl px-2 lg:pr-10 leading-relaxed">
@@ -339,9 +339,9 @@ function Home() {
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-2xl md:text-4xl font-black uppercase mb-4 text-[#1a3a1f]">Working with the communities of Bastar</h2>
           <p className="text-gray-700 text-lg mb-12 max-w-3xl mx-auto">Our processing unit in Lohandiguda operates with a one hundred percent local and tribal workforce.</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
             {images.map((img, index) => (
-              <div key={index} className="aspect-square overflow-hidden border-[3px] border-[#1a3a1f] rounded-lg shadow-sm">
+              <div key={index} className="h-[400px] w-auto overflow-hidden border-[3px] border-[#1a3a1f] rounded-lg shadow-sm">
                 <img src={img.src} alt={img.alt} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
               </div>
             ))}
