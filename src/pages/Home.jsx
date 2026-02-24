@@ -119,12 +119,12 @@ function Home() {
 
             <div className='flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-8 w-full '>
               <Link to="/products">
-                <button className='bg-[#2a491d] text-white font-bold font-manrope text-sm md:text-xl px-3 py-2 rounded-full hover:bg-[#1e3515] transition-all'>
+                <button className='bg-[#2a491d] text-white font-bold font-manrope text-sm md:text-xl px-3 py-2 md:px-6 md:py-3 rounded-full hover:bg-[#1e3515] transition-all'>
                   View Products
                 </button>
               </Link>
               <Link to="/about-us">
-                <button className='bg-[#ffbd3c] text-white font-bold font-manrope text-sm md:text-xl px-3 py-2 rounded-full hover:bg-[#e6a82a] transition-all'>
+                <button className='bg-[#ffbd3c] text-white font-bold font-manrope text-sm md:text-xl px-3 py-2 md:px-6 md:py-3 rounded-full hover:bg-[#e6a82a] transition-all'>
                   Our Story
                 </button>
               </Link>
