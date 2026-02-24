@@ -537,10 +537,15 @@ const ProductPage = () => {
       {/* ================= 6. VIEW OTHER PRODUCTS (Navigation) ================= */}
       
 
-      <section className="hidden md:flex w-full bg-white py-4 border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 text-center">
+      <section className="flex w-full bg-white py-4 border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 text-center w-full">
           
-          <div className="flex flex-wrap justify-center gap-8">
+          {/* 1. overflow-x-auto allows horizontal scrolling 
+            2. md:flex-wrap restores the grid on desktop 
+            3. snap-x snap-mandatory adds smooth scrolling on phones
+            4. The custom brackets hide the ugly scrollbar!
+          */}
+          <div className="flex md:flex-wrap md:justify-center gap-4 md:gap-8 overflow-x-auto pb-6 pt-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {Object.keys(productsData)
               .filter(key => key !== activeTab)
               .map(key => (
@@ -548,7 +553,8 @@ const ProductPage = () => {
                   key={key} 
                   onClick={() => handleProductSwitch(key)}
                   style={{ backgroundColor: productsData[key].bgColor }}
-                  className="flex flex-col items-center bg-white p-3 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 w-48 group"
+                  // Added flex-shrink-0 so cards don't squish, and snap-center to align them when swiping
+                  className="flex flex-col items-center p-3 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 w-48 flex-shrink-0 snap-center group"
                 >
                   <img 
                     src={productsData[key].imagesh[0]} 
@@ -560,6 +566,7 @@ const ProductPage = () => {
                 </button>
             ))}
           </div>
+
         </div>
       </section>
 
