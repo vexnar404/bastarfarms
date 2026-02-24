@@ -90,7 +90,7 @@ function Home() {
         />
         {/* Added max-w-7xl mx-auto to center content perfectly on ultra-wides */}
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center w-full px-6 gap-10 z-10">
-          <div className="flex flex-col items-center lg:items-start w-full lg:w-1/2 gap-2 text-center lg:text-left">
+          <div className="flex flex-col items-center justify-center w-full lg:w-1/2 gap-4 text-center lg:text-left">
             
             <div className="min-h-[220px] flex flex-col justify-center w-full"> 
               <AnimatePresence mode="wait">
@@ -208,7 +208,7 @@ function Home() {
 
             {/* List Content */}
             <div className="flex flex-col gap-4 text-center lg:text-left">
-              <h1 className='text-3xl md:text-5xl font-bold leading-tight text-slate-200'>For households and <br /> professional kitchens</h1>
+              <h1 className='text-3xl md:text-4xl font-bold leading-tight text-slate-200'>For households and <br /> professional kitchens</h1>
               <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4 text-left'>
                 {[
                   { icon: icon1, t: "Consistent taste, Ready to Use", p: "So your food tastes the same every time." },
@@ -282,7 +282,7 @@ function Home() {
       </section>
 
       {/* ================= HOW THINGS ARE DONE & BULLETPROOF BANNER ================= */}
-      <section className="bg-white py-16 relative overflow-hidden">
+      <section className="bg-white py-8 relative overflow-hidden">
         
         {/* Top Split Area */}
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center mb-20 md:px-12">
@@ -290,7 +290,7 @@ function Home() {
             <h2 className="text-3xl md:text-5xl font-bold text-amber-800 mb-6 leading-tight">
               How things are done <br /> at Bastar Farms
             </h2>
-            <p className="text-gray-700 text-xl lg:text-2xl px-2 lg:pr-10 leading-relaxed">
+            <p className="text-gray-700 text-lg lg:text-2xl px-4 md:px-0 lg:pr-10 leading-relaxed">
               At Bastar Farms, tamarind is sourced directly from
               the forests around Bastar and processed at our
               Lohandiguda unit. The same people who live here
@@ -335,7 +335,7 @@ function Home() {
       </section>
 
       {/* ================= COMMUNITY GRID ================= */}
-      <section className="bg-white py-4 lg:py-16 px-6">
+      <section className="bg-white pb-8  px-6">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-2xl md:text-4xl font-black uppercase mb-4 text-[#1a3a1f]">Working with the communities of Bastar</h2>
           <p className="text-gray-700 text-lg mb-12 max-w-3xl mx-auto">Our processing unit in Lohandiguda operates with a one hundred percent local and tribal workforce.</p>

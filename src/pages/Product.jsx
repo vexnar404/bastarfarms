@@ -355,15 +355,27 @@ const ProductPage = () => {
         >
           
           {/* ================= 1. HERO SECTION ================= */}
-          <section className="max-w-7xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center justify-center gap-12 lg:gap-20">
+          <section className="max-w-7xl mx-auto px-6 pb-6 md:py-16 flex flex-col md:flex-row items-center justify-center gap-4 lg:gap-20">
             {/* Left: Main Image */}
-            <div className="w-full md:w-1/2 relative bg-[#fcfdfa] rounded-3xl border border-gray-100 h-[450px]">
+            <div className="w-full md:w-1/2 relative rounded-3xl h-[450px] overflow-hidden">
               <img 
                 src={currentProduct.images[mainImgIndex]} 
                 alt={currentProduct.title} 
-                className="relative w-full h-full object-cover transition-all duration-300"
+                className="relative w-full h-full object-contain transition-all duration-300"
               />
             </div>
+            <div className="flex flex-wrap md:hidden gap-3 md:gap-4">
+                {currentProduct.images.map((img, idx) => (
+                  <button 
+                    key={idx} 
+                    onClick={() => setMainImgIndex(idx)}
+                    className={`w-20 h-20 md:w-24 md:h-24 p-2 rounded-xl border-2 transition-all duration-300 bg-white shadow-sm flex items-center justify-center flex-shrink-0
+                      ${mainImgIndex === idx ? 'border-[#50a72c] scale-105 shadow-md' : 'border-gray-200 hover:border-[#50a72c]'}`}
+                  >
+                    <img src={img} alt={`Thumbnail ${idx}`} className="w-full h-full object-contain" />
+                  </button>
+                ))}
+              </div>
 
             {/* Right: Title, Tagline, Thumbnails */}
             <div className="w-full md:w-1/2 flex flex-col items-start text-left">
@@ -375,7 +387,7 @@ const ProductPage = () => {
               </p>
 
               {/* Thumbnail Gallery */}
-              <div className="flex flex-wrap gap-3 md:gap-4 mt-2">
+              <div className="hidden md:flex flex-wrap gap-3 md:gap-4 mt-2">
                 {currentProduct.images.map((img, idx) => (
                   <button 
                     key={idx} 
@@ -412,7 +424,7 @@ const ProductPage = () => {
             </div>
             
             <div className="w-full md:w-2/3 border-l-4 border-[#50a72c] pl-6 md:pl-10">
-              <ul className="space-y-4">
+              <ul className="space-y-2">
                 {currentProduct.description.map((item, idx) => (
                   <SpecListItem key={idx} text={item} />
                 ))}
@@ -441,11 +453,11 @@ const ProductPage = () => {
               </div>
 
               {/* Center Image */}
-              <div className="w-[500px]">
+              <div className='w-full'>
                 <img 
                   src={currentProduct.imagesb[0]} 
                   alt={currentProduct.title} 
-                  className="object-fit drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                  className="w-full flex items-center justify-center object-cover drop-shadow-2xl hover:scale-105 transition-transform duration-500"
                 />
               </div>
 
