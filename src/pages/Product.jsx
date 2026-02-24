@@ -87,6 +87,7 @@ const productsData = {
     images: imgPaste,
     imagesh: imgpasteh,
     imagesb: imgpasteb,
+    bgColor: '#2a491d',
     title: 'Tamarind Paste',
     tagline: 'A perfect balance of sour and spice to bring your recipes to life.',
     description: [
@@ -117,6 +118,7 @@ const productsData = {
     images: imgDate,
     imagesh: imgdateh,
     imagesb: imgdateb,
+    bgColor: '#ffbd3c',
     title: 'Tamarind Date Chutney',
     tagline: 'A rich blend of sweet dates and tangy tamarind crafted to enhance the taste of snacks and chaat.',
     description: [
@@ -148,6 +150,7 @@ const productsData = {
     images: imgBhel,
     imagesh: imgbhelh,
     imagesb: imgbhelb,
+    bgColor: '#50a72c',
     title: 'Tamarind Bhel Puri',
     tagline: 'A tangy sweet chutney crafted to bring the authentic street food flavour to every plate of bhel puri.',
     description: [
@@ -179,6 +182,7 @@ const productsData = {
     images: imgPani,
     imagesh: imgpanih,
     imagesb: imgpanib,
+    bgColor: '#9c6802',
     title: 'Tamarind Pani Puri',
     tagline: 'A sweet tangy chutney crafted to deliver authentic street food flavour in every pani puri bite.',
     description: [
@@ -210,6 +214,7 @@ const productsData = {
     images: imgChilli,
     imagesh: imgchillih,
     imagesb: imgchillib,
+    bgColor: '#2a491d',
     title: 'Tamarind Chilli',
     tagline: 'A bold blend of tangy tamarind and chilli crafted to add instant flavour to everyday cooking.',
     description: [
@@ -530,7 +535,9 @@ const ProductPage = () => {
       </AnimatePresence>
 
       {/* ================= 6. VIEW OTHER PRODUCTS (Navigation) ================= */}
-      <section className="hidden md:flex w-full bg-[#2a491d] py-4 border-gray-200">
+      
+
+      <section className="hidden md:flex w-full bg-white py-4 border-gray-200">
         <div className="max-w-7xl mx-auto px-6 text-center">
           
           <div className="flex flex-wrap justify-center gap-8">
@@ -540,6 +547,7 @@ const ProductPage = () => {
                 <button 
                   key={key} 
                   onClick={() => handleProductSwitch(key)}
+                  style={{ backgroundColor: productsData[key].bgColor }}
                   className="flex flex-col items-center bg-white p-3 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 w-48 group"
                 >
                   <img 
@@ -547,7 +555,7 @@ const ProductPage = () => {
                     alt={key} 
                     className="h-32 object-contain mb-4 group-hover:scale-110 transition-transform duration-300" 
                   />
-                  <h3 className="font-extrabold text-[#1a3a1f] text-lg leading-tight">{key}</h3>
+                  <h3 className="font-extrabold text-white text-lg leading-tight">{key}</h3>
                   <span className="text-[#50a72c] text-sm font-bold mt-2 opacity-0 group-hover:opacity-100 transition-opacity">View Details →</span>
                 </button>
             ))}

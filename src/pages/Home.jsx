@@ -82,15 +82,15 @@ function Home() {
     <div className='overflow-x-hidden'>
       
       {/* ================= HERO SECTION ================= */}
-      <section className='relative w-full min-h-[600px] lg:min-h-[700px] py-4 md:py-24 flex items-center'>
+      <section className='relative w-full min-h-[650px] lg:min-h-[700px] py-4 md:py-24 flex items-center'>
         <img 
           src={headerbg} 
           alt="background" 
           className="absolute inset-0 w-full h-full object-cover -z-10 bg-[#f2f2f2]" 
         />
         {/* Added max-w-7xl mx-auto to center content perfectly on ultra-wides */}
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center w-full px-6 gap-10 z-10">
-          <div className="flex flex-col items-center justify-center w-full lg:w-1/2 gap-4 text-center lg:text-left">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center w-full px-6 gap-6 z-10">
+          <div className="flex flex-col items-center justify-center w-full lg:w-1/2 md:gap-4 text-center lg:text-left">
             
             <div className="min-h-[220px] flex flex-col justify-center w-full"> 
               <AnimatePresence mode="wait">
@@ -102,14 +102,14 @@ function Home() {
                   transition={{ duration: 0.8 }}
                   className="w-full"
                 >
-                  <h2 className='text-2xl md:text-2xl font-medium'>
+                  <h2 className='text-xl md:text-2xl font-medium font-caveat'>
                     {slides[index].sub}
                   </h2>
-                  <h1 className='text-5xl md:text-7xl text-[#2a491d] font-bold leading-tight mt-2'>
+                  <h1 className='text-5xl md:text-7xl text-[#2a491d] font-bold font-manrope leading-none'>
                     {slides[index].main}
                   </h1>
                   {slides[index].tagline && (
-                    <p className="text-xl md:text-2xl font-semibold text-[#50a72c] mt-2 tracking-wide">
+                    <p className="text-xl md:text-2xl font-semibold font-caveat text-[#50a72c] tracking-wide">
                       {slides[index].tagline}
                     </p>
                   )}
@@ -117,14 +117,14 @@ function Home() {
               </AnimatePresence>
             </div>
 
-            <div className='flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-8 w-full'>
+            <div className='flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-8 w-full '>
               <Link to="/products">
-                <button className='bg-[#2a491d] text-white font-semibold text-lg md:text-xl px-6 py-3 rounded-full hover:bg-[#1e3515] transition-all'>
+                <button className='bg-[#2a491d] text-white font-bold font-manrope text-sm md:text-xl px-3 py-2 rounded-full hover:bg-[#1e3515] transition-all'>
                   View Products
                 </button>
               </Link>
               <Link to="/about-us">
-                <button className='bg-[#ffbd3c] text-white font-semibold text-lg md:text-xl px-6 py-3 rounded-full hover:bg-[#e6a82a] transition-all'>
+                <button className='bg-[#ffbd3c] text-white font-bold font-manrope text-sm md:text-xl px-3 py-2 rounded-full hover:bg-[#e6a82a] transition-all'>
                   Our Story
                 </button>
               </Link>
@@ -261,14 +261,14 @@ function Home() {
           </div>
 
           {/* Decorative Diamonds anchored to the screen edge so they stay flush right */}
-          <div className="absolute top-1/2 -right-48 -translate-y-1/2 hidden lg:block opacity-20 lg:opacity-100 pointer-events-none">
-            <div className="relative w-[650px] h-[650px] rotate-45 rounded-[100px] bg-[#142d19] overflow-hidden shadow-2xl border-[15px] border-[#1a3a1f]">
+          <div className="absolute top-1/2 -right-72 -translate-y-1/2 hidden lg:block opacity-20 lg:opacity-100 pointer-events-none">
+            <div className="relative w-[900px] h-[900px] rotate-45 rounded-[100px] overflow-hidden ">
               <div className="grid grid-cols-2 grid-rows-2 w-full h-full gap-6 p-6">
                 <div className="relative overflow-hidden rounded-[40px] bg-[#142d19]">
                   <img src={tamarindTreeImg} alt="Tamarind" className="absolute top-1/2 left-1/2 w-[210%] h-[210%] max-w-none object-cover -translate-x-1/2 -translate-y-1/2 -rotate-45" />
                 </div>
                 <div className="bg-[#2d4d44] rounded-[40px] shadow-lg" />
-                <div className="flex items-center justify-center">
+                <div className="flex items-start justify-end">
                   <div className="w-40 h-40 bg-[#f4d06f] rounded-[40px] shadow-xl" />
                 </div>
                 <div className="relative overflow-hidden rounded-[40px] bg-[#142d19]">
