@@ -252,7 +252,7 @@ function Gallery() {
       </section>
 
       {/* 1. TIMELINE EVENTS SECTION (Now includes Inauguration & Dispatch) */}
-      <section className="bg-white py-16 px-6 md:px-20 font-sans max-w-7xl mx-auto space-y-24">
+      <section className="bg-white py-16 px-6 md:px-20 max-w-7xl mx-auto space-y-24">
         {eventsData.map((event) => (
           <div key={event.id}>
             <SectionHeader 
@@ -286,7 +286,7 @@ function Gallery() {
       </section>
 
       {/* 2. SPECIAL MOMENTS SECTION (Masonry Layout remains as is) */}
-      <section className="bg-white py-16 px-6 md:px-20 font-sans max-w-7xl mx-auto pt-8">
+      <section className="bg-white py-16 px-6 md:px-20 max-w-7xl mx-auto pt-8">
         <motion.h1 
           initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}
           className="text-4xl md:text-5xl font-bold text-black mb-10"
