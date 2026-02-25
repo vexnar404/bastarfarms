@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import logo from '../assets/logo.png'
+import logo from '../assets/whitelogotrans.png'
 import { FaLinkedin, FaFacebook, FaInstagram, FaPhoneAlt } from 'react-icons/fa'
 import { IoIosMail } from 'react-icons/io'
 import { FaLocationDot } from 'react-icons/fa6'
@@ -13,11 +13,11 @@ function Footer() {
           
           {/* Column 1: Brand & Socials */}
           <div className="flex flex-col items-start gap-6">
-            <img src={logo} alt="Bastar Farms Logo" className='h-20 md:h-24 object-contain' />
+            <img src={logo} alt="Bastar Farms Logo" className='h-28 md:h-32 object-contain -ml-2 -mt-8' />
             {/* <p className='text-gray-200 text-xl leading-relaxed max-w-sm'>
               Quality begins at the source, supporting tribal livelihoods through responsible local manufacturing.
             </p> */}
-            <div className='md:ml-3'>
+            <div className='md:ml-3 -mt-8'>
               <p className='text-white font-semibold text-lg md:text-xl mb-4'>Stay in Touch</p>
               <div className="flex items-center gap-5">
                 <a href="https://www.linkedin.com/company/bastar-farms" target="_blank" rel="noopener noreferrer" className="group">

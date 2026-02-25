@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 import headerbg from '../assets/page-header-bg.jpg'
 
@@ -200,7 +201,13 @@ const SpecialMoments = [
 
 // Section Header with Line and Date perfectly side-by-side
 const SectionHeader = ({ title, description, date, hasBorder = true }) => (
-  <div className="w-full mb-10">
+  <motion.div 
+    initial={{ opacity: 0, y: 30 }} 
+    whileInView={{ opacity: 1, y: 0 }} 
+    viewport={{ once: true }} 
+    transition={{ duration: 0.4 }} 
+    className="w-full mb-10"
+  >
     <div className="flex items-center gap-6 mb-6">
       {hasBorder && <div className="h-[3px] bg-black flex-grow"></div>}
       {date && (
@@ -213,7 +220,7 @@ const SectionHeader = ({ title, description, date, hasBorder = true }) => (
       <h1 className="text-3xl md:text-5xl font-black text-black mb-3 md:mb-4">{title}</h1>
       <p className="text-[#2a491d] text-lg font-bold leading-tight max-w-4xl">{description}</p>
     </div>
-  </div>
+  </motion.div>
 );
 
 // Media Renderer for Images/Video
@@ -236,9 +243,12 @@ function Gallery() {
     <div className="w-full bg-white overflow-hidden pb-20">
 
       <section className='relative w-full h-auto bg-cover bg-center py-12 md:py-24' style={{ backgroundImage: `url(${headerbg})` }}>
-          <div className='text-white text-center px-4'>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
+            className='text-white text-center px-4'
+          >
               <h1 className='text-4xl md:text-6xl font-bold'>Happy Moments at Bastar Farms</h1>
-          </div>
+          </motion.div>
       </section>
 
       {/* 1. TIMELINE EVENTS SECTION (Now includes Inauguration & Dispatch) */}
@@ -254,13 +264,21 @@ function Gallery() {
             {/* Strictly 3 images per row for all events */}
             <div className={`grid gap-6 ${event.gridClass}`}>
               {event.images.map((img, idx) => (
-                <div key={idx} className="relative h-64 md:h-80 overflow-hidden rounded-xl border-[4px] shadow-sm group" style={{ borderColor: event.borderColor }}>
+                <motion.div 
+                  key={idx} 
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }} 
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }} 
+                  viewport={{ once: true }} 
+                  transition={{ duration: 0.4, delay: (idx % 3) * 0.15 }}
+                  className="relative h-64 md:h-80 overflow-hidden rounded-xl border-[4px] shadow-sm group" 
+                  style={{ borderColor: event.borderColor }}
+                >
                   <MediaRenderer src={img.src} alt={img.alt} />
                   {/* Subtle overlay effect added back for the Inauguration images based on your original request */}
                   {event.id === 'inauguration' && (
                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   )}
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -269,15 +287,27 @@ function Gallery() {
 
       {/* 2. SPECIAL MOMENTS SECTION (Masonry Layout remains as is) */}
       <section className="bg-white py-16 px-6 md:px-20 font-sans max-w-7xl mx-auto pt-8">
-        <h1 className="text-4xl md:text-5xl font-bold text-black mb-10">More Special Moments at Bastar</h1>
+        <motion.h1 
+          initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}
+          className="text-4xl md:text-5xl font-bold text-black mb-10"
+        >
+          More Special Moments at Bastar
+        </motion.h1>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
           {SpecialMoments.map((item, idx) => (
-            <div key={idx} className={`flex flex-col ${item.gridCol}`}>
+            <motion.div 
+              key={idx} 
+              initial={{ opacity: 0, y: 40 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              viewport={{ once: true }} 
+              transition={{ duration: 0.4, delay: (idx % 2) * 0.2 }}
+              className={`flex flex-col ${item.gridCol}`}
+            >
               <div className="relative overflow-hidden rounded-2xl border-[4px] border-[#6b4226] shadow-md group h-96 lg:h-[400px] w-full">
                 <MediaRenderer src={item.src} alt={item.alt} />
               </div>
               <p className="text-center text-[#1a3a1f] font-bold text-lg mt-4 px-2">{item.caption}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>

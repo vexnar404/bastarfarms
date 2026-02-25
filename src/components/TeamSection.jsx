@@ -12,13 +12,13 @@ const teamData = [
   {
     img: core1,
     name: 'Kartik Kapoor',
-    role: 'Director',
+    role: 'Founder & Director',
     description: 'Kartik Kapoor is an India-based entrepreneur and the Founder & Managing Director of Kossher Group, bringing over a decade of hands-on experience in building agricultural businesses from inception to scale. For the Bastar core team, Kartik’s journey is closely associated with the creation and growth of Bastar Farms, the flagship consumer brand under Kossher Agro. The brand reflects a strong commitment to value addition, consistent quality, and meaningful community upliftment.'
   },
   {
     img: core2,
     name: 'Yash Birla',
-    role: 'CEO',
+    role: 'Co Founder & CEO',
     description: 'Yash Birla is a core team member and the CEO of Bastar Farms, the flagship consumer brand of Kossher Agro. With more than a decade of experience in multinational environments, he brings institutional rigor, operational discipline, and a proven ability to build scalable businesses. He leads the company’s strategic roadmap with a focus on profitable growth, brand expansion, supply-chain strength, and long-term value creation.'
   },
   {
@@ -77,7 +77,7 @@ const TeamCard = ({ img, name, role, description }) => {
       
       <div className="px-6 py-2 text-center">
         <h1 className="text-xl md:text-2xl font-bold text-gray-800">{name}</h1>
-        <p className="text-[#50a72c] font-semibold text-sm md:text-base uppercase tracking-wider mb-3">{role}</p>
+        <p className="text-[#50a72c] font-caveat font-semibold text-sm md:text-base uppercase tracking-wider mb-3">{role}</p>
       </div>
 
       <div className="px-6 flex-1 flex flex-col">
@@ -88,7 +88,7 @@ const TeamCard = ({ img, name, role, description }) => {
         {shouldTruncate && (
           <button
             onClick={toggleReadMore}
-            className="text-[#2a491d] hover:underline font-bold text-sm mt-4 mx-auto block"
+            className="text-[#2a491d] font-caveat hover:underline font-bold text-sm mt-4 mx-auto block"
           >
             {expanded ? 'Show Less ↑' : 'Read Full Bio ↓'}
           </button>

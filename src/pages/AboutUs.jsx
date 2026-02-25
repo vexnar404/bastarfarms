@@ -48,78 +48,107 @@ function AboutUs() {
     return (
         <div className='w-full overflow-x-hidden'>
             {/* Header Section */}
-            <section className='relative w-full h-auto bg-cover bg-center py-12 md:py-24' style={{ backgroundImage: `url(${headerbg})` }}>
-                <div className='text-white text-center px-4'>
+            <motion.section 
+                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}
+                className='relative w-full h-auto bg-cover bg-center py-12 md:py-24' style={{ backgroundImage: `url(${headerbg})` }}
+            >
+                <motion.div 
+                    initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
+                    className='text-white text-center px-4'
+                >
                     <h1 className='text-4xl md:text-7xl font-bold'>About Bastar Farms</h1>
-                    <p className='text-xl md:text-3xl font-semibold mt-2'>Vision and Mission</p>
-                </div>
-            </section>
+                    <p className='text-2xl md:text-4xl font-caveat font-semibold mt-2'>Vision and Mission</p>
+                </motion.div>
+            </motion.section>
 
             {/* Who We Are & Founder Section */}
             <section className='grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 p-6 md:p-16 items-center max-w-7xl mx-auto'>
                 {/* Who We Are Text */}
-                <div className='order-1'>
+                <motion.div 
+                    initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
+                    className='order-1'
+                >
                     <h2 className='text-4xl md:text-6xl font-bold mb-4'>Who We Are</h2>
                     <p className='text-lg md:text-[22px] leading-relaxed'>
                         From the forests of Bastar to kitchens across the country, <span className='font-bold'>Bastar Farms</span> is built around a simple idea of staying close to the source. Operating from our <span className='font-bold'>Lohandiguda</span> processing unit, we transform forest produce into tamarind based food products while creating meaningful opportunities for local and tribal communities.
                     </p>
-                </div>
+                </motion.div>
                 {/* Team Image */}
-                <div className='order-2'>
+                <motion.div 
+                    initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
+                    className='order-2'
+                >
                     <img src={team} alt="Our Team" className='w-full h-[300px] md:h-[400px] object-cover border-4 md:border-8 rounded-xl border-[#2a491d]' />
-                </div>
+                </motion.div>
 
                 {/* Founder Image */}
-                <div className='order-4 md:order-3'>
+                <motion.div 
+                    initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
+                    className='order-4 md:order-3'
+                >
                     <img src={founder} alt="Founder" className='w-full md:w-auto h-auto md:h-[400px] object-contain border-4 md:border-8 rounded-xl border-[#2a491d] mx-auto' />
-                </div>
+                </motion.div>
                 {/* Founder Text */}
-                <div className='order-3 md:order-4'>
-                    <h2 className='text-4xl md:text-5xl font-semibold mb-4'>Founder's Desk</h2>
+                <motion.div 
+                    initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
+                    className='order-3 md:order-4'
+                >
+                    <h2 className='text-4xl md:text-6xl font-bold mb-4'>Founder's Desk</h2>
                     <p className='text-lg md:text-[22px] leading-relaxed'>
                         Bastar Farms is guided by a clear vision to create natural, dependable food while building meaningful livelihoods in Bastar. From the forests of Chhattisgarh, we bring tamarind from local hands to wider markets, turning natural produce into value driven products.
                     </p>
                     <img src={sign} alt="Founder's Signature" className='w-32 md:w-40 h-auto object-contain mt-4' />
-                </div>
+                </motion.div>
             </section>
 
             {/* Stats Section - Responsive Flex */}
             <section className='bg-[#50a72c] py-12 text-white px-6'>
                 <div className='max-w-7xl mx-auto grid grid-cols-2 lg:flex gap-8 items-center text-center md:text-left'>
-                    <div className="flex flex-col md:flex-row items-center gap-4">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }} className="flex flex-col md:flex-row items-center gap-4">
                         <img src={i1} alt="" className='h-16 w-16' />
                         <h2 className='text-sm md:text-lg'>Tribal families supported <br className='hidden md:block'/>through employment</h2>
-                    </div>
+                    </motion.div>
                     <div className='hidden lg:block h-8 w-[1px] bg-slate-100'></div>
-                    <div className="flex flex-col md:flex-row items-center gap-4">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-col md:flex-row items-center gap-4">
                         <img src={i2} alt="" className='h-16 w-16' />
                         <h2 className='text-sm md:text-lg'>Over 5 years of <br className='hidden md:block'/>operations in Bastar</h2>
-                    </div>
+                    </motion.div>
                     <div className='hidden lg:block h-8 w-[1px] bg-slate-100'></div>
-                    <div className="flex flex-col md:flex-row items-center gap-4">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }} className="flex flex-col md:flex-row items-center gap-4">
                         <img src={i3} alt="" className='h-16 w-16' />
                         <h2 className='text-sm md:text-lg'>Sustainable <br className='hidden md:block'/>Forest Sourcing</h2>
-                    </div>
+                    </motion.div>
                     <div className='hidden lg:block h-8 w-[1px] bg-slate-100'></div>
-                    <div className="flex flex-col md:flex-row items-center gap-4">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }} className="flex flex-col md:flex-row items-center gap-4">
                         <img src={i4} alt="" className='h-16 w-16' />
                         <h2 className='text-sm md:text-lg'>FSSAI certified for food <br className='hidden md:block'/>safety and quality</h2>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
             {/* Video & Team */}
-            <section className='py-12'><VideoSection /></section>
+            <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className='py-12'>
+                <VideoSection />
+            </motion.section>
             
             <section className='py-12 px-4'>
-                <h1 className='text-4xl md:text-6xl font-bold text-center mb-12'>Our Core Team</h1>
-                <TeamSection />
+                <motion.h1 
+                    initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+                    className='text-4xl md:text-6xl font-bold text-center mb-12'
+                >
+                    Our Core Team
+                </motion.h1>
+                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>
+                    <TeamSection />
+                </motion.div>
             </section>
 
             {/* Clients Slider */}
             <section className='py-12'>
-                <h1 className='text-4xl md:text-6xl font-bold text-center mb-2'>Our Esteemed Clients</h1>
-                <p className='text-xl md:text-3xl text-center mb-8'>Trusted By Industry Leaders</p>
+                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+                    <h1 className='text-4xl md:text-6xl font-bold text-center mb-2'>Our Esteemed Clients</h1>
+                    <p className='text-xl md:text-3xl font-caveat text-center mb-8'>Trusted By Industry Leaders</p>
+                </motion.div>
                 <div className='overflow-hidden w-full bg-gradient-to-br from-[#3a791f] to-[#52af2b] py-10'>
                     <motion.div
                         className='flex w-max gap-8 md:gap-12'
@@ -135,17 +164,19 @@ function AboutUs() {
 
             {/* Certifications */}
             <section className='py-12 px-6'>
-                <h1 className='text-center text-4xl md:text-6xl font-bold'>Certifications</h1>
-                <p className='text-center text-xl md:text-2xl font-semibold mb-8'>Quality & Compliance</p>
+                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+                    <h1 className='text-center text-4xl md:text-6xl font-bold'>Certifications</h1>
+                    <p className='text-center font-caveat text-2xl md:text-3xl font-semibold mb-8'>Quality & Compliance</p>
+                </motion.div>
                 <div className='flex flex-col lg:flex-row gap-8 items-center max-w-4xl mx-auto'>
-                    <div>
-                        <p className='text-center text-md md:text-lg mb-4'>Food Safety and Standards Authority of India</p>
-                        <img src={fssai} alt="FSSAI Certification" className='w-full md:w-auto max-h-[400px] md:max-h-[600px] object-contain border-4 md:border-8 border-[#2a491d] rounded-xl' />
-                    </div>
-                    <div>
-                        <p className='text-center text-md md:text-lg mb-4'>Food Safety Supervisor</p>
-                        <img src={fostac} alt="FSSAI Certification" className='w-full md:w-auto max-h-[400px] md:max-h-[600px] object-contain border-4 md:border-8 border-[#2a491d] rounded-xl' />
-                    </div>
+                    <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
+                        <p className='text-center font-bold text-md md:text-lg mb-4'>Food Safety and Standards Authority of India</p>
+                        <img src={fssai} alt="FSSAI Certification" className='w-full md:w-auto max-h-[470px] md:max-h-[600px] object-contain border-4 md:border-8 border-[#2a491d] rounded-xl' />
+                    </motion.div>
+                    <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.4 }}>
+                        <p className='text-center font-bold text-md md:text-lg mb-4'>Food Safety Supervisor</p>
+                        <img src={fostac} alt="FSSAI Certification" className='w-full md:w-auto max-h-[470px] md:max-h-[600px] object-contain border-4 md:border-8 border-[#2a491d] rounded-xl' />
+                    </motion.div>
                 </div>
             </section>
         </div>

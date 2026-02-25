@@ -41,12 +41,12 @@ import i70 from '../assets/i70.jpeg'
 
 function Home() {
   const features = [
-    { icon: icon7, title: "Natural & Chemical Free" },
-    { icon: icon8, title: "Authentic taste, true to source" },
-    { icon: icon9, title: "Made by tribal communities" },
-    { icon: icon10, title: "Quality controlled at every stage" },
-    { icon: icon11, title: "Supplied smoothly across India" },
-    { icon: icon12, title: "Sustainable Practices" },
+    { icon: icon7, title: "Chemical Free" },
+    { icon: icon8, title: "Authentic & Natural Tamarind" },
+    { icon: icon9, title: "Tribal Crafted & Harvested" },
+    { icon: icon10, title: "Quality Assured" },
+    { icon: icon11, title: "Quality Assured" },
+    { icon: icon12, title: "Sustainable Farming" },
   ];
 
   const images = [
@@ -58,7 +58,7 @@ function Home() {
   const slides = [
     {
       sub: "Trusted by Kitchens Everywhere",
-      main: "Choose the healthy food.",
+      main: "Choose Healthy Food.",
       tagline: "" 
     },
     {
@@ -83,14 +83,15 @@ function Home() {
       
       {/* ================= HERO SECTION ================= */}
       <section className='relative w-full min-h-[650px] lg:min-h-[700px] py-4 md:py-24 flex items-center'>
-        <img 
+        <motion.img 
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}
           src={headerbg} 
           alt="background" 
           className="absolute inset-0 w-full h-full object-cover -z-10 bg-[#f2f2f2]" 
         />
         {/* Added max-w-7xl mx-auto to center content perfectly on ultra-wides */}
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center w-full px-6 gap-6 z-10">
-          <div className="flex flex-col items-center justify-center w-full lg:w-1/2 md:gap-4 text-center lg:text-left">
+          <div className="flex flex-col items-center justify-center w-full lg:w-1/2 md:gap-2 text-center lg:text-left">
             
             <div className="min-h-[220px] flex flex-col justify-center w-full"> 
               <AnimatePresence mode="wait">
@@ -117,7 +118,10 @@ function Home() {
               </AnimatePresence>
             </div>
 
-            <div className='flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-8 w-full '>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}
+              className='flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-8 w-full '
+            >
               <Link to="/products">
                 <button className='bg-[#2a491d] text-white font-bold font-manrope text-sm md:text-xl px-3 py-2 md:px-6 md:py-3 rounded-full hover:bg-[#1e3515] transition-all'>
                   View Products
@@ -128,12 +132,15 @@ function Home() {
                   Our Story
                 </button>
               </Link>
-            </div>
+            </motion.div>
           </div>
 
-          <div className='w-full lg:w-1/2 flex justify-center'>
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
+            className='w-full lg:w-1/2 flex justify-center'
+          >
             <img src={headerimg} alt="Header" className='w-full max-w-[600px] h-auto object-contain' />
-          </div>
+          </motion.div>
         </div>
     </section>
 
@@ -141,40 +148,51 @@ function Home() {
       <section className='w-full py-20 bg-white px-6 md:px-16'>
         {/* Wrapped in centered max-w container */}
         <div className="max-w-7xl mx-auto flex flex-col items-center gap-12 text-center">
-          <div className='space-y-4'>
-            <h2 className='text-2xl md:text-3xl font-bold text-[#50a72c]'>Our Delights</h2>
-            <h1 className='text-4xl md:text-5xl font-bold text-[#2a491d]'>From heart of Bastar <br /> to your Table</h1>
-          </div>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }} transition={{ duration: 0.6 }}
+            className='space-y-4'
+          >
+            <h2 className='text-xl md:text-3xl font-bold font-caveat text-[#50a72c]'>India’s Authentic Tamarind Range</h2>
+            <h1 className='text-3xl md:text-5xl font-bold text-[#2a491d]'>From Bastar straight <br />to your kitchens</h1>
+          </motion.div>
 
           {/* Product Grid 1 */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-10 w-full max-w-5xl mx-auto">
             {[
-              { img: tamarind_pulp, title: "Tamarind Pulp", desc: "When nothing prevents our to we like best be." },
-              { img: tamarind_paste, title: "Tamarind Paste", desc: "Rich, tangy tamarind paste enhancing global cuisines." }
+              { img: tamarind_pulp, title: "Tamarind Pulp", desc: "Pure tamarind pulp for rich flavor, smooth texture, and everyday cooking." },
+              { img: tamarind_paste, title: "Tamarind Paste", desc: "Thick, tangy tamarind paste for curries, chutneys, marinades, and sauces." }
             ].map((item, i) => (
-              <div key={i} className="relative w-full group">
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.2 }}
+                className="relative w-full group"
+              >
                 <div className="relative z-10 flex justify-center">
                   <div className="w-48 h-48 md:w-64 md:h-64 bg-white rounded-full shadow-lg flex items-center justify-center p-4 transition-transform group-hover:scale-105">
                     <img src={item.img} alt={item.title} className="w-full h-full object-contain" />
                   </div>
                 </div>
-                <div className="bg-[#f4f7f1] rounded-2xl pt-24 pb-8 px-6 -mt-24 min-h-[220px]">
+                <div className="bg-[#f4f7f1] rounded-2xl pt-24 pb-8 px-6 -mt-20 min-h-[220px]">
                   <h2 className="text-[#2a491d] text-2xl font-bold mb-4">{item.title}</h2>
-                  <p className="text-gray-500 text-sm md:text-base">{item.desc}</p>
+                  <p className="text-gray-500 font-caveat text-xl md:text-2xl">{item.desc}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           {/* Product Grid 2 */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 md:gap-8 w-full mt-10">
             {[
-              { img: tamarind_bhel_puri, title: "Tamarind Bhel Puri", desc: "Balanced tangy sweetness for bhel and chaat mixes." },
-              { img: pani_puri, title: "Pani Puri", desc: "Sharp and refreshing sourness for pani puri water." },
-              { img: tamarind_date, title: "Tamarind Date", desc: "Rich sweet sour base for chutneys and snacks." },
-              { img: tamarind_chilli, title: "Tamarind Chilli", desc: "Adds heat and depth to sauces and street food." }
+              { img: tamarind_bhel_puri, title: "Tamarind Bhel Puri", desc: "Sweet and tangy chutney blend crafted for bhel, chaat, and street-style snacks." },
+              { img: pani_puri, title: "Pani Puri", desc: "Zesty pani puri chutney with a bold, refreshing kick for classic pani puri water." },
+              { img: tamarind_date, title: "Tamarind Date", desc: "A rich sweet-and-sour tamarind date chutney for chaats, dips, and snacks." },
+              { img: tamarind_chilli, title: "Tamarind Chilli", desc: "Spicy tamarind chilli chutney that adds heat, depth, and punch to every bite." }
             ].map((item, i) => (
-              <div key={i} className="relative w-full group">
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.15 }}
+                className="relative w-full group"
+              >
                 <div className="relative z-10 flex justify-center">
                   <div className="w-40 h-40 md:w-56 md:h-56 bg-white rounded-full shadow-lg flex items-center justify-center p-4 transition-transform group-hover:scale-105">
                     <img src={item.img} alt={item.title} className="w-full h-full object-contain" />
@@ -182,9 +200,9 @@ function Home() {
                 </div>
                 <div className="bg-[#f4f7f1] rounded-2xl pt-24 pb-8 px-4 -mt-20 min-h-[200px]">
                   <h2 className="text-[#2a491d] text-xl font-bold mb-3">{item.title}</h2>
-                  <p className="text-gray-500 text-xs md:text-sm">{item.desc}</p>
+                  <p className="text-gray-500 font-caveat text-xl md:text-lg">{item.desc}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -198,16 +216,27 @@ function Home() {
           className="hidden md:block absolute inset-0 w-full h-full object-cover -z-10 bg-[#1a3a1f]" 
         />
         <div className="max-w-7xl mx-auto w-full z-10">
-          <h1 className='text-4xl md:text-6xl text-[#ffc34c] font-bold text-center mb-8'>Authentic Taste, Everyday Reliability</h1>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+            className='text-4xl md:text-6xl text-[#ffc34c] font-bold text-center mb-8'
+          >
+            Authentic Taste, Everyday Reliability
+          </motion.h1>
           
           <div className='flex flex-col lg:flex-row w-full gap-16 items-center lg:justify-center'>
             {/* Video Container */}
-            <div className="h-[550px] lg:h-[640px] overflow-hidden shadow-inner rounded-3xl flex-shrink-0 lg:-ml-24">
-               <video src={bfvideo} autoPlay loop muted playsInline className="w-full h-full object-contain" />
-            </div>
+            <motion.div 
+              initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
+              className="h-[550px] lg:h-[640px] overflow-hidden shadow-inner rounded-3xl flex-shrink-0 lg:-ml-24"
+            >
+              <video src={bfvideo} autoPlay loop muted playsInline className="w-full h-full object-contain" />
+            </motion.div>
 
             {/* List Content */}
-            <div className="flex flex-col gap-4 text-center lg:text-left">
+            <motion.div 
+              initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
+              className="flex flex-col gap-4 text-center lg:text-left"
+            >
               <h1 className='text-3xl md:text-4xl font-bold leading-tight text-slate-200'>For households and <br /> professional kitchens</h1>
               <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4 text-left'>
                 {[
@@ -218,13 +247,17 @@ function Home() {
                   { icon: icon5, t: "Hygienically Processed", p: "Processed under strict hygiene standards." },
                   { icon: icon6, t: "Trusted by Cooks", p: "From family kitchens to restaurant counters." }
                 ].map((item, i) => (
-                  <div key={i} className='flex items-center gap-4'>
+                  <motion.div 
+                    key={i} 
+                    initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }}
+                    className='flex items-center gap-4'
+                  >
                     <img src={item.icon} alt="icon" className='w-12 h-12 md:w-16 md:h-16 flex-shrink-0' />
                     <div>
                       <h2 className='text-lg md:text-2xl font-bold text-gray-100'>{item.t}</h2>
-                      <p className='text-sm md:text-lg text-gray-300'>{item.p}</p>
+                      <p className='text-sm font-caveat md:text-xl text-gray-300'>{item.p}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
               <div className="mt-2">
@@ -234,9 +267,7 @@ function Home() {
                   </button>
                 </Link>
               </div>
-            </div>
-
-          
+            </motion.div>
           </div>
         </div>
       </section>
@@ -245,24 +276,30 @@ function Home() {
       <section className="relative w-full h-[600px] bg-[#1a3a1f] overflow-hidden flex items-center py-20 px-6">
         <div className="max-w-7xl mx-auto w-full relative flex items-center">
           
-          <div className="z-10 w-full lg:w-[55%] text-white text-center lg:text-left">
-            <p className="text-emerald-400 italic font-medium mb-2 text-lg">Why Choose Bastar Farms</p>
+          <motion.div 
+            initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
+            className="z-10 w-full lg:w-[55%] text-white text-center lg:text-left"
+          >
+            <p className="text-emerald-400 italic font-caveat font-medium mb-2 text-2xl">Why Choose Bastar Farms</p>
             <h2 className="text-3xl md:text-5xl font-bold mb-10 max-w-xl leading-tight mx-auto lg:mx-0">
               Few reasons for people choosing Bastar Farms
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6">
               {features.map((f, i) => (
-                <div key={i} className="flex flex-col items-center text-center p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all">
+                <div key={i} className="flex flex-col items-center text-center py-4 px-2 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all">
                   <img src={f.icon} alt={f.title} className="w-10 h-10 md:w-12 md:h-12 mb-3" />
                   <p className="text-xs md:text-sm font-semibold leading-snug">{f.title}</p>
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Decorative Diamonds anchored to the screen edge so they stay flush right */}
-          <div className="absolute top-1/2 -right-72 -translate-y-1/2 hidden lg:block opacity-20 lg:opacity-100 pointer-events-none">
-            <div className="relative w-[900px] h-[900px] rotate-45 rounded-[100px] overflow-hidden ">
+          <motion.div 
+            initial={{ opacity: 0, rotate: 15 }} whileInView={{ opacity: 1, rotate: 45 }} viewport={{ once: true }} transition={{ duration: 1.2 }}
+            className="absolute -right-72 -translate-y-1/2 hidden lg:block opacity-20 lg:opacity-100 pointer-events-none"
+          >
+            <div className="relative w-[900px] h-[900px] rounded-[100px] overflow-hidden ">
               <div className="grid grid-cols-2 grid-rows-2 w-full h-full gap-6 p-6">
                 <div className="relative overflow-hidden rounded-[40px] bg-[#142d19]">
                   <img src={tamarindTreeImg} alt="Tamarind" className="absolute top-1/2 left-1/2 w-[210%] h-[210%] max-w-none object-cover -translate-x-1/2 -translate-y-1/2 -rotate-45" />
@@ -276,7 +313,7 @@ function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </section>
@@ -286,7 +323,10 @@ function Home() {
         
         {/* Top Split Area */}
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center mb-20 md:px-12">
-          <div className="text-center lg:text-left">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
+            className="text-center lg:text-left"
+          >
             <h2 className="text-3xl md:text-5xl font-bold text-amber-800 mb-6 leading-tight">
               How things are done <br /> at Bastar Farms
             </h2>
@@ -298,15 +338,21 @@ function Home() {
               We focus on keeping the taste natural, the process
               clean, and the quality consistent.
             </p>
-          </div>
-          <div className="w-[350px] md:w-full mx-auto md:mx-0 h-[300px] md:h-[400px] rounded-3xl overflow-hidden shadow-xl border-4 border-[#1a3a1f]">
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
+            className="w-[350px] md:w-full mx-auto md:mx-0 h-[300px] md:h-[400px] rounded-3xl overflow-hidden shadow-xl border-4 border-[#1a3a1f]"
+          >
             <video src={bf1} alt="Bastar Farms Team" className="w-full h-full object-cover" autoPlay muted loop playsInline />
-          </div>
+          </motion.div>
         </div>
 
         {/* ================= BULLETPROOF GREEN BANNER ================= */}
         <div className="w-full mx-auto relative mt-48 lg:mt-32 mb-8 lg:mb-20 -top-2 lg:-top-8">
-          <div className="relative w-full flex flex-col lg:flex-row items-center justify-end">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
+            className="relative w-full flex flex-col lg:flex-row items-center justify-end"
+          >
             
             {/* The Overlapping Brown Horizontal Oval */}
             <div className="absolute top-12 left-1/2 -translate-y-[60%] lg:top-1/2 lg:-translate-y-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 w-[350px] h-[280px] lg:w-[450px] lg:h-[300px] bg-[#a06822] rounded-[50%] flex items-center justify-center shadow-2xl z-20">
@@ -329,14 +375,17 @@ function Home() {
               </Link>
             </div>
             
-          </div>
+          </motion.div>
         </div>
 
       </section>
 
       {/* ================= COMMUNITY GRID ================= */}
       <section className="bg-white pb-8  px-6">
-        <div className="max-w-7xl mx-auto text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+          className="max-w-7xl mx-auto text-center"
+        >
           <h2 className="text-2xl md:text-4xl font-black uppercase mb-4 text-[#1a3a1f]">Working with the communities of Bastar</h2>
           <p className="text-gray-700 text-lg mb-12 max-w-3xl mx-auto">Our processing unit in Lohandiguda operates with a one hundred percent local and tribal workforce.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
@@ -346,7 +395,7 @@ function Home() {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
     </div>
