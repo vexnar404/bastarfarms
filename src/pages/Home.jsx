@@ -70,23 +70,54 @@ function Home() {
 
   const [index, setIndex] = useState(0);
 
+  // --- VIDEO LOGIC START ---
   const videoRef = useRef(null);
-  
-  // 2. Detect if the video is in the viewport (0.5 means 50% visible)
   const isVideoInView = useInView(videoRef, { amount: 0.5 });
+  const [hasInteracted, setHasInteracted] = useState(false);
 
-  // 3. Effect to toggle audio based on visibility
+  // 1. Detect User Interaction (Click or Touch)
   useEffect(() => {
-    if (videoRef.current) {
-      if (isVideoInView) {
-        // If 50% visible, unmute
-        videoRef.current.muted = false;
-      } else {
-        // If scrolled away, mute
-        videoRef.current.muted = true;
+    const handleInteraction = () => setHasInteracted(true);
+    
+    // Listen for any interaction on the window
+    window.addEventListener('click', handleInteraction);
+    window.addEventListener('touchstart', handleInteraction);
+    window.addEventListener('keydown', handleInteraction);
+    
+    return () => {
+      window.removeEventListener('click', handleInteraction);
+      window.removeEventListener('touchstart', handleInteraction);
+      window.removeEventListener('keydown', handleInteraction);
+    };
+  }, []);
+
+  // 2. Safe Audio Toggle Logic
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isVideoInView) {
+      // Only attempt to unmute if the user has already interacted
+      // Otherwise, the browser will likely block it
+      const shouldUnmute = hasInteracted;
+      
+      video.muted = !shouldUnmute;
+
+      // Try to play. If it fails (browser block), catch error and force muted play.
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.log("Autoplay with sound prevented. Fallback to muted.", error);
+          video.muted = true;
+          video.play();
+        });
       }
+    } else {
+      // Always mute when out of view
+      video.muted = true;
     }
-  }, [isVideoInView]);
+  }, [isVideoInView, hasInteracted]);
+  // --- VIDEO LOGIC END ---
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -247,7 +278,7 @@ function Home() {
               initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
               className="h-[550px] lg:h-[640px] overflow-hidden shadow-inner rounded-3xl flex-shrink-0 lg:-ml-24"
             >
-               {/* Added ref={videoRef} and removed 'muted' from props so React controls it */}
+               {/* Video Element with Ref */}
                <video 
                  ref={videoRef} 
                  src={bfvideo} 
