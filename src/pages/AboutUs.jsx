@@ -131,7 +131,7 @@ function AboutUs() {
                 <VideoSection />
             </motion.section>
             
-            <section className='py-12 px-4'>
+            <section className='py-4 px-4'>
                 <motion.h1 
                     initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
                     className='text-4xl md:text-6xl font-bold text-center mb-12'
@@ -144,7 +144,7 @@ function AboutUs() {
             </section>
 
             {/* Clients Slider */}
-            <section className='py-12'>
+            <section className='py-4'>
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
                     <h1 className='text-4xl md:text-6xl font-bold text-center mb-2'>Our Esteemed Clients</h1>
                     <p className='text-xl md:text-3xl font-caveat text-center mb-8'>Trusted By Industry Leaders</p>

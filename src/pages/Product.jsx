@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCheckCircle } from 'react-icons/fa';
 import { BsArrowDown, BsArrowRight } from 'react-icons/bs';
+import { FaAmazon, FaShoppingBasket, FaBolt } from 'react-icons/fa';
 
 import headerbg from '../assets/page-header-bg.jpg';
 
@@ -291,13 +292,26 @@ const ProductPage = () => {
   return (
     <div className="w-full bg-white overflow-hidden font-sans">
       
-      {/* PAGE HEADER */}
-      {/* <section className='relative w-full h-auto bg-cover bg-center py-12 md:py-24' style={{ backgroundImage: `url(${headerbg})` }}>
-        <div className='text-white text-center px-4'>
-          <h1 className='text-4xl md:text-6xl font-bold'>Our Products</h1>
+      {/* ================= MOBILE TOP TEXT NAVIGATION (STICKY) ================= */}
+      <div className="md:hidden w-full bg-[#2a491d] py-3 sticky top-0 z-50 shadow-md">
+        <div className="flex overflow-x-auto gap-6 px-6 items-center [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          {Object.keys(productsData).map((key) => (
+            <button
+              key={key}
+              onClick={() => handleProductSwitch(key)}
+              className={`whitespace-nowrap text-sm font-bold uppercase tracking-wider transition-all duration-300 ${
+                activeTab === key 
+                  ? 'text-[#ffbd3c] border-b-2 border-[#ffbd3c] pb-1' 
+                  : 'text-white/80 hover:text-white'
+              }`}
+            >
+              {key}
+            </button>
+          ))}
         </div>
-      </section> */}
+      </div>
 
+      {/* ================= DESKTOP NAVIGATION ================= */}
       <motion.section 
         initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
         className="hidden md:flex w-full bg-[#2a491d] py-4 border-gray-200"
@@ -317,10 +331,9 @@ const ProductPage = () => {
                   <img 
                     src={productsData[key].imagesh[0]} 
                     alt={key} 
-                    className="h-32 object-contain mb-4 group-hover:scale-110 transition-transform duration-300" 
+                    className="h-36 object-contain mb-4 group-hover:scale-110 transition-transform duration-300" 
                   />
                   <h3 className="font-extrabold text-[#1a3a1f] text-lg leading-tight">{key}</h3>
-                  <span className="text-[#50a72c] font-caveat text-sm font-bold mt-2 opacity-0 group-hover:opacity-100 transition-opacity">View Details →</span>
                 </motion.button>
             ))}
           </div>
@@ -339,20 +352,20 @@ const ProductPage = () => {
           {/* ================= 1. HERO SECTION ================= */}
           <section className="max-w-7xl mx-auto px-6 pb-6 md:py-16 flex flex-col md:flex-row items-center justify-center gap-4 lg:gap-20">
             {/* Left: Main Image */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-              className="w-full md:w-1/2 relative rounded-3xl h-[450px] overflow-hidden"
+              className="w-full md:w-1/2 relative rounded-3xl h-[400px] md:h-[450px] overflow-hidden"
             >
-              <img 
-                src={currentProduct.images[mainImgIndex]} 
-                alt={currentProduct.title} 
+              <img
+                src={currentProduct.images[mainImgIndex]}
+                alt={currentProduct.title}
                 className="relative w-full h-full object-contain transition-all duration-300"
               />
             </motion.div>
             <div className="flex flex-wrap md:hidden gap-3 md:gap-4">
               {currentProduct.images.map((img, idx) => (
-                <button 
-                  key={idx} 
+                <button
+                  key={idx}
                   onClick={() => setMainImgIndex(idx)}
                   className={`w-20 h-20 md:w-24 md:h-24 p-2 rounded-xl border-2 transition-all duration-300 bg-white shadow-sm flex items-center justify-center flex-shrink-0
                     ${mainImgIndex === idx ? 'border-[#50a72c] scale-105 shadow-md' : 'border-gray-200 hover:border-[#50a72c]'}`}
@@ -363,22 +376,22 @@ const ProductPage = () => {
             </div>
 
             {/* Right: Title, Tagline, Thumbnails */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
               className="w-full md:w-1/2 flex flex-col items-start text-left mt-4 md:mt-0"
             >
               <h1 className="text-4xl md:text-6xl font-black text-[#1a3a1f] uppercase tracking-tight leading-none">
                 {currentProduct.title}
               </h1>
-              <p className="text-xl font-caveat md:text-2xl text-gray-700 font-medium mb-10 leading-relaxed">
+              <p className="text-xl font-caveat md:text-2xl text-gray-700 font-medium mb-0 md:mb-10 leading-relaxed">
                 {currentProduct.tagline}
               </p>
 
               {/* Thumbnail Gallery */}
               <div className="hidden md:flex flex-wrap gap-3 md:gap-4 mt-2">
                 {currentProduct.images.map((img, idx) => (
-                  <button 
-                    key={idx} 
+                  <button
+                    key={idx}
                     onClick={() => setMainImgIndex(idx)}
                     className={`w-20 h-20 md:w-24 md:h-24 p-2 rounded-xl border-2 transition-all duration-300 bg-white shadow-sm flex items-center justify-center flex-shrink-0
                       ${mainImgIndex === idx ? 'border-[#50a72c] scale-105 shadow-md' : 'border-gray-200 hover:border-[#50a72c]'}`}
@@ -387,6 +400,36 @@ const ProductPage = () => {
                   </button>
                 ))}
               </div>
+
+              <div className="mt-8 w-full border-t border-gray-200 pt-8">
+                <p className="font-bold text-gray-400 text-sm uppercase tracking-widest mb-4">Order Online Now</p>
+                <div className="flex flex-wrap gap-4">
+                  
+                  {/* Amazon Button */}
+                    <a 
+                      href="https://www.amazon.in"
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 bg-[#232f3e] text-white px-6 py-3 rounded-xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex-1 md:flex-none justify-center min-w-[140px]"
+                    >
+                      <FaAmazon className="text-xl" />
+                      <span className="font-bold">Amazon</span>
+                    </a>
+
+                  {/* BigBasket Button */}
+                    <a 
+                      href="https://www.bigbasket.com/pb/bastar-farms/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 bg-[#84C225] text-white px-6 py-3 rounded-xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex-1 md:flex-none justify-center min-w-[140px]"
+                    >
+                      <FaShoppingBasket className="text-xl" />
+                      <span className="font-bold">BigBasket</span>
+                    </a>
+
+                </div>
+              </div>
+
             </motion.div>
           </section>
 
@@ -394,7 +437,7 @@ const ProductPage = () => {
           <section className="w-full bg-[#3a692a] py-8">
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-white text-center md:text-left">
               {trustFeatures.map((feature, idx) => (
-                <motion.div 
+                <motion.div
                   key={idx} 
                   initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: idx * 0.1 }}
                   className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-4"
@@ -574,7 +617,6 @@ const ProductPage = () => {
                     className="h-24 md:h-32 object-contain mb-4 group-hover:scale-110 transition-transform duration-300" 
                   />
                   <h3 className="font-extrabold text-white text-base md:text-lg leading-tight">{key}</h3>
-                  <span className="text-white font-caveat text-xs md:text-sm font-bold mt-2 opacity-0 group-hover:opacity-100 transition-opacity">View Details →</span>
                 </motion.button>
             ))}
           </div>

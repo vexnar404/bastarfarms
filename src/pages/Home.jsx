@@ -1,5 +1,5 @@
-import {useState, useEffect} from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import {useState, useEffect, useRef} from 'react'
+import { AnimatePresence, motion, useInView } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
 import headerimg from '../assets/main-slider-img-1.png'
@@ -57,18 +57,36 @@ function Home() {
 
   const slides = [
     {
+      sub: "Experience the",
+      main: "Taste of Tradition.",
+      tagline: "Rooted in Bastar. Built on Quality."
+    },
+    {
       sub: "Trusted by Kitchens Everywhere",
       main: "Choose Healthy Food.",
       tagline: "" 
     },
-    {
-      sub: "Experience the",
-      main: "Taste of Tradition.",
-      tagline: "Rooted in Bastar. Built on Quality."
-    }
   ];
 
   const [index, setIndex] = useState(0);
+
+  const videoRef = useRef(null);
+  
+  // 2. Detect if the video is in the viewport (0.5 means 50% visible)
+  const isVideoInView = useInView(videoRef, { amount: 0.5 });
+
+  // 3. Effect to toggle audio based on visibility
+  useEffect(() => {
+    if (videoRef.current) {
+      if (isVideoInView) {
+        // If 50% visible, unmute
+        videoRef.current.muted = false;
+      } else {
+        // If scrolled away, mute
+        videoRef.current.muted = true;
+      }
+    }
+  }, [isVideoInView]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -93,7 +111,7 @@ function Home() {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center w-full px-6 gap-6 z-10">
           <div className="flex flex-col items-center justify-center w-full lg:w-1/2 md:gap-2 text-center lg:text-left">
             
-            <div className="min-h-[220px] flex flex-col justify-center w-full"> 
+            <div className="h-[180px] md:min-h-[220px] flex flex-col justify-center w-full"> 
               <AnimatePresence mode="wait">
                 <motion.div
                   key={index}
@@ -106,7 +124,7 @@ function Home() {
                   <h2 className='text-xl md:text-2xl font-medium font-caveat'>
                     {slides[index].sub}
                   </h2>
-                  <h1 className='text-5xl md:text-7xl text-[#2a491d] font-bold font-manrope leading-none'>
+                  <h1 className='text-5xl md:text-7xl text-[#2a491d] md:w-[500px] font-bold font-manrope leading-none'>
                     {slides[index].main}
                   </h1>
                   {slides[index].tagline && (
@@ -123,12 +141,12 @@ function Home() {
               className='flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-8 w-full '
             >
               <Link to="/products">
-                <button className='bg-[#2a491d] text-white font-bold font-manrope text-sm md:text-xl px-3 py-2 md:px-6 md:py-3 rounded-full hover:bg-[#1e3515] transition-all'>
+                <button className='bg-[#2a491d] text-white font-bold font-manrope text-base md:text-xl px-4 py-3 md:px-6 md:py-3 rounded-full hover:bg-[#1e3515] transition-all'>
                   View Products
                 </button>
               </Link>
               <Link to="/about-us">
-                <button className='bg-[#ffbd3c] text-white font-bold font-manrope text-sm md:text-xl px-3 py-2 md:px-6 md:py-3 rounded-full hover:bg-[#e6a82a] transition-all'>
+                <button className='bg-[#ffbd3c] text-white font-bold font-manrope text-base md:text-xl px-4 py-3 md:px-6 md:py-3 rounded-full hover:bg-[#e6a82a] transition-all'>
                   Our Story
                 </button>
               </Link>
@@ -174,7 +192,7 @@ function Home() {
                 </div>
                 <div className="bg-[#f4f7f1] rounded-2xl pt-24 pb-8 px-6 -mt-20 min-h-[220px]">
                   <h2 className="text-[#2a491d] text-2xl font-bold mb-4">{item.title}</h2>
-                  <p className="text-gray-500 font-caveat text-xl md:text-2xl">{item.desc}</p>
+                  <p className="text-gray-500 font-sans text-xl">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -200,7 +218,7 @@ function Home() {
                 </div>
                 <div className="bg-[#f4f7f1] rounded-2xl pt-24 pb-8 px-4 -mt-20 min-h-[200px]">
                   <h2 className="text-[#2a491d] text-xl font-bold mb-3">{item.title}</h2>
-                  <p className="text-gray-500 font-caveat text-xl md:text-lg">{item.desc}</p>
+                  <p className="text-gray-500 font-sans text-xl md:text-base">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -229,7 +247,16 @@ function Home() {
               initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
               className="h-[550px] lg:h-[640px] overflow-hidden shadow-inner rounded-3xl flex-shrink-0 lg:-ml-24"
             >
-              <video src={bfvideo} autoPlay loop muted playsInline className="w-full h-full object-contain" />
+               {/* Added ref={videoRef} and removed 'muted' from props so React controls it */}
+               <video 
+                 ref={videoRef} 
+                 src={bfvideo} 
+                 autoPlay 
+                 loop 
+                 muted 
+                 playsInline 
+                 className="w-full h-full object-contain" 
+               />
             </motion.div>
 
             {/* List Content */}
@@ -237,7 +264,7 @@ function Home() {
               initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
               className="flex flex-col gap-4 text-center lg:text-left"
             >
-              <h1 className='text-3xl md:text-4xl font-bold leading-tight text-slate-200'>For households and <br /> professional kitchens</h1>
+              <h1 className='text-3xl font-bold leading-tight text-slate-200'>For households and <br /> professional kitchens</h1>
               <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4 text-left'>
                 {[
                   { icon: icon1, t: "Consistent taste, Ready to Use", p: "So your food tastes the same every time." },
@@ -330,7 +357,7 @@ function Home() {
             <h2 className="text-3xl md:text-5xl font-bold text-amber-800 mb-6 leading-tight">
               How things are done <br /> at Bastar Farms
             </h2>
-            <p className="text-gray-700 text-lg lg:text-2xl px-4 md:px-0 lg:pr-10 leading-relaxed">
+            <p className="text-gray-700 font-sans text-lg lg:text-2xl px-4 md:px-0 lg:pr-10 leading-relaxed">
               At Bastar Farms, tamarind is sourced directly from
               the forests around Bastar and processed at our
               Lohandiguda unit. The same people who live here
@@ -365,7 +392,7 @@ function Home() {
 
             {/* The Green Background Box */}
             <div className="bg-[#8ac24c] w-full lg:w-[85%] flex flex-col lg:flex-row items-center justify-between py-8 px-8 lg:pr-16 lg:pl-[280px] xl:pl-[320px] gap-8 shadow-md relative z-10 mt-16 lg:mt-0">
-              <h3 className="text-2xl md:text-3xl font-bold text-black max-w-xl leading-snug text-center lg:text-left pt-20 lg:pt-0">
+              <h3 className="text-2xl md:text-3xl font-caveat font-bold text-black max-w-xl leading-snug text-center lg:text-left pt-20 lg:pt-0">
                 Quality food is not just ingredients, but the people and place behind it.
               </h3>
               <Link to="/contact">
