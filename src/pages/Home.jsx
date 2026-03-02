@@ -1,6 +1,7 @@
 import {useState, useEffect, useRef} from 'react'
 import { AnimatePresence, motion, useInView } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 
 import headerimg from '../assets/main-slider-img-1.png'
 import headerbg from '../assets/main-slider-bg-shape.png'
@@ -70,54 +71,36 @@ function Home() {
 
   const [index, setIndex] = useState(0);
 
-  // --- VIDEO LOGIC START ---
+  // --- VIDEO LOGIC ---
   const videoRef = useRef(null);
-  const isVideoInView = useInView(videoRef, { amount: 0.5 });
-  const [hasInteracted, setHasInteracted] = useState(false);
+  
+  // Detect if video is at least 40% visible
+  const isVideoInView = useInView(videoRef, { amount: 0.4 });
+  const [isMuted, setIsMuted] = useState(true);
 
-  // 1. Detect User Interaction (Click or Touch)
-  useEffect(() => {
-    const handleInteraction = () => setHasInteracted(true);
-    
-    // Listen for any interaction on the window
-    window.addEventListener('click', handleInteraction);
-    window.addEventListener('touchstart', handleInteraction);
-    window.addEventListener('keydown', handleInteraction);
-    
-    return () => {
-      window.removeEventListener('click', handleInteraction);
-      window.removeEventListener('touchstart', handleInteraction);
-      window.removeEventListener('keydown', handleInteraction);
-    };
-  }, []);
-
-  // 2. Safe Audio Toggle Logic
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (isVideoInView) {
-      // Only attempt to unmute if the user has already interacted
-      // Otherwise, the browser will likely block it
-      const shouldUnmute = hasInteracted;
+  // 1. Manual Toggle (Clicking the Button)
+  const toggleAudio = () => {
+    if (videoRef.current) {
+      const newState = !isMuted;
+      setIsMuted(newState);
+      videoRef.current.muted = newState;
       
-      video.muted = !shouldUnmute;
-
-      // Try to play. If it fails (browser block), catch error and force muted play.
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          console.log("Autoplay with sound prevented. Fallback to muted.", error);
-          video.muted = true;
-          video.play();
-        });
+      if (videoRef.current.paused) {
+        videoRef.current.play().catch(() => {});
       }
-    } else {
-      // Always mute when out of view
-      video.muted = true;
     }
-  }, [isVideoInView, hasInteracted]);
-  // --- VIDEO LOGIC END ---
+  };
+
+  // 2. Auto-Mute when Scrolling Away
+  useEffect(() => {
+    // If the video is NOT in view, and it is currently playing sound...
+    if (!isVideoInView && !isMuted) {
+      if (videoRef.current) {
+        videoRef.current.muted = true; // Mute the video element
+        setIsMuted(true);              // Update button state to "Muted" icon
+      }
+    }
+  }, [isVideoInView, isMuted]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -276,9 +259,8 @@ function Home() {
             {/* Video Container */}
             <motion.div 
               initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
-              className="h-[550px] lg:h-[640px] overflow-hidden shadow-inner rounded-3xl flex-shrink-0 lg:-ml-24"
+              className="relative h-[550px] lg:h-[640px] overflow-hidden shadow-inner rounded-3xl flex-shrink-0 lg:-ml-24"
             >
-               {/* Video Element with Ref */}
                <video 
                  ref={videoRef} 
                  src={bfvideo} 
@@ -288,6 +270,19 @@ function Home() {
                  playsInline 
                  className="w-full h-full object-contain" 
                />
+
+               {/* --- MUTE/UNMUTE BUTTON --- */}
+               <button 
+                 onClick={toggleAudio}
+                 className="absolute bottom-6 right-6 z-20 bg-white/20 backdrop-blur-md border border-white/30 p-4 rounded-full text-white hover:bg-white/40 transition-all shadow-lg group"
+               >
+                 {isMuted ? (
+                   <FaVolumeMute className="w-6 h-6 md:w-8 md:h-8" />
+                 ) : (
+                   <FaVolumeUp className="w-6 h-6 md:w-8 md:h-8" />
+                 )}
+               </button>
+
             </motion.div>
 
             {/* List Content */}
