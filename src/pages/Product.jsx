@@ -28,12 +28,6 @@ import tamarindchilli2 from "../assets/PRODUCT PAGE/Tamarind Chilli/2.png";
 import tamarindchilli3 from "../assets/PRODUCT PAGE/Tamarind Chilli/3.jpg";
 import tamarindchilli4 from "../assets/PRODUCT PAGE/Tamarind Chilli/54.png";
 
-import hero1 from '../assets/36.png';
-import hero2 from '../assets/37.png';
-import hero3 from '../assets/38.png';
-import hero4 from '../assets/39.png';
-import hero5 from '../assets/40.png';
-
 import back1 from '../assets/PRODUCT PAGE/Bhel puri/back.png';
 import back2 from '../assets/PRODUCT PAGE/Pani puri/back.png';
 import back3 from '../assets/PRODUCT PAGE/Tamarind Chilli/back.png';
@@ -273,7 +267,7 @@ const SpecListItem = ({ text }) => {
 };
 
 
-const ProductPage = () => {
+const Product = () => {
   const [activeTab, setActiveTab] = useState('Tamarind Paste');
   const [mainImgIndex, setMainImgIndex] = useState(0);
   const [openFaq, setOpenFaq] = useState(null);
@@ -628,4 +622,4 @@ const ProductPage = () => {
   );
 };
 
-export default ProductPage;
+export default Product;

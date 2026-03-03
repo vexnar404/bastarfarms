@@ -2,9 +2,6 @@ import React from 'react'
 import headerbg from '../assets/page-header-bg.jpg'
 import team from '../assets/team.jpeg'
 import sign from '../assets/sign.png'
-import core from '../assets/core.png'
-import clients from '../assets/clients.png'
-import foot from '../assets/foot.png'
 import fssai from '../assets/fssai.png'
 import fostac from '../assets/fostac.jpeg'
 
@@ -147,7 +144,7 @@ function AboutUs() {
             <section className='py-4'>
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
                     <h1 className='text-4xl md:text-6xl font-bold text-center mb-2'>Our Esteemed Clients</h1>
-                    <p className='text-xl md:text-3xl font-caveat text-center mb-8'>Trusted By Industry Leaders</p>
+                    <p className='text-2xl md:text-3xl font-caveat font-semibold text-center mb-8'>Trusted By Industry Leaders</p>
                 </motion.div>
                 <div className='overflow-hidden w-full bg-gradient-to-br from-[#3a791f] to-[#52af2b] py-10'>
                     <motion.div

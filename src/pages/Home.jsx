@@ -206,7 +206,7 @@ function Home() {
                 </div>
                 <div className="bg-[#f4f7f1] rounded-2xl pt-24 pb-8 px-6 -mt-20 min-h-[220px]">
                   <h2 className="text-[#2a491d] text-2xl font-bold mb-4">{item.title}</h2>
-                  <p className="text-gray-500 font-sans text-xl">{item.desc}</p>
+                  <p className="text-gray-500 font-sans text-lg">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -232,7 +232,7 @@ function Home() {
                 </div>
                 <div className="bg-[#f4f7f1] rounded-2xl pt-24 pb-8 px-4 -mt-20 min-h-[200px]">
                   <h2 className="text-[#2a491d] text-xl font-bold mb-3">{item.title}</h2>
-                  <p className="text-gray-500 font-sans text-xl md:text-base">{item.desc}</p>
+                  <p className="text-gray-500 font-sans text-lg md:text-base">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -250,7 +250,7 @@ function Home() {
         <div className="max-w-7xl mx-auto w-full z-10">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-            className='text-4xl md:text-6xl text-[#ffc34c] font-bold text-center mb-8'
+            className='text-3xl md:text-5xl text-[#ffc34c] font-bold text-center mb-8'
           >
             Authentic Taste, Everyday Reliability
           </motion.h1>
@@ -308,7 +308,7 @@ function Home() {
                     <img src={item.icon} alt="icon" className='w-12 h-12 md:w-16 md:h-16 flex-shrink-0' />
                     <div>
                       <h2 className='text-lg md:text-2xl font-bold text-gray-100'>{item.t}</h2>
-                      <p className='text-sm font-caveat md:text-xl text-gray-300'>{item.p}</p>
+                      <p className='text-lg font-caveat md:text-2xl text-gray-300'>{item.p}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -439,7 +439,7 @@ function Home() {
           initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
           className="max-w-7xl mx-auto text-center"
         >
-          <h2 className="text-2xl md:text-4xl font-black uppercase mb-4 text-[#1a3a1f]">Working with the communities of Bastar</h2>
+          <h2 className="text-[26px] md:text-5xl font-black uppercase mb-4 text-[#1a3a1f]">Working with the communities of Bastar</h2>
           <p className="text-gray-700 text-lg mb-12 max-w-3xl mx-auto">Our processing unit in Lohandiguda operates with a one hundred percent local and tribal workforce.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
             {images.map((img, index) => (
