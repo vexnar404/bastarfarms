@@ -208,7 +208,7 @@ const SectionHeader = ({ title, description, date, hasBorder = true }) => (
     transition={{ duration: 0.4 }} 
     className="w-full mb-10"
   >
-    <div className="flex items-center gap-6 mb-6">
+    <div className="flex items-center gap-3">
       {hasBorder && <div className="h-[3px] bg-black flex-grow"></div>}
       {date && (
         <span className="text-xl md:text-2xl font-bold text-black whitespace-nowrap">
@@ -217,7 +217,7 @@ const SectionHeader = ({ title, description, date, hasBorder = true }) => (
       )}
     </div>
     <div>
-      <h1 className="text-3xl md:text-5xl font-black text-black mb-3 md:mb-4">{title}</h1>
+      <h1 className="text-[28px] md:text-5xl font-black text-black mb-3 md:mb-4">{title}</h1>
       <p className="text-[#2a491d] text-lg font-bold leading-tight max-w-4xl">{description}</p>
     </div>
   </motion.div>
@@ -270,7 +270,7 @@ function Gallery() {
                   whileInView={{ opacity: 1, scale: 1, y: 0 }} 
                   viewport={{ once: true }} 
                   transition={{ duration: 0.4, delay: (idx % 3) * 0.15 }}
-                  className="relative h-64 md:h-80 overflow-hidden rounded-xl border-[4px] shadow-sm group" 
+                  className="relative h-72 md:h-[350px] overflow-hidden rounded-xl border-[4px] shadow-sm group" 
                   style={{ borderColor: event.borderColor }}
                 >
                   <MediaRenderer src={img.src} alt={img.alt} />

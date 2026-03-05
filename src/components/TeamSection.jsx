@@ -104,7 +104,7 @@ const TeamSection = () => {
   const secondRow = teamData.slice(3, 7);
 
   return (
-    <div className="px-6 md:px-12 max-w-[1400px] mx-auto mb-8 space-y-12">
+    <div className="px-6 md:px-12 max-w-[1400px] mx-auto mb-4 space-y-12">
       
       {/* First Row: 3 Members */}
       <div className="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-14">

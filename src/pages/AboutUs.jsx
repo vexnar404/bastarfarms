@@ -124,7 +124,7 @@ function AboutUs() {
             </section>
 
             {/* Video & Team */}
-            <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className='py-12'>
+            <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className='py-6'>
                 <VideoSection />
             </motion.section>
             
@@ -160,7 +160,7 @@ function AboutUs() {
             </section>
 
             {/* Certifications */}
-            <section className='py-12 px-6'>
+            <section className='py-8 px-6'>
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
                     <h1 className='text-center text-4xl md:text-6xl font-bold'>Certifications</h1>
                     <p className='text-center font-caveat text-2xl md:text-3xl font-semibold mb-8'>Quality & Compliance</p>

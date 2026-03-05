@@ -334,8 +334,8 @@ function Home() {
             className="z-10 w-full lg:w-[55%] text-white text-center lg:text-left"
           >
             <p className="text-emerald-400 italic font-caveat font-medium mb-2 text-2xl">Why Choose Bastar Farms</p>
-            <h2 className="text-3xl md:text-5xl font-bold mb-10 max-w-xl leading-tight mx-auto lg:mx-0">
-              Few reasons for people choosing Bastar Farms
+            <h2 className="text-3xl md:text-5xl font-bold mb-10 max-w-[600px] leading-tight mx-auto lg:mx-0">
+              The Standards behind every Bastar Farm product
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6">
               {features.map((f, i) => (

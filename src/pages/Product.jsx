@@ -306,7 +306,7 @@ const Product = () => {
       </div>
 
       {/* ================= DESKTOP NAVIGATION ================= */}
-      <motion.section 
+      <motion.section
         initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
         className="hidden md:flex w-full bg-[#2a491d] py-4 border-gray-200"
       >
@@ -377,7 +377,7 @@ const Product = () => {
               <h1 className="text-4xl md:text-6xl font-black text-[#1a3a1f] uppercase tracking-tight leading-none">
                 {currentProduct.title}
               </h1>
-              <p className="text-xl font-caveat md:text-2xl text-gray-700 font-medium mb-0 md:mb-10 leading-relaxed">
+              <p className="hidden md:block text-xl font-caveat md:text-2xl text-gray-700 font-medium mb-0 md:mb-10 leading-relaxed">
                 {currentProduct.tagline}
               </p>
 

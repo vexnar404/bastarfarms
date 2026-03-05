@@ -20,13 +20,13 @@ function Footer() {
             <div className='md:ml-3 -mt-8'>
               <p className='text-white font-semibold text-lg md:text-xl mb-4'>Stay in Touch</p>
               <div className="flex items-center gap-5">
-                <a href="https://www.linkedin.com/company/bastar-farms" target="_blank" rel="noopener noreferrer" className="group">
+                <a href="https://www.linkedin.com/company/bastar-farms-india/" target="_blank" rel="noopener noreferrer" className="group">
                   <FaLinkedin className='text-white group-hover:text-[#ffbd3c] transition-all duration-300' size={24}/>
                 </a>
-                <a href="https://www.facebook.com/bastarfarms" target="_blank" rel="noopener noreferrer" className="group">
+                <a href="https://www.facebook.com/share/1B2g3yJZny/" target="_blank" rel="noopener noreferrer" className="group">
                   <FaFacebook className='text-white group-hover:text-[#ffbd3c] transition-all duration-300' size={24}/>
                 </a>
-                <a href="https://www.instagram.com/bastarfarmsindia" target="_blank" rel="noopener noreferrer" className="group">
+                <a href="https://www.instagram.com/bastarfarmsindia?igsh=bDYxYzRwb2hvN3Zr" target="_blank" rel="noopener noreferrer" className="group">
                   <FaInstagram className='text-white group-hover:text-[#ffbd3c] transition-all duration-300' size={24}/>
                 </a>    
               </div>
@@ -34,7 +34,7 @@ function Footer() {
           </div>
 
           {/* Column 2: Quick Links & Legal */}
-          <div className="flex flex-row md:flex-col lg:flex-row justify-between lg:justify-start lg:gap-20 text-white">
+          <div className="flex flex-row md:flex-col lg:flex-row justify-between lg:justify-start lg:gap-16 text-white">
             <div className="flex flex-col gap-4">
               <h2 className='text-lg md:text-2xl font-bold border-b-2 border-[#50a72c] w-fit mb-2'>Navigation</h2>
               <ul className="space-y-3">
