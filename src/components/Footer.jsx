@@ -48,8 +48,8 @@ function Footer() {
             <div className="flex flex-col gap-4 mt-0 md:mt-8 lg:mt-0">
               <h2 className='text-lg md:text-2xl font-bold border-b-2 border-[#50a72c] w-fit mb-2'>Legal</h2>
               <ul className="space-y-3 text-gray-200">
-                <li className="hover:text-[#ffbd3c] cursor-pointer transition-colors md:text-lg">Privacy Policy</li>
-                <li className="hover:text-[#ffbd3c] cursor-pointer transition-colors md:text-lg">Terms of Service</li>
+                <li className="hover:text-[#ffbd3c] cursor-pointer transition-colors md:text-lg"><NavLink to="/privacy">Privacy Policy</NavLink></li>
+                <li className="hover:text-[#ffbd3c] cursor-pointer transition-colors md:text-lg"><NavLink to="/privacy">Terms of Service</NavLink></li>
               </ul>
             </div>
           </div>

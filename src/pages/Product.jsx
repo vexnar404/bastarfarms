@@ -345,7 +345,7 @@ const Product = () => {
         >
           
           {/* ================= 1. HERO SECTION ================= */}
-          <section className="max-w-7xl mx-auto px-6 pb-6 md:py-16 flex flex-col md:flex-row items-center justify-center gap-4 lg:gap-20">
+          <section className="max-w-7xl mx-auto px-6 pb-3 md:py-16 flex flex-col md:flex-row items-center justify-center gap-4 lg:gap-20">
             {/* Left: Main Image */}
             <motion.div
               initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
@@ -373,7 +373,7 @@ const Product = () => {
             {/* Right: Title, Tagline, Thumbnails */}
             <motion.div
               initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-              className="w-full md:w-1/2 flex flex-col items-start text-left mt-4 md:mt-0"
+              className="w-full md:w-1/2 flex flex-col items-center md:items-start text-left mt-4 md:mt-0"
             >
               <h1 className="text-4xl md:text-6xl font-black text-[#1a3a1f] uppercase tracking-tight leading-none">
                 {currentProduct.title}
@@ -396,7 +396,7 @@ const Product = () => {
                 ))}
               </div>
 
-              <div className="mt-4 md:mt-8 w-full border-t border-gray-200 pt-8">
+              <div className="mt-4 md:mt-8 w-full border-t border-gray-200 pt-4">
                 <p className="font-bold text-gray-400 text-sm uppercase tracking-widest mb-4">Order Online Now</p>
                 <div className="flex flex-wrap gap-4">
                   
@@ -429,7 +429,7 @@ const Product = () => {
           </section>
 
           {/* ================= 2. GREEN FEATURE BAR ================= */}
-          <section className="hidden md:block w-full bg-[#3a692a] py-8">
+          <section className="hidden md:block w-full bg-[#3a692a] py-0 md:py-8">
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-white text-center md:text-left">
               {trustFeatures.map((feature, idx) => (
                 <motion.div
@@ -447,7 +447,7 @@ const Product = () => {
           </section>
 
           {/* ================= 3. INGREDIENTS & SPECS ================= */}
-          <section className="max-w-7xl mx-auto px-6 py-16 md:py-24 flex flex-col md:flex-row gap-8 items-center">
+          <section className="max-w-7xl mx-auto px-6 py-8 md:py-24 flex flex-col md:flex-row gap-8 items-center">
             <motion.div 
               initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
               className="w-full md:w-2/3 text-center md:text-left"
