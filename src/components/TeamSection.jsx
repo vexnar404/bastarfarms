@@ -6,8 +6,9 @@ import core4 from '../assets/c4pravirKrishna.png'
 import core5 from '../assets/c5deepakPatil.png'
 import core6 from '../assets/c6fasihuddinSyed.png'
 import core7 from '../assets/c7mickulArora.png'
+import core8 from '../assets/c8ganeshSaste.jpeg'
 
-// Define team data (add your imported images)
+// Define team data
 const teamData = [
   {
     img: core1,
@@ -50,13 +51,19 @@ const teamData = [
     name: 'Mickul Arora',
     role: 'Production Head',
     description: 'Mickul Arora is a passionate team leader with over a decade of experience in managing manufacturing teams and driving operational excellence. As the Production Head, he leads the operations at the Lohandiguda facility, ensuring efficient processing of tamarind products, adherence to quality standards, and continuous improvement in productivity and safety.'
+  },
+  {
+    img: core8,
+    name: 'Ganesh Saste',
+    role: 'Partner',
+    description: 'Ganesh Saste is a core team member at Bastar Farms, bringing 25 years of experience in raw material procurement for the food industry. He previously served as President of the APMC Market in Pune, Maharashtra.'
   }
 ];
 
 // TeamCard component with internal read‑more state
 const TeamCard = ({ img, name, role, description }) => {
   const [expanded, setExpanded] = useState(false);
-  const truncateLength = 120; // Slightly shorter for better mobile fit
+  const truncateLength = 120; 
 
   const toggleReadMore = () => setExpanded(!expanded);
 
@@ -66,22 +73,22 @@ const TeamCard = ({ img, name, role, description }) => {
     : description;
 
   return (
-    <div className="flex flex-col items-center border-[1px] pb-6 rounded-2xl shadow-md overflow-hidden bg-white h-full transition-all duration-300 hover:shadow-xl">
+    <div className="flex flex-col items-center border-[1px] pb-6 rounded-2xl shadow-md overflow-hidden bg-white h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
       <div className="p-3 w-full">
         <img
           src={img}
           alt={name}
-          className="w-full h-64 md:h-72 lg:h-80 object-cover rounded-xl border-4 border-[#2a491d]"
+          className="w-full h-64 md:h-72 object-cover rounded-xl border-4 border-[#2a491d]"
         />
       </div>
       
       <div className="px-6 py-2 text-center">
-        <h1 className="text-2xl md:text-[28px] font-bold text-gray-800">{name}</h1>
-        <p className="text-[#50a72c] font-caveat font-semibold text-sm md:text-base uppercase tracking-wider mb-3">{role}</p>
+        <h1 className="text-xl md:text-2xl font-bold text-gray-800">{name}</h1>
+        <p className="text-[#50a72c] font-caveat font-semibold text-sm uppercase tracking-wider mb-3">{role}</p>
       </div>
 
       <div className="px-6 flex-1 flex flex-col">
-        <p className="text-gray-600 text-sm md:text-base leading-relaxed text-center italic">
+        <p className="text-gray-600 text-sm leading-relaxed text-center italic">
           "{displayText}"
         </p>
         
@@ -99,28 +106,17 @@ const TeamCard = ({ img, name, role, description }) => {
 };
 
 const TeamSection = () => {
-  // Split the data into two sets
-  const firstRow = teamData.slice(0, 3);
-  const secondRow = teamData.slice(3, 7);
-
   return (
-    <div className="px-6 md:px-12 max-w-[1400px] mx-auto mb-4 space-y-12">
+    <div className="px-6 md:px-12 max-w-[1600px] mx-auto mb-12">
       
-      {/* First Row: 3 Members */}
-      <div className="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-14">
-        {firstRow.map((member, index) => (
-          <div key={index} className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(30%-1rem)] max-w-[400px]">
-            <TeamCard {...member} />
-          </div>
-        ))}
-      </div>
-
-      {/* Second Row: 4 Members */}
-      <div className="flex flex-wrap justify-center gap-8 md:gap-10 lg:gap-8">
-        {secondRow.map((member, index) => (
-          <div key={index} className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(23%-1rem)] max-w-[380px]">
-            <TeamCard {...member} />
-          </div>
+      {/* Grid Layout Explanation:
+        - grid-cols-1: Mobile (1 card per row)
+        - sm:grid-cols-2: Tablet (2 cards per row)
+        - lg:grid-cols-4: Desktop (4 cards per row) 
+      */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {teamData.map((member, index) => (
+          <TeamCard key={index} {...member} />
         ))}
       </div>
 

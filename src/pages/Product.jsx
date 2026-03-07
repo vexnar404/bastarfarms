@@ -67,7 +67,7 @@ const globalFaqs = [
   { id: 4, q: "Can I use this as a base for my own recipes?", a: "Yes. Many chefs and home cooks use it as a base for sauces, marinades, and flavour blends." },
   { id: 5, q: "Are the products safe for commercial kitchens and HoReCa use?", a: "Yes. Our processing standards, batch consistency, and packaging are designed to meet the needs of restaurants, caterers, and institutional buyers." },
   { id: 6, q: "Are your products suitable for export or bulk supply?", a: "Yes. We cater to bulk, private label, and export requirements subject to order specifications and regulatory compliance." },
-  { id: 7, q: "Are Bastar Farms products suitable for vegetarians?", a: "Yes, all Bastar Farms products are vegetarian and crafted to cater to diverse dietary preferences. These can be used for Non-Vegarians as well." },
+  { id: 7, q: "Are Bastar Farms products suitable for vegetarians?", a: "Yes, all Bastar Farms products are vegetarian and crafted to cater to diverse dietary preferences. These can be used for Non-Vegetarians as well." },
   { id: 8, q: "Can I use your chutneys and pastes for non-Indian dishes?", a: "Absolutely! While our products are designed with Indian flavors in mind, they work wonderfully as marinades, dips, or condiments for a variety of cuisines." },
   { id: 9, q: "What makes Bastar Farms products unique?", a: "Our products are crafted from authentic, forest-sourced ingredients and processed by tribal communities of Bastar, ensuring unmatched quality and flavor." },
   { id: 10, q: "Can I use Bastar Farms Tamarind Paste for desserts?", a: "Yes, our Tamarind Paste adds a unique tangy sweetness to desserts like tamarind candies, tarts, and even fusion recipes." }
@@ -104,6 +104,7 @@ const productsData = {
     ],
     packaging: [
       'Available pack sizes: 200 g, 700g, 1 kg, Horeca pack 5kg',
+      'Customizable pack sizes available as per requirement',
       'Packaging type: Food grade sealed pack',
       'Shelf life: 12 months from manufacturing'
     ],
@@ -395,7 +396,7 @@ const Product = () => {
                 ))}
               </div>
 
-              <div className="mt-8 w-full border-t border-gray-200 pt-8">
+              <div className="mt-4 md:mt-8 w-full border-t border-gray-200 pt-8">
                 <p className="font-bold text-gray-400 text-sm uppercase tracking-widest mb-4">Order Online Now</p>
                 <div className="flex flex-wrap gap-4">
                   
@@ -428,7 +429,7 @@ const Product = () => {
           </section>
 
           {/* ================= 2. GREEN FEATURE BAR ================= */}
-          <section className="w-full bg-[#3a692a] py-8">
+          <section className="hidden md:block w-full bg-[#3a692a] py-8">
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-white text-center md:text-left">
               {trustFeatures.map((feature, idx) => (
                 <motion.div
@@ -468,7 +469,7 @@ const Product = () => {
           </section>
 
           {/* ================= 4. DARK GREEN DETAILS SECTION ================= */}
-          <section className="w-full bg-[#416a30] text-white py-16 md:py-24 relative overflow-hidden">
+          <section className="w-full bg-[#3a692a] text-white py-16 md:py-24 relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-4 items-center relative z-10">
               
               {/* Left Column */}
@@ -527,6 +528,23 @@ const Product = () => {
                 </div>
               </motion.div>
 
+            </div>
+          </section>
+
+          <section className="block md:hidden w-full bg-[#3a692a] py-8 mt-2">
+            <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-white text-center md:text-left">
+              {trustFeatures.map((feature, idx) => (
+                <motion.div
+                  key={idx} 
+                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: idx * 0.1 }}
+                  className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-4"
+                >
+                  <img src={feature.icon} alt="Icon" className='w-16 h-16' />
+                  <span className="font-bold font-caveat text-lg md:text-2xl leading-tight whitespace-pre-line">
+                    {feature.text}
+                  </span>
+                </motion.div>
+              ))}
             </div>
           </section>
 

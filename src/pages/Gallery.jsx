@@ -270,7 +270,7 @@ function Gallery() {
                   whileInView={{ opacity: 1, scale: 1, y: 0 }} 
                   viewport={{ once: true }} 
                   transition={{ duration: 0.4, delay: (idx % 3) * 0.15 }}
-                  className="relative h-72 md:h-[350px] overflow-hidden rounded-xl border-[4px] shadow-sm group" 
+                  className="relative h-[360px] overflow-hidden rounded-xl border-[4px] shadow-sm group" 
                   style={{ borderColor: event.borderColor }}
                 >
                   <MediaRenderer src={img.src} alt={img.alt} />
