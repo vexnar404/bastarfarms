@@ -35,6 +35,12 @@ const teamData = [
     description: 'Pravir Krishna is Executive Director and a distinguished public servant and development leader, widely recognized for his contribution to India’s tribal and agro-based value chains. As the former Managing Director of TRIFED, he played a transformative role in strengthening market access, institutional frameworks, and livelihood opportunities for forest and farm communities.'
   },
   {
+    img: core8,
+    name: 'Ganesh Saste',
+    role: 'Partner',
+    description: 'Ganesh Saste is a core team member at Bastar Farms, bringing 25 years of experience in raw material procurement for the food industry. He previously served as President of the APMC Market in Pune, Maharashtra.'
+  },
+  {
     img: core5,
     name: 'Deepak Patil',
     role: 'Chief Financial Officer',
@@ -52,12 +58,7 @@ const teamData = [
     role: 'Production Head',
     description: 'Mickul Arora is a passionate team leader with over a decade of experience in managing manufacturing teams and driving operational excellence. As the Production Head, he leads the operations at the Lohandiguda facility, ensuring efficient processing of tamarind products, adherence to quality standards, and continuous improvement in productivity and safety.'
   },
-  {
-    img: core8,
-    name: 'Ganesh Saste',
-    role: 'Partner',
-    description: 'Ganesh Saste is a core team member at Bastar Farms, bringing 25 years of experience in raw material procurement for the food industry. He previously served as President of the APMC Market in Pune, Maharashtra.'
-  }
+  
 ];
 
 // TeamCard component with internal read‑more state

@@ -217,7 +217,7 @@ const SectionHeader = ({ title, description, date, hasBorder = true }) => (
       )}
     </div>
     <div>
-      <h1 className="text-[28px] md:text-5xl font-black text-black mb-3 md:mb-4">{title}</h1>
+      <h1 className="text-[28px] leading-none md:text-5xl font-black text-black mb-3 md:mb-4">{title}</h1>
       <p className="text-[#2a491d] text-lg font-bold leading-tight max-w-4xl">{description}</p>
     </div>
   </motion.div>
@@ -252,7 +252,7 @@ function Gallery() {
       </section>
 
       {/* 1. TIMELINE EVENTS SECTION (Now includes Inauguration & Dispatch) */}
-      <section className="bg-white py-16 px-6 md:px-20 max-w-7xl mx-auto space-y-24">
+      <section className="bg-white py-16 px-6 md:px-20 max-w-7xl mx-auto space-y-20">
         {eventsData.map((event) => (
           <div key={event.id}>
             <SectionHeader 

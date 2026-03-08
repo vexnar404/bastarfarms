@@ -396,7 +396,7 @@ const Product = () => {
                 ))}
               </div>
 
-              <div className="mt-4 md:mt-8 w-full border-t border-gray-200 pt-4">
+              <div className="hidden md:block mt-4 md:mt-8 w-full border-t border-gray-200 pt-4">
                 <p className="font-bold text-gray-400 text-sm uppercase tracking-widest mb-4">Order Online Now</p>
                 <div className="flex flex-wrap gap-4">
                   
@@ -447,10 +447,10 @@ const Product = () => {
           </section>
 
           {/* ================= 3. INGREDIENTS & SPECS ================= */}
-          <section className="max-w-7xl mx-auto px-6 py-8 md:py-24 flex flex-col md:flex-row gap-8 items-center">
+          <section className="max-w-7xl mx-auto px-6 py-6 md:py-24 flex flex-col md:flex-row gap-8 items-center">
             <motion.div 
               initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-              className="w-full md:w-2/3 text-center md:text-left"
+              className="w-full md:w-2/3 text-center md:text-left border-t border-gray-200 pt-4"
             >
               <h2 className="text-xl md:text-2xl font-bold font-caveat text-gray-800 tracking-wider mb-2">Ingredients and Specifications</h2>
               <h1 className="text-4xl md:text-5xl font-black text-[#1a3a1f]">What's in The Blend</h1>
@@ -466,6 +466,35 @@ const Product = () => {
                 ))}
               </ul>
             </motion.div>
+
+            <div className="block md:hidden mt-2 md:mt-8 w-full border-t border-gray-200 pt-4">
+                <p className="font-bold text-gray-400 text-sm uppercase tracking-widest mb-4">Order Online Now</p>
+                <div className="flex flex-wrap gap-4">
+                  
+                  {/* Amazon Button */}
+                    <a 
+                      href="https://www.amazon.in"
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 bg-[#232f3e] text-white px-6 py-3 rounded-xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex-1 md:flex-none justify-center min-w-[140px]"
+                    >
+                      <FaAmazon className="text-xl" />
+                      <span className="font-bold">Amazon</span>
+                    </a>
+
+                  {/* BigBasket Button */}
+                    <a 
+                      href="https://www.bigbasket.com/pb/bastar-farms/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 bg-[#84C225] text-white px-6 py-3 rounded-xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex-1 md:flex-none justify-center min-w-[140px]"
+                    >
+                      <FaShoppingBasket className="text-xl" />
+                      <span className="font-bold">BigBasket</span>
+                    </a>
+
+                </div>
+              </div>
           </section>
 
           {/* ================= 4. DARK GREEN DETAILS SECTION ================= */}
