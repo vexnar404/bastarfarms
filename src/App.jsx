@@ -9,6 +9,7 @@ import ScrollToTop from './components/ScrollToTop'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import Privacy from './pages/Privacy'
+import Clients from './pages/Clients'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/gallery' element={<Gallery />} />
         <Route path='/products' element={<Products />} />
         <Route path='/privacy' element={<Privacy />} />
+        <Route path='/clients' element={<Clients />} />
       </Routes>
       <Footer />
     </BrowserRouter>

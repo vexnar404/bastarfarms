@@ -61,7 +61,7 @@ const imgchillib = [back3];
 
 // 1. Same FAQs for all products
 const globalFaqs = [
-  { id: 1, q: "Is it ready to use or does it need dilution?", a: "Most products are ready to use. Pani Puri chutney is a concentrate and should be diluted as per instructions." },
+  { id: 1, q: "Is it ready to use or does it need dilution?", a: "Most products are ready to use. Pani Puri chutney needs to be diluted as per the instructions before use. " },
   { id: 2, q: "How long does it stay fresh after opening?", a: "When refrigerated and handled properly, it remains usable as per the shelf life mentioned on the pack." },
   { id: 3, q: "Are your products pasteurized?", a: "Yes. Our products undergo hygienic processing and pasteurization to ensure safety and consistency." },
   { id: 4, q: "Can I use this as a base for my own recipes?", a: "Yes. Many chefs and home cooks use it as a base for sauces, marinades, and flavour blends." },
