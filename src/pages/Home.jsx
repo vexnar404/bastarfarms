@@ -1,7 +1,7 @@
 import {useState, useEffect, useRef} from 'react'
 import { AnimatePresence, motion, useInView } from 'framer-motion'
-import { Link } from 'react-router-dom'
 import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom'
 
 import headerimg from '../assets/main-slider-img-1.png'
 import headerbg from '../assets/main-slider-bg-shape.png'
@@ -41,6 +41,7 @@ import i70 from '../assets/i70.jpeg'
 
 
 function Home() {
+  const navigate = useNavigate();
   const features = [
     { icon: icon7, title: "Chemical Free" },
     { icon: icon8, title: "Authentic & Natural Tamarind" },
@@ -110,6 +111,12 @@ function Home() {
     return () => clearInterval(timer);
   }, [slides.length]);
 
+  const handleProductClick = (productName) => {
+    // Navigate to the products page and pass the productName in the state
+    navigate('/products', { state: { targetProduct: productName } });
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Optional: scroll to top on nav
+  };
+
   return (
     <div className='overflow-x-hidden'>
       
@@ -121,7 +128,7 @@ function Home() {
           alt="background" 
           className="absolute inset-0 w-full h-full object-cover -z-10 bg-[#f2f2f2]" 
         />
-        {/* Added max-w-7xl mx-auto to center content perfectly on ultra-wides */}
+        
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center w-full px-6 gap-6 z-10">
           <div className="flex flex-col items-center justify-center w-full lg:w-1/2 md:gap-2 text-center lg:text-left">
             
@@ -191,20 +198,21 @@ function Home() {
           {/* Product Grid 1 */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-10 w-full max-w-5xl mx-auto">
             {[
-              { img: tamarind_pulp, title: "Tamarind Pulp", desc: "Pure tamarind pulp for rich flavor, smooth texture, and everyday cooking." },
-              { img: tamarind_paste, title: "Tamarind Paste", desc: "Thick, tangy tamarind paste for curries, chutneys, marinades, and sauces." }
+              { img: tamarind_pulp, title: "Tamarind Pulp", productKey: "Tamarind Paste", desc: "Pure tamarind pulp for rich flavor, smooth texture, and everyday cooking." },
+              { img: tamarind_paste, title: "Tamarind Paste", productKey: "Tamarind Paste", desc: "Thick, tangy tamarind paste for curries, chutneys, marinades, and sauces." }
             ].map((item, i) => (
               <motion.div 
                 key={i} 
+                onClick={() => handleProductClick(item.productKey)}
                 initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.2 }}
-                className="relative w-full group"
+                className="relative w-full group cursor-pointer text-left"
               >
                 <div className="relative z-10 flex justify-center">
                   <div className="w-48 h-48 md:w-64 md:h-64 bg-white rounded-full shadow-lg flex items-center justify-center p-4 transition-transform group-hover:scale-105">
                     <img src={item.img} alt={item.title} className="w-full h-full object-contain" />
                   </div>
                 </div>
-                <div className="bg-[#f4f7f1] rounded-2xl pt-24 pb-8 px-6 -mt-20 min-h-[220px]">
+                <div className="bg-[#f4f7f1] text-center rounded-2xl pt-24 pb-8 px-6 -mt-20 min-h-[220px]">
                   <h2 className="text-[#2a491d] text-2xl font-bold mb-4">{item.title}</h2>
                   <p className="text-gray-500 font-sans text-lg">{item.desc}</p>
                 </div>
@@ -215,22 +223,23 @@ function Home() {
           {/* Product Grid 2 */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 md:gap-8 w-full mt-10">
             {[
-              { img: tamarind_bhel_puri, title: "Tamarind Bhel Puri", desc: "Sweet and tangy chutney blend crafted for bhel, chaat, and street-style snacks." },
-              { img: pani_puri, title: "Pani Puri", desc: "Zesty pani puri chutney with a bold, refreshing kick for classic pani puri water." },
-              { img: tamarind_date, title: "Tamarind Date", desc: "A rich sweet-and-sour tamarind date chutney for chaats, dips, and snacks." },
-              { img: tamarind_chilli, title: "Tamarind Chilli", desc: "Spicy tamarind chilli chutney that adds heat, depth, and punch to every bite." }
+              { img: tamarind_bhel_puri, title: "Tamarind Bhel Puri", productKey: "Bhel Puri", desc: "Sweet and tangy chutney blend crafted for bhel, chaat, and street-style snacks." },
+              { img: pani_puri, title: "Pani Puri", productKey: "Pani Puri", desc: "Zesty pani puri chutney with a bold, refreshing kick for classic pani puri water." },
+              { img: tamarind_date, title: "Tamarind Date", productKey: "Tamarind Date", desc: "A rich sweet-and-sour tamarind date chutney for chaats, dips, and snacks." },
+              { img: tamarind_chilli, title: "Tamarind Chilli", productKey: "Tamarind Chilli", desc: "Spicy tamarind chilli chutney that adds heat, depth, and punch to every bite." }
             ].map((item, i) => (
               <motion.div 
                 key={i} 
+                onClick={() => handleProductClick(item.productKey)}
                 initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.15 }}
-                className="relative w-full group"
+                className="relative w-full group cursor-pointer text-left"
               >
                 <div className="relative z-10 flex justify-center">
                   <div className="w-40 h-40 md:w-56 md:h-56 bg-white rounded-full shadow-lg flex items-center justify-center p-4 transition-transform group-hover:scale-105">
                     <img src={item.img} alt={item.title} className="w-full h-full object-contain" />
                   </div>
                 </div>
-                <div className="bg-[#f4f7f1] rounded-2xl pt-24 pb-8 px-4 -mt-20 min-h-[200px]">
+                <div className="bg-[#f4f7f1] text-center rounded-2xl pt-24 pb-8 px-4 -mt-20 min-h-[200px]">
                   <h2 className="text-[#2a491d] text-xl font-bold mb-3">{item.title}</h2>
                   <p className="text-gray-500 font-sans text-lg md:text-base">{item.desc}</p>
                 </div>
@@ -421,11 +430,11 @@ function Home() {
               <h3 className="text-2xl md:text-3xl font-caveat font-bold text-black max-w-xl leading-snug text-center lg:text-left pt-20 lg:pt-0">
                 Quality food is not just ingredients, but the people and place behind it.
               </h3>
-              <Link to="/contact">
-                <button className="bg-[#fab855] hover:bg-[#e5a54c] text-black font-bold text-lg py-4 px-10 rounded-xl transition-all shadow-md flex-shrink-0 whitespace-nowrap">
+              <div>
+                <a href="tel:918482950500"className="bg-[#fab855] hover:bg-[#e5a54c] text-black font-bold text-lg py-4 px-10 rounded-xl transition-all shadow-md flex-shrink-0 whitespace-nowrap">
                   Contact Us Now!
-                </button>
-              </Link>
+                </a>
+              </div>
             </div>
             
           </motion.div>

@@ -43,7 +43,7 @@ function AboutUs() {
     const images = [c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21]
 
     return (
-        <div className='w-full overflow-x-hidden'>
+        <div className='w-full overflow-hidden'>
             {/* Header Section */}
             <motion.section 
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}

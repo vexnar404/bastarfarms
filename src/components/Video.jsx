@@ -14,7 +14,7 @@ const VideoSection = ({ videoSrc = aboutbf }) => {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    document.body.style.overflow = 'unset';
+    document.body.style.overflow = '';
   };
 
   return (

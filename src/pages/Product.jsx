@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaCheckCircle } from 'react-icons/fa';
 import { BsArrowDown, BsArrowRight } from 'react-icons/bs';
 import { FaAmazon, FaShoppingBasket, FaBolt } from 'react-icons/fa';
+import { useLocation } from 'react-router-dom';
 
 import headerbg from '../assets/page-header-bg.jpg';
 
@@ -269,7 +270,13 @@ const SpecListItem = ({ text }) => {
 
 
 const Product = () => {
-  const [activeTab, setActiveTab] = useState('Tamarind Paste');
+  const location = useLocation();
+
+  // Retrieve the targetProduct from state, default to 'Tamarind Paste'
+  const [activeTab, setActiveTab] = useState(() => {
+    return location.state?.targetProduct || 'Tamarind Paste';
+  });
+
   const [mainImgIndex, setMainImgIndex] = useState(0);
   const [openFaq, setOpenFaq] = useState(null);
 
@@ -373,7 +380,7 @@ const Product = () => {
             {/* Right: Title, Tagline, Thumbnails */}
             <motion.div
               initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-              className="w-full md:w-1/2 flex flex-col items-center md:items-start text-left mt-4 md:mt-0"
+              className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left mt-4 md:mt-0"
             >
               <h1 className="text-4xl md:text-6xl font-black text-[#1a3a1f] uppercase tracking-tight leading-none">
                 {currentProduct.title}

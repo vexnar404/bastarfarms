@@ -18,7 +18,7 @@ const navLinks = [
 
 const socialLinks = [
   { icon: FaLinkedin, url: 'https://www.linkedin.com/company/bastar-farms-india/', label: 'LinkedIn' },
-  { icon: FaFacebook, url: 'https://www.facebook.com/share/1B2g3yJZny/', label: 'Facebook' },
+  { icon: FaFacebook, url: 'https://www.facebook.com/share/18Erh3xDbQ/?mibextid=wwXIfr', label: 'Facebook' },
   { icon: FaInstagram, url: 'https://www.instagram.com/bastarfarmsindia?igsh=bDYxYzRwb2hvN3Zr', label: 'Instagram' },
 ];
 

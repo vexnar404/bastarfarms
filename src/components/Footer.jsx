@@ -23,7 +23,7 @@ function Footer() {
                 <a href="https://www.linkedin.com/company/bastar-farms-india/" target="_blank" rel="noopener noreferrer" className="group">
                   <FaLinkedin className='text-white group-hover:text-[#ffbd3c] transition-all duration-300' size={24}/>
                 </a>
-                <a href="https://www.facebook.com/share/1B2g3yJZny/" target="_blank" rel="noopener noreferrer" className="group">
+                <a href="https://www.facebook.com/share/18Erh3xDbQ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="group">
                   <FaFacebook className='text-white group-hover:text-[#ffbd3c] transition-all duration-300' size={24}/>
                 </a>
                 <a href="https://www.instagram.com/bastarfarmsindia?igsh=bDYxYzRwb2hvN3Zr" target="_blank" rel="noopener noreferrer" className="group">
